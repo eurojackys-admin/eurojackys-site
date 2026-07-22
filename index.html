@@ -312,7 +312,7 @@
     <thead>
       <tr>
         <th><span data-lang="fr">Pays</span><span data-lang="en">Country</span></th>
-        <th><span data-lang="fr">Villes</span><span data-lang="en">Cities</span></th>
+        <th><span data-lang="fr">Membres</span><span data-lang="en">Members</span></th>
         <th><span data-lang="fr">Statut</span><span data-lang="en">Status</span></th>
       </tr>
     </thead>
@@ -559,7 +559,7 @@ loadFolder("content/map").then(function(contents){
   el.innerHTML = '';
   rows.forEach(function(c){
     var tr = document.createElement('tr');
-    tr.innerHTML = '<td>' + esc(c.country) + '</td><td>' + esc(c.cities) + '</td><td><span class="status-dot"></span>' + esc(c.status) + '</td>';
+    tr.innerHTML = '<td>' + esc(c.country) + '</td><td>' + esc(c.members || '—') + '</td><td><span class="status-dot"></span>' + esc(c.status) + '</td>';
     el.appendChild(tr);
   });
 }).catch(function(){});

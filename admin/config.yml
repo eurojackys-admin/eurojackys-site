@@ -103,7 +103,7 @@ collections:
     fields:
       - { label: "Ordre d'affichage (1 = en premier)", name: "order", widget: "number", default: 1 }
       - { label: "Pays (avec drapeau, ex: 🇫🇷 France)", name: "country", widget: "string" }
-      - { label: "Villes (ex: Paris · Lyon · Marseille)", name: "cities", widget: "string" }
+      - { label: "Nombre de membres (ex: 12)", name: "members", widget: "string", required: false }
       - { label: "Statut (ex: Boarding, On time)", name: "status", widget: "string", default: "On time" }
 
   - name: "settings"
