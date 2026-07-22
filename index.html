@@ -337,8 +337,8 @@
   <div class="section-label">04 · <span data-lang="fr">Articles & récaps</span><span data-lang="en">Articles & recaps</span></div>
   <h2 class="section-title"><span data-lang="fr">Derniers articles</span><span data-lang="en">Latest articles</span></h2>
   <div class="article-list" id="articles-list">
-    <p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt — ajoutez-les depuis l'espace admin.</p>
-    <p class="empty-state" data-lang="en">First articles coming soon — add them from the admin space.</p>
+    <p class="empty-state" data-lang="fr">Chargement des articles…</p>
+    <p class="empty-state" data-lang="en">Loading articles…</p>
   </div>
 </section>
 
@@ -459,6 +459,78 @@ function setLang(lang){
   var saved = null;
   try { saved = localStorage.getItem('ej-lang'); } catch(e){}
   if(saved === 'en') setLang('en');
+})();
+
+// --- Load articles published via the admin (Decap CMS) from GitHub ---
+(function () {
+  var REPO = "eurojackys-admin/eurojackys-site";
+  var FOLDER = "articles";
+  var container = document.getElementById("articles-list");
+
+  function parseFrontMatter(raw) {
+    var match = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+    if (!match) return { data: {}, body: raw };
+    var yamlBlock = match[1];
+    var body = match[2].trim();
+    var data = {};
+    yamlBlock.split("\n").forEach(function (line) {
+      var idx = line.indexOf(":");
+      if (idx === -1) return;
+      var key = line.slice(0, idx).trim();
+      var value = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+      data[key] = value;
+    });
+    return { data: data, body: body };
+  }
+
+  function formatDate(iso) {
+    if (!iso) return "";
+    var d = new Date(iso);
+    if (isNaN(d)) return iso;
+    return d.toLocaleDateString("fr-CH", { day: "2-digit", month: "long", year: "numeric" });
+  }
+
+  fetch("https://api.github.com/repos/" + REPO + "/contents/" + FOLDER)
+    .then(function (r) { if (!r.ok) throw new Error("list failed"); return r.json(); })
+    .then(function (files) {
+      var mdFiles = files.filter(function (f) { return f.name.endsWith(".md"); });
+      if (mdFiles.length === 0) {
+        container.innerHTML =
+          '<p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt — ajoutez-les depuis l\'espace admin.</p>' +
+          '<p class="empty-state" data-lang="en">First articles coming soon — add them from the admin space.</p>';
+        if (document.body.classList.contains('lang-en')) {
+          container.querySelectorAll('[data-lang="fr"]').forEach(function(el){ el.style.display = 'none'; });
+        }
+        return;
+      }
+      return Promise.all(
+        mdFiles.map(function (f) {
+          return fetch(f.download_url).then(function (r) { return r.text(); });
+        })
+      ).then(function (contents) {
+        var articles = contents.map(function (raw) { return parseFrontMatter(raw); });
+        articles.sort(function (a, b) {
+          return new Date(b.data.date || 0) - new Date(a.data.date || 0);
+        });
+        container.innerHTML = "";
+        articles.forEach(function (art) {
+          var row = document.createElement("div");
+          row.className = "article-row";
+          var title = art.data.title || "(sans titre)";
+          var dateStr = formatDate(art.data.date);
+          var summary = art.data.summary ? '<div style="color:var(--muted);font-size:13px;margin-top:4px;">' + art.data.summary + "</div>" : "";
+          row.innerHTML =
+            '<div><div class="article-title">' + title + "</div>" + summary + "</div>" +
+            '<div class="article-date">' + dateStr + "</div>";
+          container.appendChild(row);
+        });
+      });
+    })
+    .catch(function () {
+      container.innerHTML =
+        '<p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt — ajoutez-les depuis l\'espace admin.</p>' +
+        '<p class="empty-state" data-lang="en">First articles coming soon — add them from the admin space.</p>';
+    });
 })();
 </script>
 
