@@ -429,6 +429,25 @@
   </div>
 </footer>
 
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+    // Handles invite/recovery/confirmation links that redirect to "/"
+    window.netlifyIdentity.on("init", () => {
+      const hash = window.location.hash;
+      if (hash && (hash.includes("invite_token") || hash.includes("recovery_token") || hash.includes("confirmation_token"))) {
+        window.netlifyIdentity.open();
+      }
+    });
+  }
+</script>
 <script>
 function setLang(lang){
   document.body.classList.toggle('lang-en', lang === 'en');
