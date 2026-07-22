@@ -1,0 +1,56 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+publish_mode: simple
+
+locale: 'fr'
+
+collections:
+  - name: "articles"
+    label: "Articles / Récaps"
+    label_singular: "Article"
+    folder: "articles"
+    create: true
+    delete: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Image de couverture", name: "cover", widget: "image", required: false }
+      - { label: "Résumé court", name: "summary", widget: "text", required: false }
+      - { label: "Contenu", name: "body", widget: "markdown" }
+      - label: "Lien externe (Instagram, TikTok, X...)"
+        name: "external_link"
+        widget: "string"
+        required: false
+
+  - name: "settings"
+    label: "Contenu du site"
+    editor:
+      preview: false
+    files:
+      - name: "about"
+        label: "À propos"
+        file: "content/about.yml"
+        fields:
+          - { label: "Fondée le (JJ.MM.AAAA)", name: "founded", widget: "string" }
+          - { label: "Texte (FR)", name: "text_fr", widget: "text" }
+          - { label: "Texte (EN)", name: "text_en", widget: "text" }
+          - { label: "Plateformes", name: "platforms", widget: "string" }
+          - { label: "Statut (FR)", name: "status_fr", widget: "string" }
+          - { label: "Statut (EN)", name: "status_en", widget: "string" }
+
+  - name: "gallery"
+    label: "Galerie photos"
+    folder: "content/gallery"
+    create: true
+    delete: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Sous-titre", name: "subtitle", widget: "string", required: false }
+      - { label: "Photo", name: "image", widget: "image" }

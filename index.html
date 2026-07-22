@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EuroJackys — The European Fanbase for Jackson Wang</title>
+<meta name="description" content="EuroJackys is an independent European fanbase dedicated to Jackson Wang. Fan projects, translations, news and community events for Jackys across Europe.">
+<link rel="icon" href="data:,">
+<style>
+  :root{
+    --bg:#0b0b0d;
+    --bg-soft:#141417;
+    --gold:#d4af37;
+    --gold-soft:#e8c766;
+    --cream:#f2ede2;
+    --muted:#9a958a;
+    --line:rgba(212,175,55,0.18);
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Georgia', 'Times New Roman', serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,.brand{
+    font-family:'Helvetica Neue', Arial, sans-serif;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 32px;
+    background:rgba(11,11,13,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .brand{font-size:20px;font-weight:700;color:var(--gold-soft);}
+  .brand span{color:var(--cream);}
+  nav{display:flex;gap:24px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif;}
+  nav a{text-decoration:none;color:var(--muted);transition:color .2s;}
+  nav a:hover{color:var(--gold-soft);}
+  .lang-toggle{display:flex;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:12px;font-family:'Helvetica Neue',Arial,sans-serif;}
+  .lang-toggle button{background:none;border:none;color:var(--muted);padding:6px 14px;cursor:pointer;}
+  .lang-toggle button.active{background:var(--gold);color:#000;}
+  .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:22px;cursor:pointer;}
+
+  /* Hero */
+  .hero{
+    text-align:center;padding:100px 24px 80px;
+    background:radial-gradient(ellipse at top, rgba(212,175,55,0.08), transparent 60%);
+  }
+  .eyebrow{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:24px;}
+  .hero h1{font-size:clamp(48px,10vw,96px);margin:0 0 24px;color:var(--cream);}
+  .hero h1 span{color:var(--gold);}
+  .hero p{max-width:640px;margin:0 auto 36px;color:var(--muted);font-size:17px;}
+  .cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{
+    display:inline-block;padding:14px 28px;border-radius:var(--radius);
+    font-family:'Helvetica Neue',Arial,sans-serif;font-size:13px;letter-spacing:0.06em;text-transform:uppercase;
+    text-decoration:none;transition:all .2s;cursor:pointer;border:1px solid var(--gold);
+  }
+  .btn-fill{background:var(--gold);color:#000;}
+  .btn-fill:hover{background:var(--gold-soft);}
+  .btn-outline{color:var(--gold-soft);}
+  .btn-outline:hover{background:rgba(212,175,55,0.1);}
+
+  .badge-anniv{
+    margin-top:48px;display:inline-block;padding:8px 20px;
+    border:1px solid var(--line);border-radius:20px;font-size:12px;
+    color:var(--muted);font-family:'Helvetica Neue',Arial,sans-serif;
+  }
+
+  .cities-ticker{
+    overflow:hidden;white-space:nowrap;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:14px 0;margin-top:60px;color:var(--muted);font-size:13px;letter-spacing:0.1em;
+    font-family:'Helvetica Neue',Arial,sans-serif;text-transform:uppercase;
+  }
+
+  section{padding:90px 24px;max-width:1080px;margin:0 auto;}
+  .section-label{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.15em;color:var(--gold-soft);margin-bottom:12px;}
+  .section-title{font-size:clamp(28px,4vw,42px);margin:0 0 40px;color:var(--cream);}
+
+  /* About */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:start;}
+  .about-grid p{color:var(--muted);margin-bottom:16px;}
+  .about-grid strong{color:var(--gold-soft);}
+  .fact-list{border:1px solid var(--line);padding:28px;}
+  .fact{margin-bottom:24px;}
+  .fact:last-child{margin-bottom:0;}
+  .fact-label{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:6px;}
+  .fact-value{color:var(--cream);}
+
+  @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
+
+  /* Calendar */
+  .cal-item{
+    display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:center;
+    padding:22px 0;border-bottom:1px solid var(--line);
+  }
+  .cal-date{font-family:'Helvetica Neue',Arial,sans-serif;color:var(--gold-soft);font-size:14px;}
+  .cal-title{color:var(--cream);font-weight:bold;margin-bottom:4px;}
+  .cal-desc{color:var(--muted);font-size:14px;}
+  .cal-tag{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);border:1px solid var(--line);padding:4px 10px;border-radius:20px;white-space:nowrap;}
+  @media(max-width:700px){.cal-item{grid-template-columns:1fr;gap:6px;}.cal-tag{justify-self:start;}}
+
+  /* Projects grid */
+  .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .project-card{border:1px solid var(--line);padding:28px;transition:border-color .2s, transform .2s;}
+  .project-card:hover{border-color:var(--gold);transform:translateY(-3px);}
+  .project-icon{font-size:28px;margin-bottom:16px;}
+  .project-card h3{font-size:16px;margin:0 0 6px;color:var(--cream);}
+  .project-freq{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:12px;}
+  .project-card p{color:var(--muted);font-size:14px;margin:0;}
+  @media(max-width:800px){.projects-grid{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.projects-grid{grid-template-columns:1fr;}}
+
+  /* Articles / recaps */
+  .article-list{display:flex;flex-direction:column;}
+  .article-row{
+    display:flex;justify-content:space-between;align-items:center;gap:20px;
+    padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;
+  }
+  .article-row:hover .article-title{color:var(--gold-soft);}
+  .article-title{color:var(--cream);transition:color .2s;}
+  .article-date{color:var(--muted);font-size:13px;font-family:'Helvetica Neue',Arial,sans-serif;white-space:nowrap;}
+  .empty-state{color:var(--muted);font-style:italic;padding:20px 0;}
+
+  /* Gallery */
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .gallery-tile{
+    aspect-ratio:4/5;background:var(--bg-soft);border:1px solid var(--line);
+    display:flex;flex-direction:column;justify-content:flex-end;padding:18px;
+    background-size:cover;background-position:center;position:relative;overflow:hidden;
+  }
+  .gallery-tile::after{content:"";position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,0.75), transparent 60%);}
+  .gallery-tile span{position:relative;z-index:1;font-size:13px;color:var(--cream);}
+  .gallery-tile small{position:relative;z-index:1;color:var(--gold-soft);font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;}
+  @media(max-width:800px){.gallery-grid{grid-template-columns:1fr 1fr;}}
+
+  /* Map table */
+  table{width:100%;border-collapse:collapse;}
+  th{text-align:left;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-soft);padding-bottom:14px;border-bottom:1px solid var(--line);}
+  td{padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted);}
+  td:first-child{color:var(--cream);}
+  .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:6px;}
+
+  /* Join form */
+  .join-form{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .join-form label{display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-soft);margin-bottom:8px;}
+  .join-form input,.join-form select,.join-form textarea{
+    width:100%;background:var(--bg-soft);border:1px solid var(--line);color:var(--cream);
+    padding:12px 14px;font-family:inherit;font-size:14px;border-radius:var(--radius);
+  }
+  .join-form .full{grid-column:1/-1;}
+  @media(max-width:700px){.join-form{grid-template-columns:1fr;}}
+
+  footer{border-top:1px solid var(--line);padding:48px 24px;text-align:center;color:var(--muted);font-size:13px;}
+  footer .brand{margin-bottom:12px;}
+  footer .social{display:flex;gap:20px;justify-content:center;margin-top:20px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;}
+  footer .social a{text-decoration:none;color:var(--gold-soft);}
+
+  /* lang blocks */
+  [data-lang="en"]{display:none;}
+  body.lang-en [data-lang="fr"]{display:none;}
+  body.lang-en [data-lang="en"]{display:block;}
+  body.lang-en [data-lang="en"].inline{display:inline;}
+
+  @media(max-width:800px){
+    nav{display:none;}
+    .menu-toggle{display:block;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="#top" class="brand">EURO<span>JACKYS</span></a>
+  <nav>
+    <a href="#about"><span data-lang="fr">À propos</span><span data-lang="en">About</span></a>
+    <a href="#calendar"><span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></a>
+    <a href="#projects"><span data-lang="fr">Projets</span><span data-lang="en">Projects</span></a>
+    <a href="#recaps"><span data-lang="fr">Récaps</span><span data-lang="en">Recaps</span></a>
+    <a href="#gallery"><span data-lang="fr">Galerie</span><span data-lang="en">Gallery</span></a>
+    <a href="#map"><span data-lang="fr">Carte</span><span data-lang="en">Map</span></a>
+    <a href="#join"><span data-lang="fr">Rejoindre</span><span data-lang="en">Join</span></a>
+  </nav>
+  <div class="lang-toggle">
+    <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
+    <button id="btn-en" onclick="setLang('en')">EN</button>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="eyebrow">
+    <span data-lang="fr">Fanbase européenne · Depuis l'ère Magic Man 2</span>
+    <span data-lang="en">European fanbase · Since the Magic Man 2 era</span>
+  </div>
+  <h1>EURO <span>JACKYS</span></h1>
+  <p data-lang="fr">La fanbase européenne dédiée à Jackson Wang. On connecte les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.</p>
+  <p data-lang="en">The European fanbase dedicated to Jackson Wang. We connect Jackys across Europe through fan projects, translations, news and community events.</p>
+  <div class="cta-row">
+    <a href="#join" class="btn btn-fill"><span data-lang="fr">Rejoindre la communauté</span><span data-lang="en">Join the community</span></a>
+    <a href="#projects" class="btn btn-outline"><span data-lang="fr">Voir nos projets</span><span data-lang="en">See our projects</span></a>
+  </div>
+  <div class="badge-anniv">
+    <span data-lang="fr">🎉 Anniversaire Magic Man 2 — 18 juillet</span>
+    <span data-lang="en">🎉 Magic Man 2 anniversary — July 18</span>
+  </div>
+</div>
+
+<div class="cities-ticker">Paris — Berlin — Madrid — Milano — Zürich — Amsterdam — Lisboa — Warszawa — Wien — Bruxelles — Stockholm — Praha — Dublin — Athina — Genève — København — </div>
+
+<section id="about">
+  <div class="section-label">01 · <span data-lang="fr">À propos</span><span data-lang="en">About</span></div>
+  <h2 class="section-title"><span data-lang="fr">Qui sommes-nous</span><span data-lang="en">Who we are</span></h2>
+  <div class="about-grid">
+    <div>
+      <p data-lang="fr">EuroJackys est une <strong>fanbase européenne indépendante</strong> dédiée à Jackson Wang. Notre mission : connecter les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.</p>
+      <p data-lang="en">EuroJackys is an <strong>independent European fanbase</strong> dedicated to Jackson Wang. Our mission is to connect Jackys across Europe through fan projects, translations, news and community events.</p>
+    </div>
+    <div class="fact-list">
+      <div class="fact">
+        <div class="fact-label"><span data-lang="fr">Fondée</span><span data-lang="en">Founded</span></div>
+        <div class="fact-value">14.08.2025</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label"><span data-lang="fr">Langues</span><span data-lang="en">Languages</span></div>
+        <div class="fact-value"><span data-lang="fr">Français + English, toujours en parallèle</span><span data-lang="en">French + English, always side by side</span></div>
+      </div>
+      <div class="fact">
+        <div class="fact-label"><span data-lang="fr">Plateformes</span><span data-lang="en">Platforms</span></div>
+        <div class="fact-value">Instagram · TikTok · X · Threads</div>
+      </div>
+      <div class="fact">
+        <div class="fact-label"><span data-lang="fr">Statut</span><span data-lang="en">Status</span></div>
+        <div class="fact-value"><span data-lang="fr">Indépendante, par des fans, pour des fans</span><span data-lang="en">Independent, by fans, for fans</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="calendar">
+  <div class="section-label">02 · <span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></div>
+  <h2 class="section-title"><span data-lang="fr">Les dates à retenir</span><span data-lang="en">Dates to remember</span></h2>
+  <p style="color:var(--muted);margin-top:-24px;margin-bottom:40px;max-width:640px;">
+    <span data-lang="fr">Sorties, anniversaires et moments clés de l'univers Jackson Wang & Team Wang. Mis à jour au fil des annonces officielles.</span>
+    <span data-lang="en">Releases, anniversaries and key moments from the Jackson Wang & Team Wang universe. Updated as official announcements drop.</span>
+  </p>
+
+  <div id="calendar-list">
+    <div class="cal-item">
+      <div class="cal-date">18.07.2026</div>
+      <div>
+        <div class="cal-title"><span data-lang="fr">Anniversaire de Magic Man 2</span><span data-lang="en">Magic Man 2 anniversary</span></div>
+        <div class="cal-desc"><span data-lang="fr">1 an de MM2 — suivez notre série countdown sur Instagram & TikTok</span><span data-lang="en">1 year of MM2 — follow our countdown series on Instagram & TikTok</span></div>
+      </div>
+      <div class="cal-tag"><span data-lang="fr">Cette semaine</span><span data-lang="en">This week</span></div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date">28.03.2027</div>
+      <div>
+        <div class="cal-title"><span data-lang="fr">Anniversaire de Jackson</span><span data-lang="en">Jackson's birthday</span></div>
+        <div class="cal-desc"><span data-lang="fr">Projet de fans annuel — les contributions ouvrent en début d'année</span><span data-lang="en">Annual fan project — contributions open early in the year</span></div>
+      </div>
+      <div class="cal-tag"><span data-lang="fr">Annuel</span><span data-lang="en">Annual</span></div>
+    </div>
+    <div class="cal-item">
+      <div class="cal-date"><span data-lang="fr">À confirmer</span><span data-lang="en">TBA</span></div>
+      <div>
+        <div class="cal-title"><span data-lang="fr">Prochaines annonces Team Wang</span><span data-lang="en">Next Team Wang announcements</span></div>
+        <div class="cal-desc"><span data-lang="fr">Dès qu'une date officielle tombe, elle apparaît ici</span><span data-lang="en">The moment an official date drops, it lands here</span></div>
+      </div>
+      <div class="cal-tag"><span data-lang="fr">En veille</span><span data-lang="en">Watching</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-label">03 · <span data-lang="fr">Projets de fans</span><span data-lang="en">Fan projects</span></div>
+  <h2 class="section-title"><span data-lang="fr">Nos formats récurrents</span><span data-lang="en">Our recurring formats</span></h2>
+  <div class="projects-grid">
+    <div class="project-card">
+      <div class="project-icon">🔮</div>
+      <h3>Jackyroscope</h3>
+      <div class="project-freq"><span data-lang="fr">Hebdomadaire · FR + EN</span><span data-lang="en">Weekly · FR + EN</span></div>
+      <p data-lang="fr">L'horoscope le plus délulu d'Europe : vraies positions planétaires, vraies prédictions de fangirl. Les 12 signes, zéro cliché.</p>
+      <p data-lang="en">Europe's most delulu horoscope: real planetary positions, real fangirl predictions. All 12 signs, zero clichés.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🗞️</div>
+      <h3>Jacksonland Recap</h3>
+      <div class="project-freq"><span data-lang="fr">Hebdomadaire · EN</span><span data-lang="en">Weekly · EN</span></div>
+      <p data-lang="fr">Tout ce que Jackson a fait cette semaine, résumé pour celles qui ont une vie (ou presque).</p>
+      <p data-lang="en">Everything Jackson did this week, summed up for those of us who have a life (allegedly).</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">📼</div>
+      <h3>Throwback Friday</h3>
+      <div class="project-freq"><span data-lang="fr">Chaque vendredi</span><span data-lang="en">Every Friday</span></div>
+      <p data-lang="fr">Un plongeon dans les archives : moments iconiques, ères passées, souvenirs qui font mal (dans le bon sens).</p>
+      <p data-lang="en">A dive into the archives: iconic moments, past eras, memories that hurt (in the good way).</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">🗂️</div>
+      <h3>Dossier N°</h3>
+      <div class="project-freq"><span data-lang="fr">Série carrousel</span><span data-lang="en">Carousel series</span></div>
+      <p data-lang="fr">Nos enquêtes de fans : un thème, des faits, des reçus. Format carrousel façon dossier confidentiel.</p>
+      <p data-lang="en">Our fan investigations: one theme, facts, receipts. Confidential-file carousel format.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">⏳</div>
+      <h3>MM2 Countdown</h3>
+      <div class="project-freq"><span data-lang="fr">Série spéciale · Juillet</span><span data-lang="en">Special series · July</span></div>
+      <p data-lang="fr">Un edit vidéo par jour jusqu'au 18 juillet pour fêter un an de Magic Man 2.</p>
+      <p data-lang="en">One video edit per day until July 18 to celebrate one year of Magic Man 2.</p>
+    </div>
+    <div class="project-card">
+      <div class="project-icon">✍️</div>
+      <h3><span data-lang="fr">Traductions</span><span data-lang="en">Translations</span></h3>
+      <div class="project-freq"><span data-lang="fr">En continu</span><span data-lang="en">Ongoing</span></div>
+      <p data-lang="fr">Interviews, posts et contenus de fans traduits pour la communauté francophone et européenne.</p>
+      <p data-lang="en">Interviews, posts and fan-made content translated for the French-speaking and European community.</p>
+    </div>
+  </div>
+</section>
+
+<section id="recaps">
+  <div class="section-label">04 · <span data-lang="fr">Articles & récaps</span><span data-lang="en">Articles & recaps</span></div>
+  <h2 class="section-title"><span data-lang="fr">Derniers articles</span><span data-lang="en">Latest articles</span></h2>
+  <div class="article-list" id="articles-list">
+    <p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt — ajoutez-les depuis l'espace admin.</p>
+    <p class="empty-state" data-lang="en">First articles coming soon — add them from the admin space.</p>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-label">05 · <span data-lang="fr">Galerie</span><span data-lang="en">Gallery</span></div>
+  <h2 class="section-title"><span data-lang="fr">Anciens projets</span><span data-lang="en">Past projects</span></h2>
+  <div class="gallery-grid">
+    <div class="gallery-tile"><small>MM2 Countdown</small><span><span data-lang="fr">Juillet 2026 · Série vidéo</span><span data-lang="en">July 2026 · Video series</span></span></div>
+    <div class="gallery-tile"><small>LV SS27 Moment</small><span><span data-lang="fr">Juin 2026 · Reel 200K+ vues</span><span data-lang="en">June 2026 · 200K+ views reel</span></span></div>
+    <div class="gallery-tile"><small><span data-lang="fr">Quel Jacky es-tu ?</span><span data-lang="en">Which Jacky are you?</span></small><span data-lang="fr">Quiz interactif</span><span data-lang="en">Interactive quiz</span></div>
+    <div class="gallery-tile"><small>PANTHEPACK 9th</small><span><span data-lang="fr">Anniversaire Team Wang</span><span data-lang="en">Team Wang anniversary</span></span></div>
+    <div class="gallery-tile"><small>Dossier N°1</small><span><span data-lang="fr">Série carrousel</span><span data-lang="en">Carousel series</span></span></div>
+    <div class="gallery-tile"><small>Fan Book FR</small><span><span data-lang="fr">Traduction communautaire</span><span data-lang="en">Community translation</span></span></div>
+  </div>
+</section>
+
+<section id="map">
+  <div class="section-label">06 · <span data-lang="fr">La carte</span><span data-lang="en">The map</span></div>
+  <h2 class="section-title"><span data-lang="fr">Jackys d'Europe</span><span data-lang="en">Jackys of Europe</span></h2>
+  <table>
+    <thead>
+      <tr>
+        <th><span data-lang="fr">Pays</span><span data-lang="en">Country</span></th>
+        <th><span data-lang="fr">Villes</span><span data-lang="en">Cities</span></th>
+        <th><span data-lang="fr">Statut</span><span data-lang="en">Status</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>🇫🇷 France</td><td>Paris · Lyon · Marseille</td><td><span class="status-dot"></span>Boarding</td></tr>
+      <tr><td>🇨🇭 Suisse / Switzerland</td><td>Genève · Zürich · Jura</td><td><span class="status-dot"></span>Boarding</td></tr>
+      <tr><td>🇩🇪 Deutschland</td><td>Berlin · München · Köln</td><td><span class="status-dot"></span>On time</td></tr>
+      <tr><td>🇪🇸 España</td><td>Madrid · Barcelona</td><td><span class="status-dot"></span>On time</td></tr>
+      <tr><td>🇮🇹 Italia</td><td>Milano · Roma</td><td><span class="status-dot"></span>On time</td></tr>
+      <tr><td>🇬🇧 United Kingdom</td><td>London · Manchester</td><td><span class="status-dot"></span>On time</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section id="join">
+  <div class="section-label">07 · <span data-lang="fr">Rejoindre</span><span data-lang="en">Join</span></div>
+  <h2 class="section-title"><span data-lang="fr">Deviens un·e EuroJacky</span><span data-lang="en">Become a EuroJacky</span></h2>
+  <p style="color:var(--muted);margin-top:-24px;margin-bottom:40px;max-width:640px;">
+    <span data-lang="fr">Que tu sois Jacky depuis l'ère GOT7 ou arrivé·e avec Magic Man 2, il y a une place pour toi.</span>
+    <span data-lang="en">Whether you've been a Jacky since the GOT7 era or arrived with Magic Man 2, there's a place for you.</span>
+  </p>
+  <form class="join-form" name="join" method="POST" data-netlify="true">
+    <input type="hidden" name="form-name" value="join">
+    <div>
+      <label data-lang="fr">Prénom / pseudo</label><label data-lang="en">Name / nickname</label>
+      <input type="text" name="name" required>
+    </div>
+    <div>
+      <label data-lang="fr">Pays</label><label data-lang="en">Country</label>
+      <input type="text" name="country">
+    </div>
+    <div class="full">
+      <label data-lang="fr">Email ou @ Instagram/X</label><label data-lang="en">Email or Instagram/X handle</label>
+      <input type="text" name="contact" required>
+    </div>
+    <div class="full">
+      <label data-lang="fr">Ce qui t'intéresse</label><label data-lang="en">What you're into</label>
+      <select name="interest">
+        <option data-lang="fr">Community — juste être là</option><option data-lang="en">Community — just vibing</option>
+        <option data-lang="fr">Traductions FR·EN·中文</option><option data-lang="en">Translations FR·EN·中文</option>
+        <option data-lang="fr">Edits — vidéo & visuels</option><option data-lang="en">Edits — video & visuals</option>
+        <option data-lang="fr">Tout ! (délulu mode)</option><option data-lang="en">Everything! (délulu mode)</option>
+      </select>
+    </div>
+    <div class="full">
+      <label data-lang="fr">Un mot pour nous (optionnel)</label><label data-lang="en">A word for us (optional)</label>
+      <textarea name="message" rows="3"></textarea>
+    </div>
+    <div class="full">
+      <button type="submit" class="btn btn-fill"><span data-lang="fr">Envoyer</span><span data-lang="en">Send</span></button>
+    </div>
+  </form>
+</section>
+
+<footer>
+  <div class="brand">EURO<span style="color:var(--cream)">JACKYS</span></div>
+  <p data-lang="fr">EuroJackys est une fanbase indépendante, gérée par des fans. Nous ne sommes affiliés ni à Jackson Wang, ni à Team Wang, ni à aucun de leurs partenaires.</p>
+  <p data-lang="en">EuroJackys is an independent, fan-run fanbase. We are not affiliated with Jackson Wang, Team Wang, or any of their partners.</p>
+  <div class="social">
+    <a href="https://instagram.com/eurojackys" target="_blank">Instagram</a>
+    <a href="https://tiktok.com/@eurojackys" target="_blank">TikTok</a>
+    <a href="https://x.com/eurojackys" target="_blank">X</a>
+    <a href="https://threads.net/@eurojackys" target="_blank">Threads</a>
+  </div>
+</footer>
+
+<script>
+function setLang(lang){
+  document.body.classList.toggle('lang-en', lang === 'en');
+  document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  localStorage.setItem('ej-lang', lang);
+}
+(function(){
+  var saved = null;
+  try { saved = localStorage.getItem('ej-lang'); } catch(e){}
+  if(saved === 'en') setLang('en');
+})();
+</script>
+
+</body>
+</html>
