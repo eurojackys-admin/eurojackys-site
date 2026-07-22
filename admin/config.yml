@@ -11,7 +11,7 @@ locale: 'fr'
 
 collections:
   - name: "articles"
-    label: "Articles / Récaps"
+    label: "📰 Articles / Récaps"
     label_singular: "Article"
     folder: "articles"
     create: true
@@ -28,29 +28,100 @@ collections:
         widget: "string"
         required: false
 
+  - name: "calendar"
+    label: "📅 Calendrier"
+    label_singular: "Événement"
+    folder: "content/calendar"
+    create: true
+    delete: true
+    extension: "yml"
+    format: "yaml"
+    identifier_field: "title_fr"
+    slug: "{{slug}}"
+    summary: "{{date_display}} — {{title_fr}}"
+    fields:
+      - { label: "Ordre d'affichage (1 = en premier)", name: "order", widget: "number", default: 1 }
+      - { label: "Date affichée (ex: 18.07.2026 ou 'À confirmer')", name: "date_display", widget: "string" }
+      - { label: "Titre (FR)", name: "title_fr", widget: "string" }
+      - { label: "Titre (EN)", name: "title_en", widget: "string" }
+      - { label: "Description (FR)", name: "desc_fr", widget: "string", required: false }
+      - { label: "Description (EN)", name: "desc_en", widget: "string", required: false }
+      - { label: "Étiquette (FR) — ex: Cette semaine, Annuel", name: "tag_fr", widget: "string", required: false }
+      - { label: "Étiquette (EN) — ex: This week, Annual", name: "tag_en", widget: "string", required: false }
+
+  - name: "projects"
+    label: "⭐ Projets / Formats"
+    label_singular: "Projet"
+    folder: "content/projects"
+    create: true
+    delete: true
+    extension: "yml"
+    format: "yaml"
+    identifier_field: "title"
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Ordre d'affichage (1 = en premier)", name: "order", widget: "number", default: 1 }
+      - { label: "Emoji / icône (ex: 🔮)", name: "icon", widget: "string", default: "✨" }
+      - { label: "Nom du projet", name: "title", widget: "string" }
+      - { label: "Fréquence (FR) — ex: Hebdomadaire · FR + EN", name: "freq_fr", widget: "string", required: false }
+      - { label: "Fréquence (EN) — ex: Weekly · FR + EN", name: "freq_en", widget: "string", required: false }
+      - { label: "Description (FR)", name: "desc_fr", widget: "text" }
+      - { label: "Description (EN)", name: "desc_en", widget: "text" }
+      - { label: "Lien (optionnel — Instagram, TikTok...)", name: "link", widget: "string", required: false }
+
+  - name: "gallery"
+    label: "🖼️ Galerie photos"
+    label_singular: "Photo"
+    folder: "content/gallery"
+    create: true
+    delete: true
+    extension: "yml"
+    format: "yaml"
+    identifier_field: "title"
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - { label: "Ordre d'affichage (1 = en premier)", name: "order", widget: "number", default: 1 }
+      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Sous-titre (FR)", name: "subtitle_fr", widget: "string", required: false }
+      - { label: "Sous-titre (EN)", name: "subtitle_en", widget: "string", required: false }
+      - { label: "Photo", name: "image", widget: "image" }
+      - { label: "Lien (optionnel)", name: "link", widget: "string", required: false }
+
+  - name: "map"
+    label: "🗺️ Carte des pays"
+    label_singular: "Pays"
+    folder: "content/map"
+    create: true
+    delete: true
+    extension: "yml"
+    format: "yaml"
+    identifier_field: "country"
+    slug: "{{slug}}"
+    summary: "{{country}}"
+    fields:
+      - { label: "Ordre d'affichage (1 = en premier)", name: "order", widget: "number", default: 1 }
+      - { label: "Pays (avec drapeau, ex: 🇫🇷 France)", name: "country", widget: "string" }
+      - { label: "Villes (ex: Paris · Lyon · Marseille)", name: "cities", widget: "string" }
+      - { label: "Statut (ex: Boarding, On time)", name: "status", widget: "string", default: "On time" }
+
   - name: "settings"
-    label: "Contenu du site"
+    label: "⚙️ Textes du site"
     editor:
       preview: false
     files:
       - name: "about"
-        label: "À propos"
+        label: "Page d'accueil & À propos"
         file: "content/about.yml"
         fields:
           - { label: "Fondée le (JJ.MM.AAAA)", name: "founded", widget: "string" }
-          - { label: "Texte (FR)", name: "text_fr", widget: "text" }
-          - { label: "Texte (EN)", name: "text_en", widget: "text" }
+          - { label: "Texte d'intro haut de page (FR)", name: "hero_fr", widget: "text" }
+          - { label: "Texte d'intro haut de page (EN)", name: "hero_en", widget: "text" }
+          - { label: "Texte À propos (FR)", name: "text_fr", widget: "text" }
+          - { label: "Texte À propos (EN)", name: "text_en", widget: "text" }
           - { label: "Plateformes", name: "platforms", widget: "string" }
           - { label: "Statut (FR)", name: "status_fr", widget: "string" }
           - { label: "Statut (EN)", name: "status_en", widget: "string" }
-
-  - name: "gallery"
-    label: "Galerie photos"
-    folder: "content/gallery"
-    create: true
-    delete: true
-    slug: "{{slug}}"
-    fields:
-      - { label: "Titre", name: "title", widget: "string" }
-      - { label: "Sous-titre", name: "subtitle", widget: "string", required: false }
-      - { label: "Photo", name: "image", widget: "image" }
+          - { label: "Bandeau annonce (FR) — ex: 🎉 Anniversaire MM2", name: "banner_fr", widget: "string", required: false }
+          - { label: "Bandeau annonce (EN)", name: "banner_en", widget: "string", required: false }

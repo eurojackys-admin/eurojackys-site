@@ -134,6 +134,31 @@
   .article-date{color:var(--muted);font-size:13px;font-family:'Helvetica Neue',Arial,sans-serif;white-space:nowrap;}
   .empty-state{color:var(--muted);font-style:italic;padding:20px 0;}
 
+  /* Article modal */
+  .article-row{cursor:pointer;}
+  .modal-overlay{
+    display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);
+    z-index:200;padding:24px;overflow-y:auto;
+  }
+  .modal-overlay.open{display:block;}
+  .modal-box{
+    max-width:720px;margin:40px auto 80px;background:var(--bg-soft);
+    border:1px solid var(--line);padding:44px;position:relative;
+  }
+  .modal-close{
+    position:absolute;top:20px;right:20px;background:none;border:1px solid var(--line);
+    color:var(--cream);width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:16px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .modal-close:hover{border-color:var(--gold);color:var(--gold-soft);}
+  .modal-date{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:12px;}
+  .modal-title{font-size:28px;color:var(--cream);margin:0 0 20px;font-family:'Helvetica Neue',Arial,sans-serif;text-transform:none;letter-spacing:0;}
+  .modal-cover{width:100%;max-height:340px;object-fit:cover;margin-bottom:24px;border:1px solid var(--line);}
+  .modal-body{color:var(--muted);line-height:1.8;white-space:pre-wrap;}
+  .modal-body a{color:var(--gold-soft);}
+  .modal-link{display:inline-block;margin-top:24px;color:var(--gold-soft);text-decoration:none;border-bottom:1px solid var(--gold-soft);font-size:14px;}
+  @media(max-width:700px){.modal-box{padding:28px 20px;margin:16px auto 60px;}}
+
   /* Gallery */
   .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .gallery-tile{
@@ -179,6 +204,7 @@
     .menu-toggle{display:block;}
   }
 </style>
+
 </head>
 <body>
 
@@ -205,15 +231,15 @@
     <span data-lang="en">European fanbase · Since the Magic Man 2 era</span>
   </div>
   <h1>EURO <span>JACKYS</span></h1>
-  <p data-lang="fr">La fanbase européenne dédiée à Jackson Wang. On connecte les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.</p>
-  <p data-lang="en">The European fanbase dedicated to Jackson Wang. We connect Jackys across Europe through fan projects, translations, news and community events.</p>
+  <p data-lang="fr" id="hero-fr">La fanbase européenne dédiée à Jackson Wang. On connecte les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.</p>
+  <p data-lang="en" id="hero-en">The European fanbase dedicated to Jackson Wang. We connect Jackys across Europe through fan projects, translations, news and community events.</p>
   <div class="cta-row">
     <a href="#join" class="btn btn-fill"><span data-lang="fr">Rejoindre la communauté</span><span data-lang="en">Join the community</span></a>
     <a href="#projects" class="btn btn-outline"><span data-lang="fr">Voir nos projets</span><span data-lang="en">See our projects</span></a>
   </div>
   <div class="badge-anniv">
-    <span data-lang="fr">🎉 Anniversaire Magic Man 2 — 18 juillet</span>
-    <span data-lang="en">🎉 Magic Man 2 anniversary — July 18</span>
+    <span data-lang="fr" id="banner-fr">🎉 Anniversaire Magic Man 2 — 18 juillet</span>
+    <span data-lang="en" id="banner-en">🎉 Magic Man 2 anniversary — July 18</span>
   </div>
 </div>
 
@@ -224,13 +250,13 @@
   <h2 class="section-title"><span data-lang="fr">Qui sommes-nous</span><span data-lang="en">Who we are</span></h2>
   <div class="about-grid">
     <div>
-      <p data-lang="fr">EuroJackys est une <strong>fanbase européenne indépendante</strong> dédiée à Jackson Wang. Notre mission : connecter les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.</p>
-      <p data-lang="en">EuroJackys is an <strong>independent European fanbase</strong> dedicated to Jackson Wang. Our mission is to connect Jackys across Europe through fan projects, translations, news and community events.</p>
+      <p data-lang="fr" id="about-fr">EuroJackys est une <strong>fanbase européenne indépendante</strong> dédiée à Jackson Wang. Notre mission : connecter les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.</p>
+      <p data-lang="en" id="about-en">EuroJackys is an <strong>independent European fanbase</strong> dedicated to Jackson Wang. Our mission is to connect Jackys across Europe through fan projects, translations, news and community events.</p>
     </div>
     <div class="fact-list">
       <div class="fact">
         <div class="fact-label"><span data-lang="fr">Fondée</span><span data-lang="en">Founded</span></div>
-        <div class="fact-value">14.08.2025</div>
+        <div class="fact-value" id="fact-founded">14.08.2025</div>
       </div>
       <div class="fact">
         <div class="fact-label"><span data-lang="fr">Langues</span><span data-lang="en">Languages</span></div>
@@ -238,11 +264,11 @@
       </div>
       <div class="fact">
         <div class="fact-label"><span data-lang="fr">Plateformes</span><span data-lang="en">Platforms</span></div>
-        <div class="fact-value">Instagram · TikTok · X · Threads</div>
+        <div class="fact-value" id="fact-platforms">Instagram · TikTok · X · Threads</div>
       </div>
       <div class="fact">
         <div class="fact-label"><span data-lang="fr">Statut</span><span data-lang="en">Status</span></div>
-        <div class="fact-value"><span data-lang="fr">Indépendante, par des fans, pour des fans</span><span data-lang="en">Independent, by fans, for fans</span></div>
+        <div class="fact-value"><span data-lang="fr" id="status-fr">Indépendante, par des fans, pour des fans</span><span data-lang="en" id="status-en">Independent, by fans, for fans</span></div>
       </div>
     </div>
   </div>
@@ -255,104 +281,28 @@
     <span data-lang="fr">Sorties, anniversaires et moments clés de l'univers Jackson Wang & Team Wang. Mis à jour au fil des annonces officielles.</span>
     <span data-lang="en">Releases, anniversaries and key moments from the Jackson Wang & Team Wang universe. Updated as official announcements drop.</span>
   </p>
-
-  <div id="calendar-list">
-    <div class="cal-item">
-      <div class="cal-date">18.07.2026</div>
-      <div>
-        <div class="cal-title"><span data-lang="fr">Anniversaire de Magic Man 2</span><span data-lang="en">Magic Man 2 anniversary</span></div>
-        <div class="cal-desc"><span data-lang="fr">1 an de MM2 — suivez notre série countdown sur Instagram & TikTok</span><span data-lang="en">1 year of MM2 — follow our countdown series on Instagram & TikTok</span></div>
-      </div>
-      <div class="cal-tag"><span data-lang="fr">Cette semaine</span><span data-lang="en">This week</span></div>
-    </div>
-    <div class="cal-item">
-      <div class="cal-date">28.03.2027</div>
-      <div>
-        <div class="cal-title"><span data-lang="fr">Anniversaire de Jackson</span><span data-lang="en">Jackson's birthday</span></div>
-        <div class="cal-desc"><span data-lang="fr">Projet de fans annuel — les contributions ouvrent en début d'année</span><span data-lang="en">Annual fan project — contributions open early in the year</span></div>
-      </div>
-      <div class="cal-tag"><span data-lang="fr">Annuel</span><span data-lang="en">Annual</span></div>
-    </div>
-    <div class="cal-item">
-      <div class="cal-date"><span data-lang="fr">À confirmer</span><span data-lang="en">TBA</span></div>
-      <div>
-        <div class="cal-title"><span data-lang="fr">Prochaines annonces Team Wang</span><span data-lang="en">Next Team Wang announcements</span></div>
-        <div class="cal-desc"><span data-lang="fr">Dès qu'une date officielle tombe, elle apparaît ici</span><span data-lang="en">The moment an official date drops, it lands here</span></div>
-      </div>
-      <div class="cal-tag"><span data-lang="fr">En veille</span><span data-lang="en">Watching</span></div>
-    </div>
-  </div>
+  <div id="calendar-list"></div>
 </section>
 
 <section id="projects">
   <div class="section-label">03 · <span data-lang="fr">Projets de fans</span><span data-lang="en">Fan projects</span></div>
   <h2 class="section-title"><span data-lang="fr">Nos formats récurrents</span><span data-lang="en">Our recurring formats</span></h2>
-  <div class="projects-grid">
-    <div class="project-card">
-      <div class="project-icon">🔮</div>
-      <h3>Jackyroscope</h3>
-      <div class="project-freq"><span data-lang="fr">Hebdomadaire · FR + EN</span><span data-lang="en">Weekly · FR + EN</span></div>
-      <p data-lang="fr">L'horoscope le plus délulu d'Europe : vraies positions planétaires, vraies prédictions de fangirl. Les 12 signes, zéro cliché.</p>
-      <p data-lang="en">Europe's most delulu horoscope: real planetary positions, real fangirl predictions. All 12 signs, zero clichés.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-icon">🗞️</div>
-      <h3>Jacksonland Recap</h3>
-      <div class="project-freq"><span data-lang="fr">Hebdomadaire · EN</span><span data-lang="en">Weekly · EN</span></div>
-      <p data-lang="fr">Tout ce que Jackson a fait cette semaine, résumé pour celles qui ont une vie (ou presque).</p>
-      <p data-lang="en">Everything Jackson did this week, summed up for those of us who have a life (allegedly).</p>
-    </div>
-    <div class="project-card">
-      <div class="project-icon">📼</div>
-      <h3>Throwback Friday</h3>
-      <div class="project-freq"><span data-lang="fr">Chaque vendredi</span><span data-lang="en">Every Friday</span></div>
-      <p data-lang="fr">Un plongeon dans les archives : moments iconiques, ères passées, souvenirs qui font mal (dans le bon sens).</p>
-      <p data-lang="en">A dive into the archives: iconic moments, past eras, memories that hurt (in the good way).</p>
-    </div>
-    <div class="project-card">
-      <div class="project-icon">🗂️</div>
-      <h3>Dossier N°</h3>
-      <div class="project-freq"><span data-lang="fr">Série carrousel</span><span data-lang="en">Carousel series</span></div>
-      <p data-lang="fr">Nos enquêtes de fans : un thème, des faits, des reçus. Format carrousel façon dossier confidentiel.</p>
-      <p data-lang="en">Our fan investigations: one theme, facts, receipts. Confidential-file carousel format.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-icon">⏳</div>
-      <h3>MM2 Countdown</h3>
-      <div class="project-freq"><span data-lang="fr">Série spéciale · Juillet</span><span data-lang="en">Special series · July</span></div>
-      <p data-lang="fr">Un edit vidéo par jour jusqu'au 18 juillet pour fêter un an de Magic Man 2.</p>
-      <p data-lang="en">One video edit per day until July 18 to celebrate one year of Magic Man 2.</p>
-    </div>
-    <div class="project-card">
-      <div class="project-icon">✍️</div>
-      <h3><span data-lang="fr">Traductions</span><span data-lang="en">Translations</span></h3>
-      <div class="project-freq"><span data-lang="fr">En continu</span><span data-lang="en">Ongoing</span></div>
-      <p data-lang="fr">Interviews, posts et contenus de fans traduits pour la communauté francophone et européenne.</p>
-      <p data-lang="en">Interviews, posts and fan-made content translated for the French-speaking and European community.</p>
-    </div>
-  </div>
+  <div class="projects-grid" id="projects-grid"></div>
 </section>
 
 <section id="recaps">
   <div class="section-label">04 · <span data-lang="fr">Articles & récaps</span><span data-lang="en">Articles & recaps</span></div>
   <h2 class="section-title"><span data-lang="fr">Derniers articles</span><span data-lang="en">Latest articles</span></h2>
   <div class="article-list" id="articles-list">
-    <p class="empty-state" data-lang="fr">Chargement des articles…</p>
-    <p class="empty-state" data-lang="en">Loading articles…</p>
+    <p class="empty-state" data-lang="fr">Chargement…</p>
+    <p class="empty-state" data-lang="en">Loading…</p>
   </div>
 </section>
 
 <section id="gallery">
   <div class="section-label">05 · <span data-lang="fr">Galerie</span><span data-lang="en">Gallery</span></div>
-  <h2 class="section-title"><span data-lang="fr">Anciens projets</span><span data-lang="en">Past projects</span></h2>
-  <div class="gallery-grid">
-    <div class="gallery-tile"><small>MM2 Countdown</small><span><span data-lang="fr">Juillet 2026 · Série vidéo</span><span data-lang="en">July 2026 · Video series</span></span></div>
-    <div class="gallery-tile"><small>LV SS27 Moment</small><span><span data-lang="fr">Juin 2026 · Reel 200K+ vues</span><span data-lang="en">June 2026 · 200K+ views reel</span></span></div>
-    <div class="gallery-tile"><small><span data-lang="fr">Quel Jacky es-tu ?</span><span data-lang="en">Which Jacky are you?</span></small><span data-lang="fr">Quiz interactif</span><span data-lang="en">Interactive quiz</span></div>
-    <div class="gallery-tile"><small>PANTHEPACK 9th</small><span><span data-lang="fr">Anniversaire Team Wang</span><span data-lang="en">Team Wang anniversary</span></span></div>
-    <div class="gallery-tile"><small>Dossier N°1</small><span><span data-lang="fr">Série carrousel</span><span data-lang="en">Carousel series</span></span></div>
-    <div class="gallery-tile"><small>Fan Book FR</small><span><span data-lang="fr">Traduction communautaire</span><span data-lang="en">Community translation</span></span></div>
-  </div>
+  <h2 class="section-title"><span data-lang="fr">Nos projets en images</span><span data-lang="en">Our projects in pictures</span></h2>
+  <div class="gallery-grid" id="gallery-grid"></div>
 </section>
 
 <section id="map">
@@ -366,14 +316,7 @@
         <th><span data-lang="fr">Statut</span><span data-lang="en">Status</span></th>
       </tr>
     </thead>
-    <tbody>
-      <tr><td>🇫🇷 France</td><td>Paris · Lyon · Marseille</td><td><span class="status-dot"></span>Boarding</td></tr>
-      <tr><td>🇨🇭 Suisse / Switzerland</td><td>Genève · Zürich · Jura</td><td><span class="status-dot"></span>Boarding</td></tr>
-      <tr><td>🇩🇪 Deutschland</td><td>Berlin · München · Köln</td><td><span class="status-dot"></span>On time</td></tr>
-      <tr><td>🇪🇸 España</td><td>Madrid · Barcelona</td><td><span class="status-dot"></span>On time</td></tr>
-      <tr><td>🇮🇹 Italia</td><td>Milano · Roma</td><td><span class="status-dot"></span>On time</td></tr>
-      <tr><td>🇬🇧 United Kingdom</td><td>London · Manchester</td><td><span class="status-dot"></span>On time</td></tr>
-    </tbody>
+    <tbody id="map-tbody"></tbody>
   </table>
 </section>
 
@@ -429,6 +372,27 @@
   </div>
 </footer>
 
+<div class="modal-overlay" id="article-modal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal('article-modal')">✕</button>
+    <div class="modal-date" id="modal-date"></div>
+    <h3 class="modal-title" id="modal-title"></h3>
+    <img class="modal-cover" id="modal-cover" style="display:none;">
+    <div class="modal-body" id="modal-body"></div>
+    <a class="modal-link" id="modal-link" style="display:none;" target="_blank">→ <span data-lang="fr">Voir sur les réseaux</span><span data-lang="en">View on socials</span></a>
+  </div>
+</div>
+
+<div class="modal-overlay" id="image-modal">
+  <div class="modal-box" style="text-align:center;">
+    <button class="modal-close" onclick="closeModal('image-modal')">✕</button>
+    <div class="modal-date" id="img-modal-sub"></div>
+    <h3 class="modal-title" id="img-modal-title"></h3>
+    <img id="img-modal-img" style="max-width:100%;border:1px solid var(--line);">
+    <a class="modal-link" id="img-modal-link" style="display:none;" target="_blank">→ <span data-lang="fr">Voir le projet</span><span data-lang="en">View project</span></a>
+  </div>
+</div>
+
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
   if (window.netlifyIdentity) {
@@ -439,7 +403,6 @@
         });
       }
     });
-    // Handles invite/recovery/confirmation links that redirect to "/"
     window.netlifyIdentity.on("init", () => {
       const hash = window.location.hash;
       if (hash && (hash.includes("invite_token") || hash.includes("recovery_token") || hash.includes("confirmation_token"))) {
@@ -453,7 +416,7 @@ function setLang(lang){
   document.body.classList.toggle('lang-en', lang === 'en');
   document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-  localStorage.setItem('ej-lang', lang);
+  try { localStorage.setItem('ej-lang', lang); } catch(e){}
 }
 (function(){
   var saved = null;
@@ -461,77 +424,187 @@ function setLang(lang){
   if(saved === 'en') setLang('en');
 })();
 
-// --- Load articles published via the admin (Decap CMS) from GitHub ---
-(function () {
-  var REPO = "eurojackys-admin/eurojackys-site";
-  var FOLDER = "articles";
-  var container = document.getElementById("articles-list");
+function closeModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+['article-modal','image-modal'].forEach(function(id){
+  document.getElementById(id).addEventListener('click', function(e){
+    if(e.target === this) closeModal(id);
+  });
+});
 
-  function parseFrontMatter(raw) {
-    var match = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
-    if (!match) return { data: {}, body: raw };
-    var yamlBlock = match[1];
-    var body = match[2].trim();
-    var data = {};
-    yamlBlock.split("\n").forEach(function (line) {
-      var idx = line.indexOf(":");
-      if (idx === -1) return;
-      var key = line.slice(0, idx).trim();
-      var value = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
-      data[key] = value;
+// ============ CMS content loader ============
+var REPO = "eurojackys-admin/eurojackys-site";
+var API = "https://api.github.com/repos/" + REPO + "/contents/";
+var RAW = "https://raw.githubusercontent.com/" + REPO + "/main/";
+
+function parseYaml(raw){
+  var data = {};
+  raw.split("\n").forEach(function(line){
+    var idx = line.indexOf(":");
+    if(idx === -1) return;
+    var key = line.slice(0, idx).trim();
+    if(!key || key.startsWith("#")) return;
+    var value = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+    data[key] = value;
+  });
+  return data;
+}
+
+function parseFrontMatter(raw){
+  var m = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+  if(!m) return { data: {}, body: raw };
+  return { data: parseYaml(m[1]), body: m[2].trim() };
+}
+
+function loadFolder(folder){
+  return fetch(API + folder)
+    .then(function(r){ if(!r.ok) throw new Error("nope"); return r.json(); })
+    .then(function(files){
+      var items = files.filter(function(f){ return f.name.endsWith(".yml") || f.name.endsWith(".md"); });
+      return Promise.all(items.map(function(f){
+        return fetch(f.download_url).then(function(r){ return r.text(); });
+      }));
     });
-    return { data: data, body: body };
-  }
+}
 
-  function formatDate(iso) {
-    if (!iso) return "";
-    var d = new Date(iso);
-    if (isNaN(d)) return iso;
-    return d.toLocaleDateString("fr-CH", { day: "2-digit", month: "long", year: "numeric" });
-  }
+function byOrder(a, b){ return (parseInt(a.order)||99) - (parseInt(b.order)||99); }
+function esc(s){ var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
 
-  fetch("https://api.github.com/repos/" + REPO + "/contents/" + FOLDER)
-    .then(function (r) { if (!r.ok) throw new Error("list failed"); return r.json(); })
-    .then(function (files) {
-      var mdFiles = files.filter(function (f) { return f.name.endsWith(".md"); });
-      if (mdFiles.length === 0) {
-        container.innerHTML =
-          '<p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt — ajoutez-les depuis l\'espace admin.</p>' +
-          '<p class="empty-state" data-lang="en">First articles coming soon — add them from the admin space.</p>';
-        if (document.body.classList.contains('lang-en')) {
-          container.querySelectorAll('[data-lang="fr"]').forEach(function(el){ el.style.display = 'none'; });
-        }
-        return;
-      }
-      return Promise.all(
-        mdFiles.map(function (f) {
-          return fetch(f.download_url).then(function (r) { return r.text(); });
-        })
-      ).then(function (contents) {
-        var articles = contents.map(function (raw) { return parseFrontMatter(raw); });
-        articles.sort(function (a, b) {
-          return new Date(b.data.date || 0) - new Date(a.data.date || 0);
-        });
-        container.innerHTML = "";
-        articles.forEach(function (art) {
-          var row = document.createElement("div");
-          row.className = "article-row";
-          var title = art.data.title || "(sans titre)";
-          var dateStr = formatDate(art.data.date);
-          var summary = art.data.summary ? '<div style="color:var(--muted);font-size:13px;margin-top:4px;">' + art.data.summary + "</div>" : "";
-          row.innerHTML =
-            '<div><div class="article-title">' + title + "</div>" + summary + "</div>" +
-            '<div class="article-date">' + dateStr + "</div>";
-          container.appendChild(row);
-        });
-      });
-    })
-    .catch(function () {
-      container.innerHTML =
-        '<p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt — ajoutez-les depuis l\'espace admin.</p>' +
-        '<p class="empty-state" data-lang="en">First articles coming soon — add them from the admin space.</p>';
-    });
-})();
+// --- About / textes ---
+fetch(RAW + "content/about.yml").then(function(r){ return r.text(); }).then(function(raw){
+  var d = parseYaml(raw);
+  if(d.founded) document.getElementById('fact-founded').textContent = d.founded;
+  if(d.platforms) document.getElementById('fact-platforms').textContent = d.platforms;
+  if(d.status_fr) document.getElementById('status-fr').textContent = d.status_fr;
+  if(d.status_en) document.getElementById('status-en').textContent = d.status_en;
+  if(d.hero_fr) document.getElementById('hero-fr').textContent = d.hero_fr;
+  if(d.hero_en) document.getElementById('hero-en').textContent = d.hero_en;
+  if(d.text_fr) document.getElementById('about-fr').textContent = d.text_fr;
+  if(d.text_en) document.getElementById('about-en').textContent = d.text_en;
+  if(d.banner_fr) document.getElementById('banner-fr').textContent = d.banner_fr;
+  if(d.banner_en) document.getElementById('banner-en').textContent = d.banner_en;
+}).catch(function(){});
+
+// --- Calendrier ---
+loadFolder("content/calendar").then(function(contents){
+  var events = contents.map(parseYaml).sort(byOrder);
+  var el = document.getElementById('calendar-list');
+  el.innerHTML = '';
+  events.forEach(function(ev){
+    var div = document.createElement('div');
+    div.className = 'cal-item';
+    div.innerHTML =
+      '<div class="cal-date">' + esc(ev.date_display) + '</div>' +
+      '<div><div class="cal-title"><span data-lang="fr">' + esc(ev.title_fr) + '</span><span data-lang="en">' + esc(ev.title_en) + '</span></div>' +
+      '<div class="cal-desc"><span data-lang="fr">' + esc(ev.desc_fr) + '</span><span data-lang="en">' + esc(ev.desc_en) + '</span></div></div>' +
+      '<div class="cal-tag"><span data-lang="fr">' + esc(ev.tag_fr) + '</span><span data-lang="en">' + esc(ev.tag_en) + '</span></div>';
+    el.appendChild(div);
+  });
+}).catch(function(){});
+
+// --- Projets ---
+loadFolder("content/projects").then(function(contents){
+  var projs = contents.map(parseYaml).sort(byOrder);
+  var el = document.getElementById('projects-grid');
+  el.innerHTML = '';
+  projs.forEach(function(p){
+    var card = document.createElement(p.link ? 'a' : 'div');
+    card.className = 'project-card';
+    if(p.link){ card.href = p.link; card.target = '_blank'; card.style.textDecoration = 'none'; card.style.display = 'block'; }
+    card.innerHTML =
+      '<div class="project-icon">' + esc(p.icon) + '</div>' +
+      '<h3>' + esc(p.title) + '</h3>' +
+      '<div class="project-freq"><span data-lang="fr">' + esc(p.freq_fr) + '</span><span data-lang="en">' + esc(p.freq_en) + '</span></div>' +
+      '<p data-lang="fr">' + esc(p.desc_fr) + '</p><p data-lang="en">' + esc(p.desc_en) + '</p>';
+    el.appendChild(card);
+  });
+}).catch(function(){});
+
+// --- Galerie ---
+loadFolder("content/gallery").then(function(contents){
+  var items = contents.map(parseYaml).sort(byOrder);
+  var el = document.getElementById('gallery-grid');
+  el.innerHTML = '';
+  if(items.length === 0){
+    el.innerHTML = '<p class="empty-state" data-lang="fr">Ajoutez vos premières photos depuis l\'espace admin (Galerie photos).</p><p class="empty-state" data-lang="en">Add your first photos from the admin space (Photo gallery).</p>';
+    return;
+  }
+  items.forEach(function(g){
+    var tile = document.createElement('div');
+    tile.className = 'gallery-tile';
+    if(g.image) tile.style.backgroundImage = 'url(' + JSON.stringify(g.image) + ')';
+    tile.style.cursor = 'pointer';
+    tile.innerHTML = '<small>' + esc(g.title) + '</small>' +
+      '<span><span data-lang="fr">' + esc(g.subtitle_fr) + '</span><span data-lang="en">' + esc(g.subtitle_en) + '</span></span>';
+    tile.onclick = function(){
+      document.getElementById('img-modal-title').textContent = g.title || '';
+      document.getElementById('img-modal-sub').textContent = g.subtitle_fr || '';
+      var img = document.getElementById('img-modal-img');
+      if(g.image){ img.src = g.image; img.style.display = 'inline-block'; } else { img.style.display = 'none'; }
+      var lnk = document.getElementById('img-modal-link');
+      if(g.link){ lnk.href = g.link; lnk.style.display = 'inline-block'; } else { lnk.style.display = 'none'; }
+      document.getElementById('image-modal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
+    el.appendChild(tile);
+  });
+}).catch(function(){});
+
+// --- Carte ---
+loadFolder("content/map").then(function(contents){
+  var rows = contents.map(parseYaml).sort(byOrder);
+  var el = document.getElementById('map-tbody');
+  el.innerHTML = '';
+  rows.forEach(function(c){
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td>' + esc(c.country) + '</td><td>' + esc(c.cities) + '</td><td><span class="status-dot"></span>' + esc(c.status) + '</td>';
+    el.appendChild(tr);
+  });
+}).catch(function(){});
+
+// --- Articles ---
+var EJ_ARTICLES = [];
+function openArticleModal(idx){
+  var art = EJ_ARTICLES[idx];
+  if(!art) return;
+  document.getElementById('modal-title').textContent = art.data.title || '';
+  var d = art.data.date ? new Date(art.data.date) : null;
+  document.getElementById('modal-date').textContent = (d && !isNaN(d)) ? d.toLocaleDateString('fr-CH', { day:'2-digit', month:'long', year:'numeric' }) : '';
+  var cover = document.getElementById('modal-cover');
+  if(art.data.cover){ cover.src = art.data.cover; cover.style.display = 'block'; } else { cover.style.display = 'none'; }
+  document.getElementById('modal-body').textContent = art.body || '';
+  var link = document.getElementById('modal-link');
+  if(art.data.external_link){ link.href = art.data.external_link; link.style.display = 'inline-block'; } else { link.style.display = 'none'; }
+  document.getElementById('article-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+loadFolder("articles").then(function(contents){
+  var container = document.getElementById('articles-list');
+  EJ_ARTICLES = contents.map(parseFrontMatter);
+  EJ_ARTICLES.sort(function(a,b){ return new Date(b.data.date||0) - new Date(a.data.date||0); });
+  if(EJ_ARTICLES.length === 0){
+    container.innerHTML = '<p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt.</p><p class="empty-state" data-lang="en">First articles coming soon.</p>';
+    return;
+  }
+  container.innerHTML = '';
+  EJ_ARTICLES.forEach(function(art, idx){
+    var row = document.createElement('div');
+    row.className = 'article-row';
+    row.onclick = function(){ openArticleModal(idx); };
+    var d = art.data.date ? new Date(art.data.date) : null;
+    var dateStr = (d && !isNaN(d)) ? d.toLocaleDateString('fr-CH', { day:'2-digit', month:'long', year:'numeric' }) : '';
+    var summary = art.data.summary ? '<div style="color:var(--muted);font-size:13px;margin-top:4px;">' + esc(art.data.summary) + '</div>' : '';
+    row.innerHTML = '<div><div class="article-title">' + esc(art.data.title || '(sans titre)') + '</div>' + summary + '</div>' +
+      '<div class="article-date">' + dateStr + '</div>';
+    container.appendChild(row);
+  });
+}).catch(function(){
+  var container = document.getElementById('articles-list');
+  container.innerHTML = '<p class="empty-state" data-lang="fr">Les premiers articles arrivent bientôt.</p><p class="empty-state" data-lang="en">First articles coming soon.</p>';
+});
 </script>
 
 </body>
