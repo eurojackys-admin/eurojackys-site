@@ -5,6 +5,7 @@ cover: ""
 summary: Fin novembre 2020, pendant le Pasha de Cartier Party Live Stream,
   Jackson Wang reprenait 分手總要在雨天. Une simple cover élégante pour une soirée de
   marque ? Pas tout à fait.
+external_link: https://youtu.be/0Qz4BL9qaVg?si=cd835o-DUHRy4amh
 ---
 Fin novembre 2020, pendant le Pasha de Cartier Party Live Stream, Jackson Wang reprenait 分手總要在雨天. Une simple cover élégante pour une soirée de marque ? Pas tout à fait.
 
@@ -48,4 +49,4 @@ Parce que cette performance raconte plusieurs Jackson à la fois. Il y a l'ambas
 
 Ce n'est peut-être pas sa reprise la plus connue, ni la plus irréprochable techniquement. Et c'est précisément ce qui la rend intéressante cinq ans plus tard. Elle capture un moment où Jackson ne cherche pas seulement à impressionner : il revient vers une chanson chargée de mémoire collective, avec sa propre voix, son propre accent, et tout le débat que cela pouvait provoquer. Rien que pour ça, elle mérite mieux que de disparaître dans les tréfonds d'internet.
 
-[▶ Regarder la performance sur YouTube]https://youtu.be/0Qz4BL9qaVg?si=cd835o-DUHRy4amh
+▶ Regarder la performance sur YouTube
