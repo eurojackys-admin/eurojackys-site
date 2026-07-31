@@ -34,7 +34,6 @@
   a{color:inherit;}
   img{max-width:100%;display:block;}
 
-  /* Header */
   header{
     position:sticky;top:0;z-index:50;
     display:flex;align-items:center;justify-content:space-between;
@@ -43,7 +42,7 @@
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .brand{font-size:20px;font-weight:700;color:var(--gold-soft);}
+  .brand{font-size:20px;font-weight:700;color:var(--gold-soft);text-decoration:none;}
   .brand span{color:var(--cream);}
   nav{display:flex;gap:24px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif;}
   nav a{text-decoration:none;color:var(--muted);transition:color .2s;}
@@ -51,9 +50,7 @@
   .lang-toggle{display:flex;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:12px;font-family:'Helvetica Neue',Arial,sans-serif;}
   .lang-toggle button{background:none;border:none;color:var(--muted);padding:6px 14px;cursor:pointer;}
   .lang-toggle button.active{background:var(--gold);color:#000;}
-  .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:22px;cursor:pointer;}
 
-  /* Hero */
   .hero{
     text-align:center;padding:100px 24px 80px;
     background:radial-gradient(ellipse at top, rgba(212,175,55,0.08), transparent 60%);
@@ -89,7 +86,6 @@
   .section-label{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.15em;color:var(--gold-soft);margin-bottom:12px;}
   .section-title{font-size:clamp(28px,4vw,42px);margin:0 0 40px;color:var(--cream);}
 
-  /* About */
   .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:60px;align-items:start;}
   .about-grid p{color:var(--muted);margin-bottom:16px;}
   .about-grid strong{color:var(--gold-soft);}
@@ -101,7 +97,6 @@
 
   @media(max-width:800px){.about-grid{grid-template-columns:1fr;}}
 
-  /* Calendar */
   .cal-item{
     display:grid;grid-template-columns:120px 1fr auto;gap:24px;align-items:center;
     padding:22px 0;border-bottom:1px solid var(--line);
@@ -112,9 +107,8 @@
   .cal-tag{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--muted);border:1px solid var(--line);padding:4px 10px;border-radius:20px;white-space:nowrap;}
   @media(max-width:700px){.cal-item{grid-template-columns:1fr;gap:6px;}.cal-tag{justify-self:start;}}
 
-  /* Projects grid */
   .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .project-card{border:1px solid var(--line);padding:28px;transition:border-color .2s, transform .2s;}
+  .project-card{border:1px solid var(--line);padding:28px;transition:border-color .2s, transform .2s;color:inherit;}
   .project-card:hover{border-color:var(--gold);transform:translateY(-3px);}
   .project-icon{font-size:28px;margin-bottom:16px;}
   .project-card h3{font-size:16px;margin:0 0 6px;color:var(--cream);}
@@ -123,19 +117,16 @@
   @media(max-width:800px){.projects-grid{grid-template-columns:1fr 1fr;}}
   @media(max-width:520px){.projects-grid{grid-template-columns:1fr;}}
 
-  /* Articles / recaps */
   .article-list{display:flex;flex-direction:column;}
   .article-row{
     display:flex;justify-content:space-between;align-items:center;gap:20px;
-    padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;
+    padding:20px 0;border-bottom:1px solid var(--line);text-decoration:none;cursor:pointer;
   }
   .article-row:hover .article-title{color:var(--gold-soft);}
   .article-title{color:var(--cream);transition:color .2s;}
   .article-date{color:var(--muted);font-size:13px;font-family:'Helvetica Neue',Arial,sans-serif;white-space:nowrap;}
   .empty-state{color:var(--muted);font-style:italic;padding:20px 0;}
 
-  /* Article modal */
-  .article-row{cursor:pointer;}
   .modal-overlay{
     display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);
     z-index:200;padding:24px;overflow-y:auto;
@@ -154,12 +145,12 @@
   .modal-date{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:12px;}
   .modal-title{font-size:28px;color:var(--cream);margin:0 0 20px;font-family:'Helvetica Neue',Arial,sans-serif;text-transform:none;letter-spacing:0;}
   .modal-cover{width:100%;max-height:340px;object-fit:cover;margin-bottom:24px;border:1px solid var(--line);}
-  .modal-body{color:var(--muted);line-height:1.8;white-space:pre-wrap;}
+  .modal-body{color:var(--muted);line-height:1.8;}
+  .modal-body > div{white-space:pre-wrap;}
   .modal-body a{color:var(--gold-soft);}
   .modal-link{display:inline-block;margin-top:24px;color:var(--gold-soft);text-decoration:none;border-bottom:1px solid var(--gold-soft);font-size:14px;}
   @media(max-width:700px){.modal-box{padding:28px 20px;margin:16px auto 60px;}}
 
-  /* Gallery */
   .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
   .gallery-tile{
     aspect-ratio:4/5;background:var(--bg-soft);border:1px solid var(--line);
@@ -171,14 +162,12 @@
   .gallery-tile small{position:relative;z-index:1;color:var(--gold-soft);font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.06em;}
   @media(max-width:800px){.gallery-grid{grid-template-columns:1fr 1fr;}}
 
-  /* Map table */
   table{width:100%;border-collapse:collapse;}
   th{text-align:left;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-soft);padding-bottom:14px;border-bottom:1px solid var(--line);}
   td{padding:14px 0;border-bottom:1px solid var(--line);color:var(--muted);}
   td:first-child{color:var(--cream);}
   .status-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);margin-right:6px;}
 
-  /* Join form */
   .join-form{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
   .join-form label{display:block;font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold-soft);margin-bottom:8px;}
   .join-form input,.join-form select,.join-form textarea{
@@ -193,18 +182,16 @@
   footer .social{display:flex;gap:20px;justify-content:center;margin-top:20px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;}
   footer .social a{text-decoration:none;color:var(--gold-soft);}
 
-  /* lang blocks */
   [data-lang="en"]{display:none;}
   body.lang-en [data-lang="fr"]{display:none;}
   body.lang-en [data-lang="en"]{display:block;}
-  body.lang-en [data-lang="en"].inline{display:inline;}
+  body.lang-en span[data-lang="en"], body.lang-en option[data-lang="en"], body.lang-en label[data-lang="en"], body.lang-en small [data-lang="en"]{display:inline;}
+  span[data-lang="fr"], option[data-lang="fr"], label[data-lang="fr"]{display:inline;}
 
   @media(max-width:800px){
     nav{display:none;}
-    .menu-toggle{display:block;}
   }
 </style>
-
 </head>
 <body>
 
@@ -439,21 +426,36 @@ var REPO = "eurojackys-admin/eurojackys-site";
 var API = "https://api.github.com/repos/" + REPO + "/contents/";
 var RAW = "https://raw.githubusercontent.com/" + REPO + "/main/";
 
+// Parses flat YAML including multi-line block scalars (| and >)
 function parseYaml(raw){
   var data = {};
-  raw.split("\n").forEach(function(line){
+  var lines = raw.split("\n");
+  var i = 0;
+  while(i < lines.length){
+    var line = lines[i];
     var idx = line.indexOf(":");
-    if(idx === -1) return;
+    if(idx === -1 || line.trim().startsWith("#") || /^\s/.test(line)){ i++; continue; }
     var key = line.slice(0, idx).trim();
-    if(!key || key.startsWith("#")) return;
-    var value = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
-    data[key] = value;
-  });
+    var value = line.slice(idx + 1).trim();
+    if(value === "|" || value === ">" || value === "|-" || value === ">-"){
+      var block = [];
+      i++;
+      while(i < lines.length && (lines[i].startsWith("  ") || lines[i].trim() === "")){
+        if(lines[i].trim() === "" && (i+1 >= lines.length || !lines[i+1].startsWith("  "))) break;
+        block.push(lines[i].replace(/^  /, ""));
+        i++;
+      }
+      data[key] = block.join("\n").replace(/\n+$/, "");
+      continue;
+    }
+    data[key] = value.replace(/^["']|["']$/g, "");
+    i++;
+  }
   return data;
 }
 
 function parseFrontMatter(raw){
-  var m = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
+  var m = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?([\s\S]*)$/);
   if(!m) return { data: {}, body: raw };
   return { data: parseYaml(m[1]), body: m[2].trim() };
 }
@@ -471,6 +473,15 @@ function loadFolder(folder){
 
 function byOrder(a, b){ return (parseInt(a.order)||99) - (parseInt(b.order)||99); }
 function esc(s){ var d = document.createElement('div'); d.textContent = s || ''; return d.innerHTML; }
+function biSpan(fr, en){
+  return '<span data-lang="fr">' + esc(fr) + '</span><span data-lang="en">' + esc(en || fr) + '</span>';
+}
+function fixUrl(u){
+  if(!u) return u;
+  u = u.trim();
+  if(!/^https?:\/\//i.test(u)) u = 'https://' + u;
+  return u;
+}
 
 // --- About / textes ---
 fetch(RAW + "content/about.yml").then(function(r){ return r.text(); }).then(function(raw){
@@ -497,9 +508,9 @@ loadFolder("content/calendar").then(function(contents){
     div.className = 'cal-item';
     div.innerHTML =
       '<div class="cal-date">' + esc(ev.date_display) + '</div>' +
-      '<div><div class="cal-title"><span data-lang="fr">' + esc(ev.title_fr) + '</span><span data-lang="en">' + esc(ev.title_en) + '</span></div>' +
-      '<div class="cal-desc"><span data-lang="fr">' + esc(ev.desc_fr) + '</span><span data-lang="en">' + esc(ev.desc_en) + '</span></div></div>' +
-      '<div class="cal-tag"><span data-lang="fr">' + esc(ev.tag_fr) + '</span><span data-lang="en">' + esc(ev.tag_en) + '</span></div>';
+      '<div><div class="cal-title">' + biSpan(ev.title_fr, ev.title_en) + '</div>' +
+      '<div class="cal-desc">' + biSpan(ev.desc_fr, ev.desc_en) + '</div></div>' +
+      '<div class="cal-tag">' + biSpan(ev.tag_fr, ev.tag_en) + '</div>';
     el.appendChild(div);
   });
 }).catch(function(){});
@@ -512,12 +523,12 @@ loadFolder("content/projects").then(function(contents){
   projs.forEach(function(p){
     var card = document.createElement(p.link ? 'a' : 'div');
     card.className = 'project-card';
-    if(p.link){ card.href = p.link; card.target = '_blank'; card.style.textDecoration = 'none'; card.style.display = 'block'; }
+    if(p.link){ card.href = fixUrl(p.link); card.target = '_blank'; card.style.textDecoration = 'none'; card.style.display = 'block'; }
     card.innerHTML =
       '<div class="project-icon">' + esc(p.icon) + '</div>' +
       '<h3>' + esc(p.title) + '</h3>' +
-      '<div class="project-freq"><span data-lang="fr">' + esc(p.freq_fr) + '</span><span data-lang="en">' + esc(p.freq_en) + '</span></div>' +
-      '<p data-lang="fr">' + esc(p.desc_fr) + '</p><p data-lang="en">' + esc(p.desc_en) + '</p>';
+      '<div class="project-freq">' + biSpan(p.freq_fr, p.freq_en) + '</div>' +
+      '<p data-lang="fr">' + esc(p.desc_fr) + '</p><p data-lang="en">' + esc(p.desc_en || p.desc_fr) + '</p>';
     el.appendChild(card);
   });
 }).catch(function(){});
@@ -528,23 +539,24 @@ loadFolder("content/gallery").then(function(contents){
   var el = document.getElementById('gallery-grid');
   el.innerHTML = '';
   if(items.length === 0){
-    el.innerHTML = '<p class="empty-state" data-lang="fr">Ajoutez vos premières photos depuis l\'espace admin (Galerie photos).</p><p class="empty-state" data-lang="en">Add your first photos from the admin space (Photo gallery).</p>';
+    el.innerHTML = '<p class="empty-state" data-lang="fr">Photos à venir.</p><p class="empty-state" data-lang="en">Photos coming soon.</p>';
     return;
   }
   items.forEach(function(g){
     var tile = document.createElement('div');
     tile.className = 'gallery-tile';
-    if(g.image) tile.style.backgroundImage = 'url(' + JSON.stringify(g.image) + ')';
+    if(g.image) tile.style.backgroundImage = "url('" + g.image.replace(/'/g, "%27") + "')";
     tile.style.cursor = 'pointer';
     tile.innerHTML = '<small>' + esc(g.title) + '</small>' +
-      '<span><span data-lang="fr">' + esc(g.subtitle_fr) + '</span><span data-lang="en">' + esc(g.subtitle_en) + '</span></span>';
+      '<span>' + biSpan(g.subtitle_fr, g.subtitle_en) + '</span>';
     tile.onclick = function(){
       document.getElementById('img-modal-title').textContent = g.title || '';
-      document.getElementById('img-modal-sub').textContent = g.subtitle_fr || '';
+      var isEn = document.body.classList.contains('lang-en');
+      document.getElementById('img-modal-sub').textContent = (isEn ? (g.subtitle_en || g.subtitle_fr) : g.subtitle_fr) || '';
       var img = document.getElementById('img-modal-img');
       if(g.image){ img.src = g.image; img.style.display = 'inline-block'; } else { img.style.display = 'none'; }
       var lnk = document.getElementById('img-modal-link');
-      if(g.link){ lnk.href = g.link; lnk.style.display = 'inline-block'; } else { lnk.style.display = 'none'; }
+      if(g.link){ lnk.href = fixUrl(g.link); lnk.style.display = 'inline-block'; } else { lnk.style.display = 'none'; }
       document.getElementById('image-modal').classList.add('open');
       document.body.style.overflow = 'hidden';
     };
@@ -564,19 +576,20 @@ loadFolder("content/map").then(function(contents){
   });
 }).catch(function(){});
 
-// --- Articles ---
+// --- Articles (bilingues) ---
 var EJ_ARTICLES = [];
 function openArticleModal(idx){
   var art = EJ_ARTICLES[idx];
   if(!art) return;
-  document.getElementById('modal-title').textContent = art.data.title || '';
+  document.getElementById('modal-title').innerHTML = biSpan(art.data.title, art.data.title_en);
   var d = art.data.date ? new Date(art.data.date) : null;
   document.getElementById('modal-date').textContent = (d && !isNaN(d)) ? d.toLocaleDateString('fr-CH', { day:'2-digit', month:'long', year:'numeric' }) : '';
   var cover = document.getElementById('modal-cover');
   if(art.data.cover){ cover.src = art.data.cover; cover.style.display = 'block'; } else { cover.style.display = 'none'; }
-  document.getElementById('modal-body').textContent = art.body || '';
+  var bodyEl = document.getElementById('modal-body');
+  bodyEl.innerHTML = '<div data-lang="fr">' + esc(art.body) + '</div><div data-lang="en">' + esc(art.data.body_en || art.body) + '</div>';
   var link = document.getElementById('modal-link');
-  if(art.data.external_link){ link.href = art.data.external_link; link.style.display = 'inline-block'; } else { link.style.display = 'none'; }
+  if(art.data.external_link){ link.href = fixUrl(art.data.external_link); link.style.display = 'inline-block'; } else { link.style.display = 'none'; }
   document.getElementById('article-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -596,8 +609,9 @@ loadFolder("articles").then(function(contents){
     row.onclick = function(){ openArticleModal(idx); };
     var d = art.data.date ? new Date(art.data.date) : null;
     var dateStr = (d && !isNaN(d)) ? d.toLocaleDateString('fr-CH', { day:'2-digit', month:'long', year:'numeric' }) : '';
-    var summary = art.data.summary ? '<div style="color:var(--muted);font-size:13px;margin-top:4px;">' + esc(art.data.summary) + '</div>' : '';
-    row.innerHTML = '<div><div class="article-title">' + esc(art.data.title || '(sans titre)') + '</div>' + summary + '</div>' +
+    var summaryHtml = (art.data.summary || art.data.summary_en) ?
+      '<div style="color:var(--muted);font-size:13px;margin-top:4px;">' + biSpan(art.data.summary, art.data.summary_en) + '</div>' : '';
+    row.innerHTML = '<div><div class="article-title">' + biSpan(art.data.title || '(sans titre)', art.data.title_en) + '</div>' + summaryHtml + '</div>' +
       '<div class="article-date">' + dateStr + '</div>';
     container.appendChild(row);
   });
