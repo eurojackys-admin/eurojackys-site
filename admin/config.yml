@@ -18,11 +18,14 @@ collections:
     delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - { label: "Titre", name: "title", widget: "string" }
+      - { label: "Titre (FR)", name: "title", widget: "string" }
+      - { label: "Titre (EN)", name: "title_en", widget: "string", required: false }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Image de couverture", name: "cover", widget: "image", required: false }
-      - { label: "Résumé court", name: "summary", widget: "text", required: false }
-      - { label: "Contenu", name: "body", widget: "markdown" }
+      - { label: "Résumé court (FR)", name: "summary", widget: "string", required: false }
+      - { label: "Résumé court (EN)", name: "summary_en", widget: "string", required: false }
+      - { label: "Contenu (FR)", name: "body", widget: "markdown" }
+      - { label: "Contenu (EN)", name: "body_en", widget: "markdown", required: false }
       - label: "Lien externe (Instagram, TikTok, X...)"
         name: "external_link"
         widget: "string"
