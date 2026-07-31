@@ -11,7 +11,7 @@ locale: 'fr'
 
 collections:
   - name: "articles"
-    label: "📰 Articles / Récaps"
+    label: "📰 Articles"
     label_singular: "Article"
     folder: "articles"
     create: true
