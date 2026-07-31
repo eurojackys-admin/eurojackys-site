@@ -11,7 +11,7 @@ locale: 'fr'
 
 collections:
   - name: "articles"
-    label: "📰 Articles"
+    label: "📰 Articles / Récaps"
     label_singular: "Article"
     folder: "articles"
     create: true
@@ -22,14 +22,11 @@ collections:
       - { label: "Titre (EN)", name: "title_en", widget: "string", required: false }
       - { label: "Date", name: "date", widget: "datetime" }
       - { label: "Image de couverture", name: "cover", widget: "image", required: false }
-      - { label: "Résumé court (FR)", name: "summary", widget: "string", required: false }
-      - { label: "Résumé court (EN)", name: "summary_en", widget: "string", required: false }
+      - { label: "Résumé court (FR)", name: "summary", widget: "text", required: false }
+      - { label: "Résumé court (EN)", name: "summary_en", widget: "text", required: false }
       - { label: "Contenu (FR)", name: "body", widget: "markdown" }
       - { label: "Contenu (EN)", name: "body_en", widget: "markdown", required: false }
-      - label: "Lien externe (Instagram, TikTok, X...)"
-        name: "external_link"
-        widget: "string"
-        required: false
+      - { label: "Lien externe (Instagram, TikTok, X...)", name: "external_link", widget: "string", required: false }
 
   - name: "calendar"
     label: "📅 Calendrier"
@@ -67,11 +64,11 @@ collections:
       - { label: "Ordre d'affichage (1 = en premier)", name: "order", widget: "number", default: 1 }
       - { label: "Emoji / icône (ex: 🔮)", name: "icon", widget: "string", default: "✨" }
       - { label: "Nom du projet", name: "title", widget: "string" }
-      - { label: "Fréquence (FR) — ex: Hebdomadaire · FR + EN", name: "freq_fr", widget: "string", required: false }
-      - { label: "Fréquence (EN) — ex: Weekly · FR + EN", name: "freq_en", widget: "string", required: false }
+      - { label: "Fréquence (FR)", name: "freq_fr", widget: "string", required: false }
+      - { label: "Fréquence (EN)", name: "freq_en", widget: "string", required: false }
       - { label: "Description (FR)", name: "desc_fr", widget: "text" }
       - { label: "Description (EN)", name: "desc_en", widget: "text" }
-      - { label: "Lien (optionnel — Instagram, TikTok...)", name: "link", widget: "string", required: false }
+      - { label: "Lien (optionnel)", name: "link", widget: "string", required: false }
 
   - name: "gallery"
     label: "🖼️ Galerie photos"
@@ -110,12 +107,12 @@ collections:
       - { label: "Statut (ex: Boarding, On time)", name: "status", widget: "string", default: "On time" }
 
   - name: "settings"
-    label: "⚙️ Textes du site"
+    label: "⚙️ Réglages du site"
     editor:
       preview: false
     files:
       - name: "about"
-        label: "Page d'accueil & À propos"
+        label: "Accueil & À propos"
         file: "content/about.yml"
         fields:
           - { label: "Fondée le (JJ.MM.AAAA)", name: "founded", widget: "string" }
@@ -126,5 +123,58 @@ collections:
           - { label: "Plateformes", name: "platforms", widget: "string" }
           - { label: "Statut (FR)", name: "status_fr", widget: "string" }
           - { label: "Statut (EN)", name: "status_en", widget: "string" }
-          - { label: "Bandeau annonce (FR) — ex: 🎉 Anniversaire MM2", name: "banner_fr", widget: "string", required: false }
+          - { label: "Bandeau annonce (FR)", name: "banner_fr", widget: "string", required: false }
           - { label: "Bandeau annonce (EN)", name: "banner_en", widget: "string", required: false }
+
+      - name: "sections"
+        label: "Sections : titres, ordre, visibilité"
+        file: "content/sections.yml"
+        fields:
+          - { label: "① À PROPOS — Titre (FR)", name: "about_title_fr", widget: "string" }
+          - { label: "① À propos — Titre (EN)", name: "about_title_en", widget: "string" }
+          - { label: "① À propos — Texte d'intro (FR)", name: "about_intro_fr", widget: "text", required: false }
+          - { label: "① À propos — Texte d'intro (EN)", name: "about_intro_en", widget: "text", required: false }
+          - { label: "① À propos — Position (1 = en premier)", name: "about_order", widget: "number", default: 1 }
+          - { label: "① À propos — Afficher ?", name: "about_visible", widget: "select", options: ["true", "false"], default: "true" }
+
+          - { label: "② CALENDRIER — Titre (FR)", name: "calendar_title_fr", widget: "string" }
+          - { label: "② Calendrier — Titre (EN)", name: "calendar_title_en", widget: "string" }
+          - { label: "② Calendrier — Texte d'intro (FR)", name: "calendar_intro_fr", widget: "text", required: false }
+          - { label: "② Calendrier — Texte d'intro (EN)", name: "calendar_intro_en", widget: "text", required: false }
+          - { label: "② Calendrier — Position", name: "calendar_order", widget: "number", default: 2 }
+          - { label: "② Calendrier — Afficher ?", name: "calendar_visible", widget: "select", options: ["true", "false"], default: "true" }
+
+          - { label: "③ PROJETS — Titre (FR)", name: "projects_title_fr", widget: "string" }
+          - { label: "③ Projets — Titre (EN)", name: "projects_title_en", widget: "string" }
+          - { label: "③ Projets — Texte d'intro (FR)", name: "projects_intro_fr", widget: "text", required: false }
+          - { label: "③ Projets — Texte d'intro (EN)", name: "projects_intro_en", widget: "text", required: false }
+          - { label: "③ Projets — Position", name: "projects_order", widget: "number", default: 3 }
+          - { label: "③ Projets — Afficher ?", name: "projects_visible", widget: "select", options: ["true", "false"], default: "true" }
+
+          - { label: "④ ARTICLES — Titre (FR)", name: "recaps_title_fr", widget: "string" }
+          - { label: "④ Articles — Titre (EN)", name: "recaps_title_en", widget: "string" }
+          - { label: "④ Articles — Texte d'intro (FR)", name: "recaps_intro_fr", widget: "text", required: false }
+          - { label: "④ Articles — Texte d'intro (EN)", name: "recaps_intro_en", widget: "text", required: false }
+          - { label: "④ Articles — Position", name: "recaps_order", widget: "number", default: 4 }
+          - { label: "④ Articles — Afficher ?", name: "recaps_visible", widget: "select", options: ["true", "false"], default: "true" }
+
+          - { label: "⑤ GALERIE — Titre (FR)", name: "gallery_title_fr", widget: "string" }
+          - { label: "⑤ Galerie — Titre (EN)", name: "gallery_title_en", widget: "string" }
+          - { label: "⑤ Galerie — Texte d'intro (FR)", name: "gallery_intro_fr", widget: "text", required: false }
+          - { label: "⑤ Galerie — Texte d'intro (EN)", name: "gallery_intro_en", widget: "text", required: false }
+          - { label: "⑤ Galerie — Position", name: "gallery_order", widget: "number", default: 5 }
+          - { label: "⑤ Galerie — Afficher ?", name: "gallery_visible", widget: "select", options: ["true", "false"], default: "true" }
+
+          - { label: "⑥ CARTE — Titre (FR)", name: "map_title_fr", widget: "string" }
+          - { label: "⑥ Carte — Titre (EN)", name: "map_title_en", widget: "string" }
+          - { label: "⑥ Carte — Texte d'intro (FR)", name: "map_intro_fr", widget: "text", required: false }
+          - { label: "⑥ Carte — Texte d'intro (EN)", name: "map_intro_en", widget: "text", required: false }
+          - { label: "⑥ Carte — Position", name: "map_order", widget: "number", default: 6 }
+          - { label: "⑥ Carte — Afficher ?", name: "map_visible", widget: "select", options: ["true", "false"], default: "true" }
+
+          - { label: "⑦ REJOINDRE — Titre (FR)", name: "join_title_fr", widget: "string" }
+          - { label: "⑦ Rejoindre — Titre (EN)", name: "join_title_en", widget: "string" }
+          - { label: "⑦ Rejoindre — Texte d'intro (FR)", name: "join_intro_fr", widget: "text", required: false }
+          - { label: "⑦ Rejoindre — Texte d'intro (EN)", name: "join_intro_en", widget: "text", required: false }
+          - { label: "⑦ Rejoindre — Position", name: "join_order", widget: "number", default: 7 }
+          - { label: "⑦ Rejoindre — Afficher ?", name: "join_visible", widget: "select", options: ["true", "false"], default: "true" }
