@@ -1,0 +1,6 @@
+# EuroJackys — configuration Netlify
+# À chaque déploiement, Netlify exécute build.py qui régénère
+# les pages articles, le sitemap et le contenu statique de l'accueil.
+[build]
+  command = "python3 build.py"
+  publish = "."
