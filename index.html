@@ -221,7 +221,7 @@
 <header>
   <a href="#top" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
   <nav>
-    <a href="#about"><span data-lang="fr">À propos</span><span data-lang="en">About</span></a>
+    <a href="/fr/a-propos/" data-navpage="about"><span data-lang="fr">À propos</span><span data-lang="en">About</span></a>
     <a href="#calendar"><span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></a>
     <a href="#projects"><span data-lang="fr">Projets</span><span data-lang="en">Projects</span></a>
     <a href="#recaps"><span data-lang="fr">Récaps</span><span data-lang="en">Recaps</span></a>
@@ -263,6 +263,7 @@
     <div>
       <p data-lang="fr" id="about-fr"><!-- BUILD:ABOUT_FR -->EuroJackys est une <strong>fanbase européenne indépendante</strong> dédiée à Jackson Wang. Notre mission : connecter les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.<!-- /BUILD:ABOUT_FR --></p>
       <p data-lang="en" id="about-en"><!-- BUILD:ABOUT_EN -->EuroJackys is an <strong>independent European fanbase</strong> dedicated to Jackson Wang. Our mission is to connect Jackys across Europe through fan projects, translations, news and community events.<!-- /BUILD:ABOUT_EN --></p>
+      <p style="margin-top:18px;"><a data-navpage="about" href="/fr/a-propos/" style="color:var(--gold-soft);"><span data-lang="fr">Notre histoire complète →</span><span data-lang="en">Our full story →</span></a></p>
     </div>
     <div class="fact-list">
       <div class="fact">
@@ -305,6 +306,9 @@
   <div class="section-label">04 · <span data-lang="fr">Articles & récaps</span><span data-lang="en">Articles & recaps</span></div>
   <h2 class="section-title"><span data-lang="fr">Derniers articles</span><span data-lang="en">Latest articles</span></h2>
   <div class="article-list" id="articles-list"><!-- BUILD:ARTICLES --><a class="article-row" data-slug="jackson-wang-cartier-et-un-classique-cantonais-qui-a-fait-parler" href="/fr/articles/jackson-wang-cartier-et-un-classique-cantonais-qui-a-fait-parler/"><div><div class="article-title"><span data-lang="fr">Jackson Wang, Cartier et un classique cantonais qui a fait parler</span><span data-lang="en">Jackson Wang, Cartier and the Cantopop classic that got people talking</span></div><div style="color:var(--muted);font-size:13px;margin-top:4px;"><span data-lang="fr">Fin novembre 2020, pendant le Pasha de Cartier Party Live Stream, Jackson Wang reprenait 分手總要在雨天. Une simple cover élégante pour une soirée de marque ? Pas tout à fait.</span><span data-lang="en">On November 26, 2020, Jackson performed 《分手總要在雨天》 during the Pasha de Cartier Party Live Stream. An elegant cover for a luxury event? There was a little more to it than that.</span></div></div><div class="article-date"><span data-lang="fr">31 juillet 2026</span><span data-lang="en">July 31, 2026</span></div></a><!-- /BUILD:ARTICLES --></div>
+  <div style="text-align:center;margin-top:30px;">
+    <a class="btn btn-outline" data-navpage="articles" href="/fr/articles/"><span data-lang="fr">Tous les articles →</span><span data-lang="en">All articles →</span></a>
+  </div>
 </section>
 
 <section id="gallery">
@@ -433,6 +437,12 @@ function setLang(lang){
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
   document.querySelectorAll('a.article-row[data-slug]').forEach(function(a){
     a.setAttribute('href', '/' + lang + '/articles/' + a.getAttribute('data-slug') + '/');
+  });
+  document.querySelectorAll('[data-navpage="about"]').forEach(function(a){
+    a.setAttribute('href', lang === 'en' ? '/en/about/' : '/fr/a-propos/');
+  });
+  document.querySelectorAll('[data-navpage="articles"]').forEach(function(a){
+    a.setAttribute('href', lang === 'en' ? '/en/articles/' : '/fr/articles/');
   });
   try { localStorage.setItem('ej-lang', lang); } catch(e){}
 }
