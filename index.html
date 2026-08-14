@@ -59,7 +59,8 @@
     backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .brand{font-size:20px;font-weight:700;color:var(--gold-soft);text-decoration:none;}
+  .brand{font-size:20px;font-weight:700;color:var(--gold-soft);text-decoration:none;display:inline-flex;align-items:center;gap:10px;}
+  .brand-logo{height:34px;width:auto;display:block;}
   .brand span{color:var(--cream);}
   nav{display:flex;gap:24px;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif;}
   nav a{text-decoration:none;color:var(--muted);transition:color .2s;}
@@ -72,6 +73,7 @@
     text-align:center;padding:100px 24px 80px;
     background:radial-gradient(ellipse at top, rgba(212,175,55,0.08), transparent 60%);
   }
+  .hero-logo{height:clamp(130px,26vw,180px);width:auto;display:block;margin:0 auto 26px;filter:drop-shadow(0 0 34px rgba(212,175,55,0.28));}
   .eyebrow{font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:24px;}
   .hero h1{font-size:clamp(48px,10vw,96px);margin:0 0 24px;color:var(--cream);}
   .hero h1 span{color:var(--gold);}
@@ -195,6 +197,7 @@
   @media(max-width:700px){.join-form{grid-template-columns:1fr;}}
 
   footer{border-top:1px solid var(--line);padding:48px 24px;text-align:center;color:var(--muted);font-size:13px;}
+  footer .footer-logo{height:60px;width:auto;display:block;margin:0 auto 14px;}
   footer .brand{margin-bottom:12px;}
   footer .social{display:flex;gap:20px;justify-content:center;margin-top:20px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;}
   footer .social a{text-decoration:none;color:var(--gold-soft);}
@@ -216,7 +219,7 @@
 <body>
 
 <header>
-  <a href="#top" class="brand">EURO<span>JACKYS</span></a>
+  <a href="#top" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
   <nav>
     <a href="#about"><span data-lang="fr">À propos</span><span data-lang="en">About</span></a>
     <a href="#calendar"><span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></a>
@@ -233,6 +236,7 @@
 </header>
 
 <div class="hero" id="top">
+  <img class="hero-logo" src="/images/brand/logo-hero.png" alt="EuroJackys">
   <div class="eyebrow">
     <span data-lang="fr">Fanbase européenne · Depuis l'ère Magic Man 2</span>
     <span data-lang="en">European fanbase · Since the Magic Man 2 era</span>
@@ -365,6 +369,7 @@
 </section>
 
 <footer>
+  <img class="footer-logo" src="/images/brand/logo-header.png" alt="">
   <div class="brand">EURO<span style="color:var(--cream)">JACKYS</span></div>
   <p data-lang="fr">EuroJackys est une fanbase indépendante, gérée par des fans. Nous ne sommes affiliés ni à Jackson Wang, ni à Team Wang, ni à aucun de leurs partenaires.</p>
   <p data-lang="en">EuroJackys is an independent, fan-run fanbase. We are not affiliated with Jackson Wang, Team Wang, or any of their partners.</p>

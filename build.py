@@ -248,7 +248,9 @@ body{margin:0;background:var(--bg);color:var(--cream);font-family:Georgia,'Times
 h1,h2,h3,.brand{font-family:'Helvetica Neue',Arial,sans-serif;letter-spacing:0.03em;}
 a{color:inherit;}img{max-width:100%;display:block;}
 header{position:sticky;top:0;z-index:50;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 24px;background:rgba(11,11,13,0.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
-.brand{font-size:18px;font-weight:700;color:var(--gold-soft);text-decoration:none;text-transform:uppercase;}
+.brand{font-size:18px;font-weight:700;color:var(--gold-soft);text-decoration:none;text-transform:uppercase;display:inline-flex;align-items:center;gap:9px;}
+.brand-logo{height:30px;width:auto;display:block;}
+.footer-logo{height:56px;width:auto;display:block;margin:0 auto 12px;}
 .brand span{color:var(--cream);}
 nav{display:flex;gap:18px;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;font-family:'Helvetica Neue',Arial,sans-serif;}
 nav a{text-decoration:none;color:var(--muted);transition:color .2s;}
@@ -337,7 +339,7 @@ def page_shell(lang, head_extra, active_path, body_html, alt_url):
 </head>
 <body>
 <header>
-  <a href="/" class="brand">EURO<span>JACKYS</span></a>
+  <a href="/" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
   <nav>{nav}</nav>
   {switch}
 </header>
@@ -345,6 +347,7 @@ def page_shell(lang, head_extra, active_path, body_html, alt_url):
 {body}
 </main>
 <footer>
+  <img class="footer-logo" src="/images/brand/logo-header.png" alt="">
   <a href="/" class="brand">EURO<span style="color:var(--cream)">JACKYS</span></a>
   <p>{tagline}</p>
   <div class="social">{socials}</div>
