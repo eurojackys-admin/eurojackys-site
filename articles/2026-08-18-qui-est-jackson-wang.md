@@ -23,7 +23,10 @@ body_en: >-
   Before the music, there was the sabre
 
 
-  Jackson Wang was born on 28 March 1994 in Kowloon Tong, Hong Kong, into a family where "doing sport" wasn't exactly a Sunday hobby. His father, Wang Ruiji, won China's first ever fencing gold at the 1978 Asian Games in Bangkok before becoming a coach. His mother was a high-level gymnast. Safe to say the couch gene skipped a generation.
+  Jackson Wang was born on 28 March 1994 in Kowloon Tong, Hong Kong, into a family where "doing sport" wasn't exactly a Sunday hobby. His father, Wang Ruiji, an Olympic fencer, won China's first ever fencing gold at the 1978 Asian Games in Bangkok. His mother, Sophia Chow, was a gymnast — both competed at the 1984 Los Angeles Olympics. And his older brother played professional rugby in Australia.
+
+
+  Safe to say the sofa never stood much of a chance in that family.
 
 
   He started fencing at 10, trained by his father. And he was good. Properly good. In 2010 he represented Hong Kong at the very first Youth Olympic Games in Singapore, finishing 11th in the world junior rankings. In 2011 he became Asian junior sabre champion.
@@ -35,7 +38,7 @@ body_en: >-
   (No.)
 
 
-  17, one-way ticket to Seoul
+  ## One-way ticket to Seoul
 
 
   July 2011. He lands in South Korea to become a trainee at JYP Entertainment.
@@ -47,7 +50,7 @@ body_en: >-
   We like bringing this detail up whenever someone says he "got lucky".
 
 
-  GOT7, or the entrance
+  ## GOT7, or the entrance
 
 
   After more than two years of training, he debuted on 16 January 2014 with GOT7 and the single "Girls Girls Girls".
@@ -56,10 +59,10 @@ body_en: >-
   His energy and humour made him instantly recognisable — the kind of person you can spot on a variety show with the sound off. But behind the guy yelling on set, there was someone taking notes.
 
 
-  Quick note for newcomers: in January 2021, all seven members chose not to renew their JYP contracts. The group didn't split though — GOT7 came back with a self-titled EP in May 2022. Jackson is still a member. Breathe.
+  Quick note for newcomers: in January 2021, all seven members chose not to renew their JYP contracts. The group didn't split though — GOT7 came back with a self-titled EP in May 2022., then  WINTER HEPTAGON on 20 January 2025 for their 11th anniversary, with Python  as the title track. 
 
 
-  TEAM WANG
+  ## TEAM WANG
 
 
   2017: he founded TEAM WANG and released "Papillon" on 26 August, the first single of his solo career and the label's first release.
@@ -74,19 +77,22 @@ body_en: >-
   Three albums, zero boxes
 
 
-  Mirrors (2019) — his first album, No. 32 on the Billboard 200.
+  Mirrors (25 October 2019) — his first album, No. 32 on the Billboard 200.
 
 
-  MAGIC MAN (2022) — No. 15, and his first proper world tour.
+  LOST & FOUND (7 March 2022 — a mixtape dropped with no warning, eigth tracks recorded back in 2019 and left in a drawer.
 
 
-  MAGIC MAN 2 (18 July 2025) — No. 13.
+  MAGIC MAN ( 9 September 2022) — No. 15 on Billboard and his first proper world tour.
+
+
+  MAGIC MAN 2 (18 July 2025) — No. 13 on Billboard.
 
 
   Pop, hip-hop, R&B, rock, Chinese and Western influences: he blends genres as much as markets, and at this stage trying to file him under one label is basically a contact sport.
 
 
-  Jackson and Europe
+  ## Jackson and Europe
 
 
   The part that concerns us directly, obviously.
@@ -98,7 +104,7 @@ body_en: >-
   On stage, the Magic Man World Tour hit Paris and London in January 2023, both sold out.
 
 
-  And for what comes next — the MAGICMAN 2 World Tour 2026-2027 — that's exactly why we exist: see our tour page 
+  And for what comes next — the MAGICMAN 2 World Tour 2026-2027 — that's exactly why we exist: [see our tour page ](https://eurojackys.com/en/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/)
 
 
   K-pop idol? Yes, he's a member of GOT7.
@@ -126,7 +132,9 @@ Oui, oui ... Escrimeur. On y arrive.
 
 Avant la musique, il y avait le sabre
 
-Jackson Wang naît le 28 mars 1994 à Kowloon Tong, Hong Kong, dans une famille où « faire du sport » n'est pas exactement un loisir du dimanche. Son père, Wang Ruiji, a décroché en 1978 à Bangkok la toute première médaille d'or chinoise en escrime aux Jeux asiatiques, avant de devenir entraîneur. Sa mère était gymnaste de haut niveau. Autant dire que le gène canapé n'a pas sauté une génération.
+Jackson Wang naît le 28 mars 1994 à Kowloon Tong, Hong Kong, dans une famille où « faire du sport » n'est pas exactement un loisir du dimanche. Son père, Wang Ruiji, escrimeur olympique, a décroché en 1978 à Bangkok la toute première médaille d'or chinoise en escrime aux Jeux asiatiques. Sa mère, Sophia Chow, était gymnaste — les deux ont concouru aux Jeux de Los Angeles en 1984. Et son grand frère a joué au rugby professionnel en Australie.
+
+Autant dire que dans cette famille, le canapé n'a jamais eu beaucoup de succès.
 
 Il commence l'escrime à 10 ans, entraîné par son père. Et il est bon. Vraiment bon. En 2010, il représente Hong Kong aux tout premiers Jeux Olympiques de la Jeunesse à Singapour et termine 11e mondial junior. En 2011, il devient champion d'Asie junior au sabre.
 
@@ -134,7 +142,7 @@ Il commence l'escrime à 10 ans, entraîné par son père. Et il est bon. Vraime
 
 (Non.)
 
-Un aller simple pour Séoul
+## Un aller simple pour Séoul
 
 Juillet 2011. Il pose ses valises en Corée du Sud pour devenir trainee chez JYP Entertainment.
 
@@ -150,7 +158,7 @@ Son énergie et son humour le rendent immédiatement identifiable — le genre d
 
 Petite précision pour les nouveaux : en janvier 2021, les sept membres n'ont pas renouvelé leur contrat chez JYP. Le groupe n'a pas splitté pour autant — GOT7 est revenu avec un EP éponyme en mai 2022 puis  WINTER HEPTAGON le 20 janvier 2025 pour leurs 11 ans, avec "Python" en titre phare.
 
-TEAM WANG
+## TEAM WANG
 
 2017 : il fonde TEAM WANG et sort « Papillon » le 26 août, premier single de sa carrière solo et première sortie du label.
 
@@ -160,17 +168,17 @@ Sauf que TEAM WANG ne reste pas longtemps « juste un label ». Musique, product
 
 Trois albums, une mixtape.
 
-Mirrors (25 octobre 2019) - son premier album, 32e au Billboard 200.
+MIRRORS 25 octobre 2019) - son premier album, 32e au Billboard 200.
 
 LOST & FOUND (7mars 2022) - Une mixtape sortie sans prévenir, 8 titres enregistrés en 2019 et restés dans un tiroir.
 
-MAGIC MAN ( 9 semptembre 2022) - 15e, au Billboard et sa première vraie tournée mondiale.
+MAGIC MAN ( 9 septembre 2022) - 15e, au Billboard et sa première vraie tournée mondiale.
 
 MAGIC MAN 2 (18 juillet 2025) - 13e au Billboard et 2ème tournée mondial.
 
 Pop, hip-hop, R&B, rock, influences chinoises et occidentales : il mélange les genres autant que les marchés, et à ce stade essayer de le ranger quelque part relève du sport de combat.
 
-Jackson et l'Europe
+## Jackson et l'Europe
 
 La partie qui nous concerne directement, forcément.
 
@@ -178,7 +186,7 @@ Jackson est ambassadeur Louis Vuitton depuis janvier 2023, et il n'a plus manqu�
 
 Côté scène, le Magic Man World Tour est passé par Paris et Londres en janvier 2023, à guichets fermés.
 
-Et pour la suite — le MAGICMAN 2 World Tour 2026-2027 — c'est exactement pour ça qu'on existe : voir notre page tournée <https://eurojackys.com/fr/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/>
+Et pour la suite — le MAGICMAN 2 World Tour 2026-2027 — c'est exactement pour ça qu'on existe : [voir notre page tournée ](https://eurojackys.com/fr/articles/qui-est-jackson-wang/)
 
 Alors, Jackson Wang, c'est qui ?
 
