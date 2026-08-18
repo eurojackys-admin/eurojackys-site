@@ -98,10 +98,7 @@ body_en: >-
   On stage, the Magic Man World Tour hit Paris and London in January 2023, both sold out.
 
 
-  And for what comes next — the MAGICMAN 2 World Tour 2026-2027 — that's exactly why we exist: see our tour page https://eurojackys.com/en/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/
-
-
-  So what is Jackson Wang, exactly?
+  And for what comes next — the MAGICMAN 2 World Tour 2026-2027 — that's exactly why we exist: see our tour page 
 
 
   K-pop idol? Yes, he's a member of GOT7.
@@ -125,11 +122,11 @@ Soyons honnêtes deux secondes : résumer Jackson Wang en une page, c'est comme 
 
 Chanteur, rappeur, auteur-compositeur, producteur, directeur créatif, patron de label, designer… et ancien escrimeur de haut niveau.
 
-Oui. Escrimeur. On y arrive.
+Oui, oui ... Escrimeur. On y arrive.
 
 Avant la musique, il y avait le sabre
 
-Jackson Wang naît le 28 mars 1994 à Kowloon Tong, Hong Kong, dans une famille où « faire du sport » n'est pas exactement un loisir du dimanche. Son père, Wang Ruiji, a décroché en 1978 à Bangkok la toute première médaille d'or chinoise en escrime aux Jeux asiatiques, avant de devenir entraîneur. Sa mère était gymnaste de haut niveau. Autant dire que le gène canapé a sauté une génération.
+Jackson Wang naît le 28 mars 1994 à Kowloon Tong, Hong Kong, dans une famille où « faire du sport » n'est pas exactement un loisir du dimanche. Son père, Wang Ruiji, a décroché en 1978 à Bangkok la toute première médaille d'or chinoise en escrime aux Jeux asiatiques, avant de devenir entraîneur. Sa mère était gymnaste de haut niveau. Autant dire que le gène canapé n'a pas sauté une génération.
 
 Il commence l'escrime à 10 ans, entraîné par son père. Et il est bon. Vraiment bon. En 2010, il représente Hong Kong aux tout premiers Jeux Olympiques de la Jeunesse à Singapour et termine 11e mondial junior. En 2011, il devient champion d'Asie junior au sabre.
 
@@ -137,11 +134,11 @@ Il commence l'escrime à 10 ans, entraîné par son père. Et il est bon. Vraime
 
 (Non.)
 
-17 ans, un aller simple pour Séoul
+Un aller simple pour Séoul
 
 Juillet 2011. Il pose ses valises en Corée du Sud pour devenir trainee chez JYP Entertainment.
 
-Il a 17 ans. Il ne parle pas coréen. Et il vient de refermer une carrière sportive que la moitié de la planète aurait tuée pour avoir. Nouvelle langue, nouveau pays, nouveau métier, retour à la case départ.
+Il a 17 ans, il ne parle pas coréen et il vient de refermer une carrière sportive que la moitié de la planète aurait tué pour avoir. Nouvelle langue, nouveau pays, nouveau métier, retour à la case départ.
 
 On aime bien ressortir ce détail quand quelqu'un dit qu'il « a eu de la chance ».
 
@@ -151,7 +148,7 @@ Après plus de deux ans de training, il débute le 16 janvier 2014 avec GOT7 et 
 
 Son énergie et son humour le rendent immédiatement identifiable — le genre de personne qu'on repère dans une émission de variété même en coupant le son. Mais derrière le mec qui hurle sur les plateaux, il y a quelqu'un qui prend des notes.
 
-Petite précision pour les nouveaux : en janvier 2021, les sept membres n'ont pas renouvelé leur contrat chez JYP. Le groupe n'a pas splitté pour autant — GOT7 est revenu avec un EP éponyme en mai 2022. Jackson en est toujours membre. Respirez.
+Petite précision pour les nouveaux : en janvier 2021, les sept membres n'ont pas renouvelé leur contrat chez JYP. Le groupe n'a pas splitté pour autant — GOT7 est revenu avec un EP éponyme en mai 2022 puis  WINTER HEPTAGON le 20 janvier 2025 pour leurs 11 ans, avec "Python" en titre phare.
 
 TEAM WANG
 
@@ -161,13 +158,15 @@ Sauf que TEAM WANG ne reste pas longtemps « juste un label ». Musique, product
 
 À ce stade il ne fait plus de la musique. Il construit un univers, et il en supervise la quasi-totalité.
 
-Trois albums, zéro case
+Trois albums, une mixtape.
 
-Mirrors (2019) — son premier album, 32e au Billboard 200.
+Mirrors (25 octobre 2019) - son premier album, 32e au Billboard 200.
 
-MAGIC MAN (2022) — 15e, et sa première vraie tournée mondiale.
+LOST & FOUND (7mars 2022) - Une mixtape sortie sans prévenir, 8 titres enregistrés en 2019 et restés dans un tiroir.
 
-MAGIC MAN 2 (18 juillet 2025) — 13e.
+MAGIC MAN ( 9 semptembre 2022) - 15e, au Billboard et sa première vraie tournée mondiale.
+
+MAGIC MAN 2 (18 juillet 2025) - 13e au Billboard et 2ème tournée mondial.
 
 Pop, hip-hop, R&B, rock, influences chinoises et occidentales : il mélange les genres autant que les marchés, et à ce stade essayer de le ranger quelque part relève du sport de combat.
 
@@ -179,9 +178,9 @@ Jackson est ambassadeur Louis Vuitton depuis janvier 2023, et il n'a plus manqu�
 
 Côté scène, le Magic Man World Tour est passé par Paris et Londres en janvier 2023, à guichets fermés.
 
-Et pour la suite — le MAGICMAN 2 World Tour 2026-2027 — c'est exactement pour ça qu'on existe : voir notre page tournée https://eurojackys.com/en/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/
+Et pour la suite — le MAGICMAN 2 World Tour 2026-2027 — c'est exactement pour ça qu'on existe : voir notre page tournée <https://eurojackys.com/fr/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/>
 
-Alors, Jackson Wang, c'est quoi ?
+Alors, Jackson Wang, c'est qui ?
 
 Idol K-pop ? Oui, il est membre de GOT7.
 
@@ -191,6 +190,6 @@ Artiste international ? De plus en plus.
 
 Entre Hong Kong, la Chine continentale, la Corée du Sud et le reste du monde, sa carrière s'est construite entre plusieurs cultures et plusieurs industries musicales. Et c'est probablement ce qui résume le mieux Jackson Wang :
 
-ne jamais vraiment choisir une seule voie quand il est possible d'en créer une nouvelle.
+ne jamais vraiment choisir de suivre une seule voie quand il est possible d'en créer une nouvelle.
 
 Nous, on est juste la fanbase européenne qui essaie de suivre le rythme. Spoiler : on n'y arrive pas.
