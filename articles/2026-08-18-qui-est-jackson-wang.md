@@ -2,6 +2,7 @@
 title: Qui est Jackson Wang ?
 title_en: Who is Jackson Wang ?
 date: 2026-08-18T18:31:00.000+02:00
+cover: /images/uploads/1000196470.jpg
 summary: "De champion d'escrime à Hong Kong à patron de TEAM WANG : l'histoire
   de Jackson Wang, racontée par la fanbase européenne."
 summary_en: From Hong Kong fencing champion to founder of TEAM WANG — the
@@ -97,7 +98,7 @@ body_en: >-
   On stage, the Magic Man World Tour hit Paris and London in January 2023, both sold out.
 
 
-  And for what comes next — the MAGICMAN 2 World Tour 2026-2027 — that's exactly why we exist: see our tour page (→ internal link).
+  And for what comes next — the MAGICMAN 2 World Tour 2026-2027 — that's exactly why we exist: see our tour page https://eurojackys.com/en/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/
 
 
   So what is Jackson Wang, exactly?
@@ -178,7 +179,7 @@ Jackson est ambassadeur Louis Vuitton depuis janvier 2023, et il n'a plus manqu�
 
 Côté scène, le Magic Man World Tour est passé par Paris et Londres en janvier 2023, à guichets fermés.
 
-Et pour la suite — le MAGICMAN 2 World Tour 2026-2027 — c'est exactement pour ça qu'on existe : voir notre page tournée (→ lien interne).
+Et pour la suite — le MAGICMAN 2 World Tour 2026-2027 — c'est exactement pour ça qu'on existe : voir notre page tournée https://eurojackys.com/en/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/
 
 Alors, Jackson Wang, c'est quoi ?
 
