@@ -1,6 +1,6 @@
 ---
-title: "Jackson Wang en tournée 2026-2027 : dates MAGICMAN 2 (et l'Europe ?)"
-title_en: "Jackson Wang Tour 2026-2027: MAGICMAN 2 Dates (and Europe?)"
+title: Jackson Wang en tournee
+title_en: Jackson Wang Tour
 date: 2026-08-18T19:10:00.000+02:00
 cover: /images/uploads/screenshot_20251205_191533_instagram.jpg
 summary: Toutes les dates confirmées du MAGICMAN 2 World Tour, et le point
