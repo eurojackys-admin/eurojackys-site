@@ -617,6 +617,55 @@ def gen_sitemap(articles):
     print("[build] wrote /sitemap.xml (%d URLs)" % len(entries))
 
 
+# ------------------------------------------------------------ page merci ---
+
+THANKS_PATH = "/merci/"
+
+
+def gen_thanks_page():
+    """Page de confirmation apres envoi du formulaire d'inscription.
+
+    Bilingue (les deux blocs sont affiches l'un sous l'autre), hors sitemap
+    et en noindex. Reutilise page_shell() pour heriter du header, du footer
+    et du CSS du site.
+    """
+    url = SITE + THANKS_PATH
+
+    head = head_block(
+        "fr",
+        "Merci | EuroJackys",
+        "Ton adresse est bien enregistr\u00e9e. Les autocollants arrivent bient\u00f4t.",
+        url,
+        url,
+        url,
+    ) + '\n<meta name="robots" content="noindex, follow">'
+
+    body = """<div class="breadcrumb"><a href="/">Accueil \u00b7 Home</a></div>
+<div class="eyebrow">Inscription \u00b7 Sign-up</div>
+<h1>C'est not\u00e9 !</h1>
+<div class="article-body">
+<p>Ton adresse est bien arriv\u00e9e. Les autocollants partent par la poste dans
+les prochaines semaines \u2014 laisse-moi le temps de pr\u00e9parer les enveloppes,
+je fais \u00e7a \u00e0 la main entre deux articles.</p>
+<p>Un souci, une adresse \u00e0 corriger, une question ? \u00c9cris-moi en DM sur
+Instagram, je r\u00e9ponds.</p>
+
+<h2>You're on the list</h2>
+<p>Your address came through. Stickers go out by post over the next few weeks
+\u2014 give me time to prep the envelopes, I'm doing this by hand between
+articles.</p>
+<p>Something wrong, an address to fix, a question? DM me on Instagram and
+I'll get back to you.</p>
+</div>
+<div class="postnav">
+  <a href="/">\u2190 Retour au site</a>
+  <a href="/fr/articles/">Articles</a>
+</div>"""
+
+    write_page(THANKS_PATH + "index.html",
+               page_shell("fr", head, THANKS_PATH, body, alt_url=THANKS_PATH))
+
+
 # ------------------------------------------------- index.html injection ---
 
 def inject(content, marker, inner):
@@ -747,6 +796,7 @@ def main():
     print("[build] %d article(s) found" % len(articles))
     gen_article_pages(articles)
     gen_listing_pages(articles)
+    gen_thanks_page()
     gen_sitemap(articles)
     build_index(articles)
     print("[build] done.")
