@@ -601,6 +601,8 @@ def gen_sitemap(articles):
         (SITE + "/en/about/", TODAY, "0.8"),
         (SITE + "/fr/articles/", TODAY, "0.8"),
         (SITE + "/en/articles/", TODAY, "0.8"),
+        (SITE + "/fr/inscription/", TODAY, "0.6"),
+        (SITE + "/en/signup/", TODAY, "0.6"),
     ]
     for art in articles:
         lastmod = (art["iso"] or TODAY)[:10]
@@ -617,53 +619,219 @@ def gen_sitemap(articles):
     print("[build] wrote /sitemap.xml (%d URLs)" % len(entries))
 
 
-# ------------------------------------------------------------ page merci ---
+# -------------------------------------------- inscription & remerciement ---
 
-THANKS_PATH = "/merci/"
+SIGNUP_PATHS = {"fr": "/fr/inscription/", "en": "/en/signup/"}
+THANKS_PATHS = {"fr": "/fr/merci/", "en": "/en/thanks/"}
+
+FORM_CSS = """
+.ej-form{margin:8px 0 0;}
+.ej-hp{position:absolute;left:-9999px;}
+.ej-row{margin-bottom:18px;display:flex;flex-direction:column;}
+.ej-row label{font-family:'Helvetica Neue',Arial,sans-serif;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:7px;}
+.ej-row input,.ej-row select{padding:12px 14px;background:var(--bg-soft);border:1px solid var(--line);border-radius:var(--radius);color:var(--cream);font-family:Georgia,'Times New Roman',serif;font-size:16px;}
+.ej-row input:focus-visible,.ej-row select:focus-visible,.ej-submit:focus-visible,.ej-check input:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+.ej-grid{display:grid;grid-template-columns:1fr 2fr;gap:18px;}
+.ej-help{margin-top:6px;font-size:13px;color:var(--muted);}
+.ej-check{display:flex;gap:11px;align-items:flex-start;margin-bottom:14px;}
+.ej-check input{margin-top:4px;flex-shrink:0;accent-color:var(--gold);}
+.ej-check label{font-size:14px;line-height:1.5;color:var(--ink);}
+.ej-privacy{font-size:13px;color:var(--muted);line-height:1.6;margin:24px 0;}
+.ej-submit{border:0;cursor:pointer;font-size:13px;}
+@media(max-width:560px){.ej-grid{grid-template-columns:1fr;}}
+"""
+
+COUNTRIES = {
+    "fr": ["Suisse", "France", "Belgique", "Luxembourg", "Allemagne", "Italie",
+           "Espagne", "Portugal", "Pays-Bas", "Autriche", "Pologne",
+           "Royaume-Uni", "Irlande", "Su\u00e8de", "Norv\u00e8ge", "Danemark",
+           "Finlande", "Autre pays"],
+    "en": ["Switzerland", "France", "Belgium", "Luxembourg", "Germany", "Italy",
+           "Spain", "Portugal", "Netherlands", "Austria", "Poland",
+           "United Kingdom", "Ireland", "Sweden", "Norway", "Denmark",
+           "Finland", "Other country"],
+}
+
+SIGNUP_TEXT = {
+    "fr": {
+        "title": "Inscription autocollants | EuroJackys",
+        "desc": ("Laisse ton adresse et re\u00e7ois une planche d'autocollants "
+                 "EuroJackys. Envoi gratuit partout en Europe."),
+        "eyebrow": "Autocollants",
+        "h1": "Re\u00e7ois tes autocollants",
+        "lead": ("Laisse-moi ton adresse et je t'envoie une planche d'autocollants "
+                 "EuroJackys. Un envoi par personne, pendant que le stock tient."),
+        "prenom": "Pr\u00e9nom", "nom": "Nom", "rue": "Rue et num\u00e9ro",
+        "complement": "Compl\u00e9ment (facultatif)", "npa": "Code postal",
+        "ville": "Ville", "pays": "Pays", "pays_ph": "Choisis ton pays",
+        "insta": "Pseudo Instagram",
+        "insta_help": "Pour te contacter si l'adresse ne passe pas.",
+        "minor": ("Si j'ai moins de 18 ans, j'ai l'accord d'un parent pour "
+                  "donner mon adresse."),
+        "consent": ("J'accepte que mon adresse soit conserv\u00e9e uniquement "
+                    "pour cet envoi."),
+        "privacy": ("Ton adresse sert seulement \u00e0 t'envoyer les autocollants. "
+                    "Elle n'est jamais partag\u00e9e, ni revendue, ni utilis\u00e9e "
+                    "pour autre chose. Tu peux demander sa suppression \u00e0 tout "
+                    "moment en DM sur Instagram."),
+        "submit": "Envoyer mon adresse",
+        "home": "Accueil",
+    },
+    "en": {
+        "title": "Sticker sign-up | EuroJackys",
+        "desc": ("Drop your address and get a sheet of EuroJackys stickers. "
+                 "Free shipping anywhere in Europe."),
+        "eyebrow": "Stickers",
+        "h1": "Get your stickers",
+        "lead": ("Drop your address and I'll send you a sheet of EuroJackys "
+                 "stickers. One per person, while stock lasts."),
+        "prenom": "First name", "nom": "Last name", "rue": "Street and number",
+        "complement": "Address line 2 (optional)", "npa": "Postal code",
+        "ville": "City", "pays": "Country", "pays_ph": "Pick your country",
+        "insta": "Instagram handle",
+        "insta_help": "So I can reach you if the address bounces.",
+        "minor": ("If I'm under 18, I have a parent's permission to share "
+                  "my address."),
+        "consent": "I agree my address is kept only for this mailing.",
+        "privacy": ("Your address is used only to send you the stickers. It's "
+                    "never shared, never sold, never used for anything else. "
+                    "Ask me to delete it any time via Instagram DM."),
+        "submit": "Send my address",
+        "home": "Home",
+    },
+}
+
+THANKS_TEXT = {
+    "fr": {
+        "title": "Merci | EuroJackys",
+        "desc": "Ton adresse est bien enregistr\u00e9e.",
+        "eyebrow": "Inscription",
+        "h1": "C'est not\u00e9 !",
+        "p1": ("Ton adresse est bien arriv\u00e9e. Les autocollants partent par la "
+               "poste dans les prochaines semaines \u2014 laisse-moi le temps de "
+               "pr\u00e9parer les enveloppes, je fais \u00e7a \u00e0 la main."),
+        "p2": ("Un souci, une adresse \u00e0 corriger, une question ? \u00c9cris-moi "
+               "en DM sur Instagram, je r\u00e9ponds."),
+        "back": "\u2190 Retour au site",
+        "home": "Accueil",
+    },
+    "en": {
+        "title": "Thanks | EuroJackys",
+        "desc": "Your address is safely recorded.",
+        "eyebrow": "Sign-up",
+        "h1": "You're on the list",
+        "p1": ("Your address came through. Stickers go out by post over the next "
+               "few weeks \u2014 give me time to prep the envelopes, I'm doing "
+               "this by hand."),
+        "p2": ("Something wrong, an address to fix, a question? DM me on "
+               "Instagram and I'll get back to you."),
+        "back": "\u2190 Back to the site",
+        "home": "Home",
+    },
+}
 
 
-def gen_thanks_page():
-    """Page de confirmation apres envoi du formulaire d'inscription.
+def signup_form_html(lang):
+    """Formulaire Netlify Forms. Les attributs data-netlify et le champ cache
+    form-name sont indispensables : sans eux Netlify ignore l'envoi."""
+    t = SIGNUP_TEXT[lang]
+    form_name = "inscription-%s" % lang
+    options = "".join("<option>%s</option>" % esc(c) for c in COUNTRIES[lang])
+    return """<form name="{fname}" method="POST" action="{thanks}" data-netlify="true" data-netlify-honeypot="bot-field" class="ej-form">
+<input type="hidden" name="form-name" value="{fname}">
+<p class="ej-hp"><label>Leave empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
-    Bilingue (les deux blocs sont affiches l'un sous l'autre), hors sitemap
-    et en noindex. Reutilise page_shell() pour heriter du header, du footer
-    et du CSS du site.
-    """
-    url = SITE + THANKS_PATH
+<div class="ej-row"><label for="f-prenom">{prenom}</label>
+<input id="f-prenom" name="prenom" type="text" autocomplete="given-name" required></div>
 
-    head = head_block(
-        "fr",
-        "Merci | EuroJackys",
-        "Ton adresse est bien enregistr\u00e9e. Les autocollants arrivent bient\u00f4t.",
-        url,
-        url,
-        url,
-    ) + '\n<meta name="robots" content="noindex, follow">'
+<div class="ej-row"><label for="f-nom">{nom}</label>
+<input id="f-nom" name="nom" type="text" autocomplete="family-name" required></div>
 
-    body = """<div class="breadcrumb"><a href="/">Accueil \u00b7 Home</a></div>
-<div class="eyebrow">Inscription \u00b7 Sign-up</div>
-<h1>C'est not\u00e9 !</h1>
-<div class="article-body">
-<p>Ton adresse est bien arriv\u00e9e. Les autocollants partent par la poste dans
-les prochaines semaines \u2014 laisse-moi le temps de pr\u00e9parer les enveloppes,
-je fais \u00e7a \u00e0 la main entre deux articles.</p>
-<p>Un souci, une adresse \u00e0 corriger, une question ? \u00c9cris-moi en DM sur
-Instagram, je r\u00e9ponds.</p>
+<div class="ej-row"><label for="f-rue">{rue}</label>
+<input id="f-rue" name="rue" type="text" autocomplete="street-address" required></div>
 
-<h2>You're on the list</h2>
-<p>Your address came through. Stickers go out by post over the next few weeks
-\u2014 give me time to prep the envelopes, I'm doing this by hand between
-articles.</p>
-<p>Something wrong, an address to fix, a question? DM me on Instagram and
-I'll get back to you.</p>
+<div class="ej-row"><label for="f-comp">{complement}</label>
+<input id="f-comp" name="complement" type="text" autocomplete="address-line2"></div>
+
+<div class="ej-grid">
+<div class="ej-row"><label for="f-npa">{npa}</label>
+<input id="f-npa" name="code_postal" type="text" autocomplete="postal-code" required></div>
+<div class="ej-row"><label for="f-ville">{ville}</label>
+<input id="f-ville" name="ville" type="text" autocomplete="address-level2" required></div>
 </div>
-<div class="postnav">
-  <a href="/">\u2190 Retour au site</a>
-  <a href="/fr/articles/">Articles</a>
-</div>"""
 
-    write_page(THANKS_PATH + "index.html",
-               page_shell("fr", head, THANKS_PATH, body, alt_url=THANKS_PATH))
+<div class="ej-row"><label for="f-pays">{pays}</label>
+<select id="f-pays" name="pays" autocomplete="country-name" required>
+<option value="">{pays_ph}</option>{options}</select></div>
+
+<div class="ej-row"><label for="f-insta">{insta}</label>
+<input id="f-insta" name="instagram" type="text" placeholder="@..." required>
+<small class="ej-help">{insta_help}</small></div>
+
+<div class="ej-check"><input id="f-minor" name="accord_parental" type="checkbox" value="oui" required>
+<label for="f-minor">{minor}</label></div>
+
+<div class="ej-check"><input id="f-consent" name="consentement" type="checkbox" value="oui" required>
+<label for="f-consent">{consent}</label></div>
+
+<p class="ej-privacy">{privacy}</p>
+
+<button type="submit" class="btn ej-submit">{submit}</button>
+</form>""".format(
+        fname=form_name, thanks=THANKS_PATHS[lang], options=options,
+        prenom=esc(t["prenom"]), nom=esc(t["nom"]), rue=esc(t["rue"]),
+        complement=esc(t["complement"]), npa=esc(t["npa"]), ville=esc(t["ville"]),
+        pays=esc(t["pays"]), pays_ph=esc(t["pays_ph"]), insta=esc(t["insta"]),
+        insta_help=esc(t["insta_help"]), minor=esc(t["minor"]),
+        consent=esc(t["consent"]), privacy=esc(t["privacy"]),
+        submit=esc(t["submit"]))
+
+
+def gen_signup_pages():
+    """Page d'inscription aux autocollants, une par langue."""
+    for lang in ("fr", "en"):
+        t = SIGNUP_TEXT[lang]
+        path = SIGNUP_PATHS[lang]
+        url = SITE + path
+        head = head_block(
+            lang, t["title"], t["desc"], url,
+            SITE + SIGNUP_PATHS["fr"], SITE + SIGNUP_PATHS["en"],
+        ) + "\n<style>%s</style>" % FORM_CSS
+        body = """<div class="breadcrumb"><a href="/">{home}</a></div>
+<div class="eyebrow">{eyebrow}</div>
+<h1>{h1}</h1>
+<p class="lead">{lead}</p>
+{form}""".format(home=esc(t["home"]), eyebrow=esc(t["eyebrow"]),
+                 h1=esc(t["h1"]), lead=esc(t["lead"]),
+                 form=signup_form_html(lang))
+        write_page(path + "index.html",
+                   page_shell(lang, head, path, body,
+                              alt_url=SIGNUP_PATHS["en" if lang == "fr" else "fr"]))
+
+
+def gen_thanks_pages():
+    """Page de confirmation apres envoi du formulaire. Noindex, hors sitemap."""
+    for lang in ("fr", "en"):
+        t = THANKS_TEXT[lang]
+        path = THANKS_PATHS[lang]
+        url = SITE + path
+        head = head_block(
+            lang, t["title"], t["desc"], url,
+            SITE + THANKS_PATHS["fr"], SITE + THANKS_PATHS["en"],
+        ) + '\n<meta name="robots" content="noindex, follow">'
+        body = """<div class="breadcrumb"><a href="/">{home}</a></div>
+<div class="eyebrow">{eyebrow}</div>
+<h1>{h1}</h1>
+<div class="article-body">
+<p>{p1}</p>
+<p>{p2}</p>
+</div>
+<div class="postnav"><a href="/">{back}</a></div>""".format(
+            home=esc(t["home"]), eyebrow=esc(t["eyebrow"]), h1=esc(t["h1"]),
+            p1=esc(t["p1"]), p2=esc(t["p2"]), back=esc(t["back"]))
+        write_page(path + "index.html",
+                   page_shell(lang, head, path, body,
+                              alt_url=THANKS_PATHS["en" if lang == "fr" else "fr"]))
 
 
 # ------------------------------------------------- index.html injection ---
@@ -796,7 +964,8 @@ def main():
     print("[build] %d article(s) found" % len(articles))
     gen_article_pages(articles)
     gen_listing_pages(articles)
-    gen_thanks_page()
+    gen_signup_pages()
+    gen_thanks_pages()
     gen_sitemap(articles)
     build_index(articles)
     print("[build] done.")
