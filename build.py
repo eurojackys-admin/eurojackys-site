@@ -664,8 +664,8 @@ SIGNUP_TEXT = {
         "prenom": "Pr\u00e9nom", "nom": "Nom", "rue": "Rue et num\u00e9ro",
         "complement": "Compl\u00e9ment (facultatif)", "npa": "Code postal",
         "ville": "Ville", "pays": "Pays", "pays_ph": "Choisis ton pays",
-        "insta": "Pseudo Instagram",
-        "insta_help": "Pour te contacter si l'adresse ne passe pas.",
+        "insta": "Instagram ou e-mail (optionnel)",
+        "insta_help": "Uniquement si tu veux qu'on puisse te recontacter.",
         "minor": ("Si j'ai moins de 18 ans, j'ai l'accord d'un parent pour "
                   "donner mon adresse."),
         "consent": ("J'accepte que mon adresse soit conserv\u00e9e uniquement "
@@ -688,8 +688,8 @@ SIGNUP_TEXT = {
         "prenom": "First name", "nom": "Last name", "rue": "Street and number",
         "complement": "Address line 2 (optional)", "npa": "Postal code",
         "ville": "City", "pays": "Country", "pays_ph": "Pick your country",
-        "insta": "Instagram handle",
-        "insta_help": "So I can reach you if the address bounces.",
+        "insta": "Instagram or email (optional)",
+        "insta_help": "Only if you want us to be able to reach you.",
         "minor": ("If I'm under 18, I have a parent's permission to share "
                   "my address."),
         "consent": "I agree my address is kept only for this mailing.",
@@ -765,10 +765,10 @@ def signup_form_html(lang):
 <option value="">{pays_ph}</option>{options}</select></div>
 
 <div class="ej-row"><label for="f-insta">{insta}</label>
-<input id="f-insta" name="instagram" type="text" placeholder="@..." required>
+<input id="f-insta" name="instagram" type="text" placeholder="@... / e-mail">
 <small class="ej-help">{insta_help}</small></div>
 
-<div class="ej-check"><input id="f-minor" name="accord_parental" type="checkbox" value="oui" required>
+<div class="ej-check"><input id="f-minor" name="accord_parental" type="checkbox" value="oui">
 <label for="f-minor">{minor}</label></div>
 
 <div class="ej-check"><input id="f-consent" name="consentement" type="checkbox" value="oui" required>
