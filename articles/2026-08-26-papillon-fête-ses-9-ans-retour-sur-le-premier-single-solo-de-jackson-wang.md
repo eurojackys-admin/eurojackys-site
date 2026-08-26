@@ -110,8 +110,8 @@ body_en: >-
   **Happy 9th anniversary. 🦋**
 
 
-  <https://www.instagram.com/reel/DcfrzKuR-Bk/?igsi=NHI5aHF1MDBjYjNo>
-external_link: https://youtu.be/0Qz4BL9qaVg?si=cd835o-DUHRy4amh
+  [Watch in Instagram](https://www.instagram.com/reel/DcfrzKuR-Bk/?igsi=NHI5aHF1MDBjYjNo)
+external_link: https://youtu.be/4Jmv03CmCz0?si=SjTfi4si1K5MNsb-
 ---
 Le **26 août 2017**, Jackson Wang sortait **« Papillon »**, son premier single solo officiel.
 
@@ -179,4 +179,4 @@ Le 26 août 2017, ce message portait un nom :
 
 **Joyeux 9e anniversaire. 🦋**
 
-<https://www.instagram.com/reel/DcfrzKuR-Bk/?igsi=NHI5aHF1MDBjYjNo>
+[Regarde sur Instagram ](https://www.instagram.com/reel/DcfrzKuR-Bk/?igsi=NHI5aHF1MDBjYjNo)
