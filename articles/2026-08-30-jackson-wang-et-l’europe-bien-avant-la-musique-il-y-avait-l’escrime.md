@@ -2,7 +2,7 @@
 title: "Jackson Wang et l’Europe : bien avant la musique, il y avait l’escrime"
 title_en: "Jackson Wang and Europe: the sabre before the mic"
 date: 2026-08-30T19:08:00.000+02:00
-cover: /images/uploads/screenshot_20260725_114148_instagram.jpg
+cover: /images/uploads/1ef6b41dc2b5d2b8c9785aa9556b760d.jpg
 summary: ""
 body_en: >-
   We think we know the story. Jackson goes to Korea, becomes a trainee, GOT7,
@@ -24,9 +24,6 @@ body_en: >-
 
 
   So no. This wasn't a hobby. This was a trajectory.
-
-
-  ![](/images/uploads/1ef6b41dc2b5d2b8c9785aa9556b760d.jpg)
 
 
   ## Budapest, Europe before Europe
@@ -68,35 +65,21 @@ body_en: >-
   ## Sources and Useful Links
 
 
-  *   [Jackson’s post about his former stay in Budapest — X, December 18, 2023](https://x.com/JacksonWang852/status/1736523974295838991)
+  * [Jackson’s post about his former stay in Budapest — X, December 18, 2023](https://x.com/JacksonWang852/status/1736523974295838991)
 
+  * [Jackson discusses Budapest and his seven to eight months in Sicily — WIRED, July 2025](https://www.wired.com/video/watch/google-autocomplete-interviews-jackson-wang-answers-more-of-the-webs-most-searched-questions)
 
+  * [Jackson Wang’s profile and results at the 2010 Youth Olympic Games — Olympedia](https://www.olympedia.org/athletes/1303379)
 
-  *   [Jackson discusses Budapest and his seven to eight months in Sicily — WIRED, July 2025](https://www.wired.com/video/watch/google-autocomplete-interviews-jackson-wang-answers-more-of-the-webs-most-searched-questions)
+  * [Jackson Wang named the FIE’s first Global Ambassador — International Fencing Federation](https://fie.org/news/1693-jackson-wang-signs-as-global-ambassador-for-fie-on-road-to-la28)
 
+  * [Jackson returns to the 2026 Fencing World Championships in Hong Kong — International Fencing Federation](https://fie.org/news/1692-jackson-wang-set-for-triumphant-homecoming-at-fencing-world-championships-in-hong-kong)
 
+  * [Profile of his journey from fencing to K-pop — Main Stand](https://mainstand.co.th/en/features/5/article/3138)
 
-  *   [Jackson Wang’s profile and results at the 2010 Youth Olympic Games — Olympedia](https://www.olympedia.org/athletes/1303379)
+  * [Interview about his choice between fencing and music — YouTube](https://www.youtube.com/watch?v=gCiOuJ9OeO4)
 
-
-
-  *   [Jackson Wang named the FIE’s first Global Ambassador — International Fencing Federation](https://fie.org/news/1693-jackson-wang-signs-as-global-ambassador-for-fie-on-road-to-la28)
-
-
-
-  *   [Jackson returns to the 2026 Fencing World Championships in Hong Kong — International Fencing Federation](https://fie.org/news/1692-jackson-wang-set-for-triumphant-homecoming-at-fencing-world-championships-in-hong-kong)
-
-
-
-  *   [Profile of his journey from fencing to K-pop — Main Stand](https://mainstand.co.th/en/features/5/article/3138)
-
-
-
-  *   [Interview about his choice between fencing and music — YouTube](https://www.youtube.com/watch?v=gCiOuJ9OeO4)
-
-
-
-  *   [Jackson’s match at the 2010 Cadet World Championships in Baku — YouTube](https://www.youtube.com/watch?v=ApnYoASn3tc)
+  * [Jackson’s match at the 2010 Cadet World Championships in Baku — YouTube](https://www.youtube.com/watch?v=ApnYoASn3tc)
 ---
 On croit connaître l'histoire. Jackson débarque en Corée, devient trainee, GOT7, solo, TEAM WANG, Louis Vuitton, et hop, un jour il pose le pied en Europe pour la première fois entre deux Fashion Weeks. Sauf que non. Pas du tout, en fait. Jackson connaissait déjà nos routes, nos hôtels un peu tristes et nos gymnases mal chauffés bien avant de savoir qu'il deviendrait chanteur. Parce qu'avant tout ça, il y avait une lame, un masque, et une carrière sportive qui aurait pu l'emmener droit aux Jeux olympiques.
 
@@ -107,8 +90,6 @@ Jackson n'a pas juste "touché" à l'escrime façon loisir du mercredi après-mi
 Jackson commence le sabre vers dix ans. En 2010, à seulement 16 ans, il représente Hong Kong aux tout premiers Jeux olympiques de la jeunesse, à Singapour — 11e en individuel, 8e par équipes mixtes. L'année suivante, il décroche le titre au sabre aux Championnats d'Asie juniors et cadets. C'est, encore aujourd'hui, considéré comme le sommet de sa carrière sportive. Et la Fédération internationale d'escrime elle-même le comptait parmi les grands espoirs de Hong Kong.
 
 Bref. Ce n'était pas un hobby. C'était une trajectoire.
-
-![](/images/uploads/1ef6b41dc2b5d2b8c9785aa9556b760d.jpg)
 
 ## Budapest, l'Europe avant l'Europe
 
@@ -134,10 +115,6 @@ Et en juillet 2026, la boucle s'est refermée officiellement : Jackson a été n
 
 Avant la musique. Avant GOT7. Avant TEAM WANG. Il y avait le sabre. Et nous, fans européens, on peut se targuer d'un truc que peu de fandoms peuvent dire : le continent qu'on représente faisait déjà partie de son histoire, bien avant qu'on existe.
 
-
-
-
-
 ## Sources et liens utiles
 
 * [Message de Jackson sur son ancien séjour à Budapest — X, 18 décembre 2023](https://x.com/JacksonWang852/status/1736523974295838991)
@@ -147,4 +124,4 @@ Avant la musique. Avant GOT7. Avant TEAM WANG. Il y avait le sabre. Et nous, fan
 * [Retour de Jackson aux Championnats du monde d’escrime 2026 à Hong Kong — Fédération internationale d’escrime](https://fie.org/news/1692-jackson-wang-set-for-triumphant-homecoming-at-fencing-world-championships-in-hong-kong)
 * [Portrait de son parcours, de l’escrime à la K-pop — Main Stand](https://mainstand.co.th/en/features/5/article/3138)
 * [Interview sur son choix entre l’escrime et la musique — YouTube](https://www.youtube.com/watch?v=gCiOuJ9OeO4)
-*   ![]()
+* ![]()
