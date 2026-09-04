@@ -298,8 +298,8 @@ footer .footer-nav a:hover{color:var(--gold-soft);}
 """
 
 NAV = {
-    "fr": [("/", "Accueil"), ("/fr/articles/", "Articles"), ("/fr/a-propos/", "\u00c0 propos")],
-    "en": [("/", "Home"), ("/en/articles/", "Articles"), ("/en/about/", "About")],
+    "fr": [("/", "Accueil"), ("/fr/articles/", "Articles"), ("/fr/a-propos/", "À propos"), ("/fr/soutenir/", "Soutenir")],
+    "en": [("/", "Home"), ("/en/articles/", "Articles"), ("/en/about/", "About"), ("/en/support/", "Support")],
 }
 
 FOOTER_TAGLINE = {
@@ -958,7 +958,96 @@ def build_index(articles):
         f.write(content)
     print("[build] index.html updated")
 
+SUPPORT_PATHS = {"fr": "/fr/soutenir/", "en": "/en/support/"}
 
+SUPPORT_TEXT = {
+    "fr": {
+        "title": "Soutenir EuroJackys | EuroJackys",
+        "desc": "Aide EuroJackys \u00e0 rester en ligne et \u00e0 grandir.",
+        "eyebrow": "Soutien",
+        "h1": "Soutenir EuroJackys",
+        "p1": ("EuroJackys, c'est un projet 100% b\u00e9n\u00e9vole, n\u00e9 un peu par "
+               "amour et beaucoup par obsession (on ne va pas se mentir). Entre "
+               "l'h\u00e9bergement du site, le temps pass\u00e9 \u00e0 traquer chaque "
+               "actu de Jackson sur Weibo \u00e0 23h, et les heures \u00e0 peaufiner "
+               "le Jackyroscope pour que votre signe ne soit pas r\u00e9duit \u00e0 "
+               "un clich\u00e9 \u2014 \u00e7a prend du temps et \u00e7a co\u00fbte un peu."),
+        "p2": ("Si tu as envie de filer un coup de pouce, un petit caf\u00e9 "
+               "virtuel via Ko-fi aide \u00e0 garder le site en ligne et le contenu "
+               "qui arrive. Et qui sait \u2014 si Jackson finit par poser ses "
+               "valises en Europe un jour, on aimerait bien avoir les moyens "
+               "d'organiser des projets communs pour l'occasion plut\u00f4t que "
+               "de improviser en mode panique la veille."),
+        "p3": ("Aucune pression, aucune obligation \u2014 EuroJackys reste et "
+               "restera gratuit pour tout le monde. C'est juste que si Jackson "
+               "peut nous ghoster pendant des semaines et revenir comme si de "
+               "rien n'\u00e9tait, le moins qu'on puisse faire c'est garder le "
+               "site allum\u00e9 (et un peu d'argent de c\u00f4t\u00e9) en l'attendant."),
+        "p4": ("Merci d'\u00eatre l\u00e0, merci de lire jusqu'ici, et for the love "
+               "of Wang, merci de nous soutenir. \ud83d\udc9b"),
+        "home": "Accueil",
+    },
+    "en": {
+        "title": "Support EuroJackys | EuroJackys",
+        "desc": "Help EuroJackys stay online and grow.",
+        "eyebrow": "Support",
+        "h1": "Support EuroJackys",
+        "p1": ("EuroJackys is a 100% volunteer-run project, born out of love "
+               "and, let's be honest, a lot of obsession. Between hosting "
+               "costs, hours spent tracking Jackson's every move on Weibo at "
+               "11pm, and the time it takes to polish the Jackyroscope so your "
+               "sign isn't reduced to a lazy clich\u00e9 \u2014 it takes time, and "
+               "it costs a little."),
+        "p2": ("If you'd like to help out, a small virtual coffee via Ko-fi "
+               "goes a long way in keeping the site online and the content "
+               "coming. And who knows \u2014 if Jackson ever decides to actually "
+               "set foot in Europe, we'd love to have the means to put "
+               "together community projects for the occasion instead of "
+               "scrambling last minute."),
+        "p3": ("No pressure, no obligation \u2014 EuroJackys is and will stay "
+               "free for everyone. It's just that if Jackson can ghost us for "
+               "weeks and come back like nothing happened, the least we can "
+               "do is keep the lights on (and a little fund on the side) "
+               "while we wait."),
+        "p4": ("Thanks for being here, thanks for reading this far, and for "
+               "the love of Wang, thank you for the support. \ud83d\udc9b"),
+        "home": "Home",
+    },
+}
+
+KOFI_EMBED = """<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+<script type='text/javascript'>
+kofiwidget2.init('Support me on Ko-fi', '#f573c8', 'W6O726CSNM');
+kofiwidget2.draw();
+</script>"""
+
+
+def gen_support_pages():
+    """Page 'Soutenir EuroJackys' avec bouton Ko-fi, une par langue."""
+    for lang in ("fr", "en"):
+        t = SUPPORT_TEXT[lang]
+        path = SUPPORT_PATHS[lang]
+        url = SITE + path
+        head = head_block(
+            lang, t["title"], t["desc"], url,
+            SITE + SUPPORT_PATHS["fr"], SITE + SUPPORT_PATHS["en"],
+        )
+        body = """<div class="breadcrumb"><a href="/">{home}</a></div>
+<div class="eyebrow">{eyebrow}</div>
+<h1>{h1}</h1>
+<div class="article-body">
+<p>{p1}</p>
+<p>{p2}</p>
+<p>{p3}</p>
+<p>{p4}</p>
+</div>
+<div style="margin-top:32px;">{kofi}</div>""".format(
+            home=esc(t["home"]), eyebrow=esc(t["eyebrow"]), h1=esc(t["h1"]),
+            p1=esc(t["p1"]), p2=esc(t["p2"]), p3=esc(t["p3"]), p4=esc(t["p4"]),
+            kofi=KOFI_EMBED)
+        write_page(path + "index.html",
+                   page_shell(lang, head, path, body,
+                              alt_url=SUPPORT_PATHS["en" if lang == "fr" else "fr"]))
 def main():
     articles = load_articles()
     print("[build] %d article(s) found" % len(articles))
@@ -966,6 +1055,7 @@ def main():
     gen_listing_pages(articles)
     gen_signup_pages()
     gen_thanks_pages()
+    gen_support_pages()
     gen_sitemap(articles)
     build_index(articles)
     print("[build] done.")
