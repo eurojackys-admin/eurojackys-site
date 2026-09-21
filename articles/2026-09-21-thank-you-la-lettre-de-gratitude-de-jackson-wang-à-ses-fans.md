@@ -40,9 +40,6 @@ body_en: >-
 
 
   It feels like a hug, turned into a song.
-
-
-  ![](/images/uploads/screenshot_20260910_205235_x.jpg)
 external_link: https://youtu.be/KzM1arYmO4w?si=6NJBktDyl16vL1xx
 ---
 C’est la première fois que Jackson dédie une chanson entière, aussi directement, à celles et ceux qui l’ont accompagné, peu importe depuis quand.
@@ -66,7 +63,3 @@ Et nous, les Jackys européennes, nous nous sentons pleinement incluses dans ce 
 Ce morceau m’a fait pleurer. Pas seulement parce qu’il dit merci, mais parce qu’il nous montre concrètement la place que nous occupons dans son monde.
 
 C'est comme un hug chanté.
-
-
-
-![](/images/uploads/screenshot_20260910_205235_x.jpg)
