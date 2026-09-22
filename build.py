@@ -829,15 +829,28 @@ def signup_form_html(lang):
 
 
 def gen_support_pages():
-  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-  kofiWidgetOverlay.draw('eurojackys', {
-    'type': 'floating-chat',
-    'floating-chat.donateButton.text': 'Support me',
-    'floating-chat.donateButton.background-color': '#00b9fe',
-    'floating-chat.donateButton.text-color': '#fff'
-  });
-</script>
+    """Page de soutien (Ko-fi), une par langue."""
+    for lang in ("fr", "en"):
+        t = SUPPORT_TEXT[lang]
+        path = SUPPORT_PATHS[lang]
+        url = SITE + path
+        head = head_block(
+            lang, t["title"], t["desc"], url,
+            SITE + SUPPORT_PATHS["fr"], SITE + SUPPORT_PATHS["en"],
+        )
+        body = """<div class="breadcrumb"><a href="/">{home}</a></div>
+<div class="eyebrow">{eyebrow}</div>
+<h1>{h1}</h1>
+<div class="article-body">
+<p>{p1}</p>
+<p>{p2}</p>
+</div>
+<div style="margin-top:32px;">{kofi}</div>""".format(
+            home=esc(t["home"]), eyebrow=esc(t["eyebrow"]), h1=esc(t["h1"]),
+            p1=esc(t["p1"]), p2=esc(t["p2"]), kofi=KOFI_BUTTON)
+        write_page(path + "index.html",
+                   page_shell(lang, head, path, body,
+                              alt_url=SUPPORT_PATHS["en" if lang == "fr" else "fr"]))
 def gen_signup_pages():
     """Page d'inscription aux autocollants, une par langue."""
     for lang in ("fr", "en"):
