@@ -39,6 +39,7 @@ SOCIALS = [
     ("Threads", "https://threads.net/@eurojackys"),
     ("X", "https://x.com/eurojackys"),
     ("YouTube", "https://www.youtube.com/@eurojackys"),
+  ("Stationhead","https://stationhead.com/u/eurojackys")
 ]
 
 ORG_DESCRIPTION = ("Independent European fanbase for Jackson Wang. Verified news, "
@@ -298,8 +299,8 @@ footer .footer-nav a:hover{color:var(--gold-soft);}
 """
 
 NAV = {
-    "fr": [("/", "Accueil"), ("/fr/articles/", "Articles"), ("/fr/a-propos/", "\u00c0 propos")],
-    "en": [("/", "Home"), ("/en/articles/", "Articles"), ("/en/about/", "About")],
+    "fr": [("/", "Accueil"), ("/fr/articles/", "Articles"), ("/fr/a-propos/", "\u00c0 propos"),("support")],
+    "en": [("/", "Home"), ("/en/articles/", "Articles"), ("/en/about/", "About"),("support")],
 }
 
 FOOTER_TAGLINE = {
@@ -603,6 +604,8 @@ def gen_sitemap(articles):
         (SITE + "/en/articles/", TODAY, "0.8"),
         (SITE + "/fr/inscription/", TODAY, "0.6"),
         (SITE + "/en/signup/", TODAY, "0.6"),
+        (SITE + "/fr/support/", TODAY, "06"),
+        (SITE + "/en/support/", TODAY, "06")
     ]
     for art in articles:
         lastmod = (art["iso"] or TODAY)[:10]
@@ -621,6 +624,44 @@ def gen_sitemap(articles):
 
 # -------------------------------------------- inscription & remerciement ---
 
+SUPPORT_PATHS = {"fr": "/fr/soutenir/", "en": "/en/support/"}
+
+KOFI_URL = "https://ko-fi.com/W6O726CSNM"
+KOFI_BUTTON = ('<a href="%s" target="_blank" rel="noopener">'
+               '<img height="36" style="border:0px;height:36px;" '
+               'src="https://storage.ko-fi.com/cdn/kofi3.png?v=6" '
+               'border="0" alt="Buy Me a Coffee at ko-fi.com"></a>' % KOFI_URL)
+
+SUPPORT_TEXT = {
+    "fr": {
+        "title": "Soutenir EuroJackys | EuroJackys",
+        "desc": "Aide EuroJackys \u00e0 couvrir ses frais d'h\u00e9bergement et \u00e0 pr\u00e9parer l'avenir de la fanbase.",
+        "eyebrow": "Soutien",
+        "h1": "Soutenir EuroJackys",
+        "p1": ("EuroJackys, c'est un site, des r\u00e9seaux, du contenu bilingue et beaucoup "
+               "(beaucoup) de caf\u00e9 pour tenir le rythme entre deux Jackyroscopes. "
+               "L'h\u00e9bergement du site a un co\u00fbt, et chaque petit don nous aide \u00e0 garder "
+               "tout \u00e7a en ligne, sans pub, sans compromis."),
+        "p2": ("Et si un jour Jackson Wang met les pieds en Europe ? On veut \u00eatre pr\u00eates "
+               "\u00e0 organiser quelque chose ensemble, pour et avec la fandom. Ton soutien, "
+               "m\u00eame symbolique, nous aide \u00e0 construire cette base pour le jour J."),
+        "home": "Accueil",
+    },
+    "en": {
+        "title": "Support EuroJackys | EuroJackys",
+        "desc": "Help EuroJackys cover hosting costs and prepare the fandom's future.",
+        "eyebrow": "Support",
+        "h1": "Support EuroJackys",
+        "p1": ("EuroJackys runs on a website, socials, bilingual content, and a "
+               "genuinely worrying amount of coffee to keep up between Jackyroscopes. "
+               "Hosting the site costs money, and every small donation helps us keep "
+               "it running \u2014 no ads, no compromises."),
+        "p2": ("And if Jackson Wang ever sets foot in Europe? We want to be ready to "
+               "organize something together, for and with the fandom. Your support, "
+               "even symbolic, helps us build that foundation for the day it happens."),
+        "home": "Home",
+    },
+}
 SIGNUP_PATHS = {"fr": "/fr/inscription/", "en": "/en/signup/"}
 THANKS_PATHS = {"fr": "/fr/merci/", "en": "/en/thanks/"}
 
@@ -787,6 +828,16 @@ def signup_form_html(lang):
         submit=esc(t["submit"]))
 
 
+def gen_support_pages():
+  <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+<script>
+  kofiWidgetOverlay.draw('eurojackys', {
+    'type': 'floating-chat',
+    'floating-chat.donateButton.text': 'Support me',
+    'floating-chat.donateButton.background-color': '#00b9fe',
+    'floating-chat.donateButton.text-color': '#fff'
+  });
+</script>
 def gen_signup_pages():
     """Page d'inscription aux autocollants, une par langue."""
     for lang in ("fr", "en"):
@@ -965,6 +1016,7 @@ def main():
     gen_article_pages(articles)
     gen_listing_pages(articles)
     gen_signup_pages()
+    gen_support_pages()
     gen_thanks_pages()
     gen_sitemap(articles)
     build_index(articles)
