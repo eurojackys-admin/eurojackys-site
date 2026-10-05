@@ -45,7 +45,9 @@ body_en: >-
 
   Nanjing	     7-8 November 2026	            Youth Olympic Sports Park Gymnasium
 
-  Hangzhou    14-15 November 2026	    Hangzhou Olympic Sports Centre
+  Hangzhou    14-15 November 2026	    Hangzhou Olympic Sports Centre   
+
+   Chongqing  28–29 November 2026          Huaxi Bio · Runbaiyan ECM Center  
 
   Ningbo	      5-6 December 2026	            Ningbo Olympic Sports Centre
 
@@ -54,7 +56,7 @@ body_en: >-
   Xiamen	     16-17 January 2027	          Phoenix Gymnasium, Xiamen Olympic Centre
 
 
-  Chongqing and Shenzhen have also cleared approval, with no dates published so far.
+  Shenzhen     30–31 January 2027              Shenzhen Universiade Center Gymnasium
 
 
   These dates come from permit filings with Chinese provincial authorities and announcements relayed through official channels. Ticketing and pricing are announced city by city, often late.
@@ -92,11 +94,15 @@ Pékin	         17-18 octobre 2026	            ECM Center
 Shanghai	         24-25 octobre 2026	            Mercedes-Benz Arena
 Nankin	         7-8 novembre 2026	            Youth Olympic Sports Park Gymnasium
 Hangzhou	14-15 novembre 2026	            Hangzhou Olympic Sports Centre
+
+Chongqing        28–29 novembre 2026               Huaxi Bio · Runbaiyan ECM Center   
 Ningbo	         5-6 décembre 2026	            Ningbo Olympic Sports Centre
 Canton	        26-27 décembre 2026	            Guangzhou Gymnasium, hall 1
-Xiamen            16-17 janvier 2027	                   Phoenix Gymnasium, Xiamen Olympic                   
+Xiamen            16-17 janvier 2027	                   Phoenix Gymnasium, Xiamen Olympic  
 
-Chongqing et Shenzhen ont également passé l'étape d'approbation, sans dates publiées à ce jour.
+Shenzen           30-31 janvier 2027                     Shenzhen Universiade Center Gymnasium
+
+
 
 Ces dates proviennent des dossiers d'autorisation déposés auprès des autorités provinciales chinoises et des annonces relayées par les canaux officiels. Les billetteries et les tarifs sont annoncés ville par ville, souvent tardivement.
 
