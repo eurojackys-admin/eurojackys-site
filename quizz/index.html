@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>Quel Jacky es-tu ? — EuroJackys</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;900&family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14121f;
+    --ink-2:#1d1a2c;
+    --flame:#FF6B35;
+    --gold:#FFB627;
+    --jade:#2EC4B6;
+    --cloud:#F5F1E8;
+    --lilac:#9C8FB5;
+    --card-radius: 22px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(900px 600px at 15% -10%, rgba(255,107,53,0.18), transparent 60%),
+      radial-gradient(700px 500px at 110% 30%, rgba(46,196,182,0.14), transparent 60%),
+      var(--ink);
+    color:var(--cloud);
+    font-family:'Manrope', sans-serif;
+    display:flex;
+    justify-content:center;
+    overflow-x:hidden;
+  }
+  .app{
+    width:100%;
+    max-width:460px;
+    min-height:100vh;
+    padding:20px 18px 36px;
+    display:flex;
+    flex-direction:column;
+  }
+
+  /* embers */
+  .ember{
+    position:fixed;
+    border-radius:50%;
+    background:radial-gradient(circle, var(--flame), transparent 70%);
+    opacity:0.35;
+    filter:blur(1px);
+    animation: drift 14s ease-in-out infinite;
+    pointer-events:none;
+    z-index:0;
+  }
+  @keyframes drift{
+    0%,100%{ transform: translateY(0) translateX(0); }
+    50%{ transform: translateY(-30px) translateX(12px); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .ember{ animation:none; }
+  }
+
+  header.bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:22px;
+    z-index:1;
+  }
+  .wordmark{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    color:var(--lilac);
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .langtoggle{
+    display:flex;
+    background:var(--ink-2);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:999px;
+    padding:3px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    font-weight:600;
+  }
+  .langtoggle button{
+    border:none;
+    background:transparent;
+    color:var(--lilac);
+    padding:6px 12px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:all .2s ease;
+  }
+  .langtoggle button.active{
+    background:var(--flame);
+    color:var(--ink);
+  }
+
+  main{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    z-index:1;
+  }
+
+  /* INTRO */
+  .intro{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    margin-top:8vh;
+  }
+  .dragon-mark{
+    font-size:52px;
+    margin-bottom:6px;
+    filter: drop-shadow(0 0 18px rgba(255,107,53,0.55));
+  }
+  h1{
+    font-family:'Unbounded', sans-serif;
+    font-weight:900;
+    font-size:32px;
+    line-height:1.05;
+    margin:0 0 12px;
+    letter-spacing:-0.01em;
+  }
+  .intro p.sub{
+    color:var(--lilac);
+    font-size:15px;
+    line-height:1.5;
+    max-width:320px;
+    margin:0 0 32px;
+  }
+  .btn-primary{
+    font-family:'Manrope', sans-serif;
+    font-weight:800;
+    font-size:16px;
+    color:var(--ink);
+    background:linear-gradient(135deg, var(--gold), var(--flame));
+    border:none;
+    border-radius:16px;
+    padding:16px 36px;
+    cursor:pointer;
+    box-shadow:0 8px 24px rgba(255,107,53,0.35);
+    transition:transform .15s ease;
+  }
+  .btn-primary:active{ transform:scale(0.97); }
+
+  /* PROGRESS */
+  .progress-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+  }
+  .back-btn{
+    background:none;
+    border:none;
+    color:var(--lilac);
+    font-size:20px;
+    cursor:pointer;
+    padding:4px 8px;
+    visibility:hidden;
+  }
+  .back-btn.visible{ visibility:visible; }
+  .progress-label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--lilac);
+  }
+  .dots{
+    display:flex;
+    gap:6px;
+    justify-content:center;
+    margin-bottom:26px;
+  }
+  .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:rgba(255,255,255,0.12);
+    transition:background .25s ease, transform .25s ease;
+  }
+  .dot.done{ background:var(--flame); transform:scale(1.15); }
+  .dot.current{ background:var(--gold); }
+
+  /* QUESTION CARD */
+  .qcard{
+    background:var(--ink-2);
+    border:1px solid rgba(255,255,255,0.07);
+    border-radius:var(--card-radius);
+    padding:26px 22px;
+    animation: rise .35s ease;
+  }
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .qtext{
+    font-family:'Unbounded', sans-serif;
+    font-weight:700;
+    font-size:20px;
+    line-height:1.3;
+    margin:0 0 20px;
+  }
+  .answers{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .answer-btn{
+    text-align:left;
+    width:100%;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    color:var(--cloud);
+    border-radius:14px;
+    padding:14px 16px;
+    font-family:'Manrope', sans-serif;
+    font-size:14.5px;
+    font-weight:500;
+    line-height:1.4;
+    cursor:pointer;
+    min-height:52px;
+    transition: border-color .15s ease, background .15s ease, transform .1s ease;
+  }
+  .answer-btn:hover{ border-color:var(--jade); background:rgba(46,196,182,0.08); }
+  .answer-btn:active{ transform:scale(0.985); }
+  .answer-btn.selected{
+    border-color:var(--flame);
+    background:rgba(255,107,53,0.14);
+  }
+  .answer-btn:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+
+  /* RESULT */
+  .result{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    margin-top:4vh;
+    animation: rise .4s ease;
+  }
+  .result-card{
+    position:relative;
+    width:100%;
+    border-radius:26px;
+    padding:3px;
+    background:conic-gradient(from 0deg, var(--flame), var(--gold), var(--jade), var(--flame));
+    animation: spin 6s linear infinite;
+    margin-bottom:20px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .result-card{ animation:none; }
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .result-inner{
+    background:var(--ink-2);
+    border-radius:24px;
+    padding:34px 24px 28px;
+  }
+  .result-emoji{ font-size:54px; margin-bottom:4px; }
+  .result-eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    color:var(--lilac);
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .result-title{
+    font-family:'Unbounded', sans-serif;
+    font-weight:900;
+    font-size:26px;
+    line-height:1.15;
+    margin:0 0 14px;
+    background:linear-gradient(135deg, var(--gold), var(--flame));
+    -webkit-background-clip:text;
+    background-clip:text;
+    -webkit-text-fill-color:transparent;
+  }
+  .result-desc{
+    font-size:15px;
+    line-height:1.55;
+    color:var(--cloud);
+    margin:0;
+  }
+  .result-actions{
+    display:flex;
+    gap:10px;
+    width:100%;
+    margin-top:6px;
+  }
+  .btn-secondary, .btn-ghost{
+    flex:1;
+    font-family:'Manrope', sans-serif;
+    font-weight:700;
+    font-size:14px;
+    border-radius:14px;
+    padding:13px 10px;
+    cursor:pointer;
+    border:1px solid rgba(255,255,255,0.12);
+    transition:transform .1s ease, background .2s ease;
+  }
+  .btn-secondary{ background:var(--jade); color:var(--ink); border:none; }
+  .btn-ghost{ background:transparent; color:var(--cloud); }
+  .btn-secondary:active, .btn-ghost:active{ transform:scale(0.97); }
+
+  footer{
+    text-align:center;
+    margin-top:32px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11px;
+    color:rgba(245,241,232,0.35);
+    z-index:1;
+  }
+
+  .hidden{ display:none !important; }
+</style>
+</head>
+<body>
+
+<div class="ember" style="width:90px;height:90px;top:8%;left:-10px;"></div>
+<div class="ember" style="width:60px;height:60px;top:60%;left:88%;animation-delay:3s;"></div>
+<div class="ember" style="width:40px;height:40px;top:30%;left:78%;animation-delay:6s;"></div>
+
+<div class="app">
+
+  <header class="bar">
+    <div class="wordmark">🐉 EUROJACKYS</div>
+    <div class="langtoggle">
+      <button id="btn-fr" class="active">FR</button>
+      <button id="btn-en">EN</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- INTRO -->
+    <section id="screen-intro" class="intro">
+      <div class="dragon-mark">🐉🧡</div>
+      <h1 id="intro-title">QUEL JACKY<br>ES-TU ?</h1>
+      <p class="sub" id="intro-sub">Le quiz qui va lire dans ton cœur de stan en 7 questions. Sois honnête, on ne juge pas (si).</p>
+      <button class="btn-primary" id="btn-start">Commencer</button>
+    </section>
+
+    <!-- QUESTION -->
+    <section id="screen-quiz" class="hidden">
+      <div class="progress-row">
+        <button class="back-btn" id="btn-back">‹</button>
+        <span class="progress-label" id="progress-label"></span>
+        <span style="width:28px;"></span>
+      </div>
+      <div class="dots" id="dots"></div>
+      <div class="qcard">
+        <p class="qtext" id="qtext"></p>
+        <div class="answers" id="answers"></div>
+      </div>
+    </section>
+
+    <!-- RESULT -->
+    <section id="screen-result" class="hidden">
+      <div class="result">
+        <div class="result-card">
+          <div class="result-inner">
+            <div class="result-eyebrow" id="result-eyebrow">TU ES...</div>
+            <div class="result-emoji" id="result-emoji"></div>
+            <h2 class="result-title" id="result-title"></h2>
+            <p class="result-desc" id="result-desc"></p>
+          </div>
+        </div>
+        <div class="result-actions">
+          <button class="btn-secondary" id="btn-copy">Copier mon résultat</button>
+          <button class="btn-ghost" id="btn-replay">Rejouer</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer-text">fait avec 🧡 par eurojackys</footer>
+</div>
+
+<script>
+const i18n = {
+  fr: {
+    introTitle: "QUEL JACKY<br>ES-TU ?",
+    introSub: "Le quiz qui va lire dans ton cœur de stan en 7 questions. Sois honnête, on ne juge pas (si).",
+    start: "Commencer",
+    progress: (n,t) => `Question ${n}/${t}`,
+    eyebrow: "TU ES...",
+    copy: "Copier mon résultat",
+    copied: "Copié ✓",
+    replay: "Rejouer",
+    footer: "fait avec 🧡 par eurojackys",
+    share: (title, emoji) => `Résultat du quiz EuroJackys ${emoji} : je suis ${title} — et toi, quel Jacky es-tu ?`
+  },
+  en: {
+    introTitle: "WHICH JACKY<br>ARE YOU?",
+    introSub: "The quiz that reads your stan heart in 7 questions. Be honest, no judgment (yes there is).",
+    start: "Start",
+    progress: (n,t) => `Question ${n}/${t}`,
+    eyebrow: "YOU ARE...",
+    copy: "Copy my result",
+    copied: "Copied ✓",
+    replay: "Replay",
+    footer: "made with 🧡 by eurojackys",
+    share: (title, emoji) => `EuroJackys quiz result ${emoji}: I'm ${title} — what about you?`
+  }
+};
+
+const questions = [
+  {
+    fr: "Il poste une story floue de 2 secondes où on voit son sourcil. Ta réaction :",
+    en: "He posts a blurry 2-second story where you can just see his eyebrow. Your reaction:",
+    options: [
+      { type:"D", fr:"C'est un signe. Le sourcil me parle.", en:"It's a sign. The eyebrow is speaking to me." },
+      { type:"X", fr:"Je zoom et je compare avec les 3 stories précédentes.", en:"I zoom in and cross-check the last 3 stories." },
+      { type:"M", fr:"Il a l'air fatigué non ? Il dort assez ?", en:"He looks tired right? Is he sleeping enough?" },
+      { type:"A", fr:"Ça me rappelle exactement une story de 2023.", en:"This reminds me of an exact story from 2023." },
+      { type:"S", fr:"Cool, mais est-ce que les autres groupes ont posté aussi ?", en:"Cool, but did the other groups post too?" },
+      { type:"C", fr:"Like, je continue de scroller.", en:"Like, and I keep scrolling." }
+    ]
+  },
+  {
+    fr: "Nouvel album annoncé. La première chose que tu fais :",
+    en: "New album announced. The first thing you do:",
+    options: [
+      { type:"D", fr:"J'imagine déjà le tracklist et le lore romantique.", en:"I already imagine the tracklist and the romantic lore." },
+      { type:"X", fr:"Je cherche les indices cachés dans le teaser.", en:"I look for hidden clues in the teaser." },
+      { type:"M", fr:"Je vérifie qu'il a prévu assez de pauses dans le planning.", en:"I check he's got enough rest planned in the schedule." },
+      { type:"A", fr:"Je compare avec ses albums précédents, tableau à l'appui.", en:"I compare it to his previous albums, chart included." },
+      { type:"S", fr:"Je vérifie que ça tombe pas en même temps qu'une autre sortie.", en:"I check it doesn't clash with another release." },
+      { type:"C", fr:"J'ajoute à la playlist, on verra à la sortie.", en:"I add it to the playlist, we'll see at release." }
+    ]
+  },
+  {
+    fr: "Quelqu'un critique Jackson en commentaire.",
+    en: "Someone criticizes Jackson in the comments.",
+    options: [
+      { type:"D", fr:"« Il ne te connaît même pas, laisse-le tranquille mon roi. »", en:"\"He doesn't even know you, leave my king alone.\"" },
+      { type:"X", fr:"Capture d'écran, archivé comme preuve.", en:"Screenshot, archived as evidence." },
+      { type:"M", fr:"J'espère qu'il ne voit pas ça, ça doit faire mal.", en:"I hope he doesn't see this, it must hurt." },
+      { type:"A", fr:"Je sors 4 contre-exemples avec dates et sources.", en:"I pull up 4 counter-examples with dates and sources." },
+      { type:"S", fr:"« Ok mais [autre idole] se fait critiquer aussi donc... »", en:"\"Okay but [other idol] gets criticized too so...\"" },
+      { type:"C", fr:"J'ignore et je passe à la story suivante.", en:"I ignore it and move to the next story." }
+    ]
+  },
+  {
+    fr: "Comment décrirais-tu ta présence sur les comptes fan ?",
+    en: "How would you describe your presence on fan accounts?",
+    options: [
+      { type:"D", fr:"J'écris des mini-fictions dans ma tête à chaque story.", en:"I write mini-fictions in my head with every story." },
+      { type:"X", fr:"J'ai un dossier nommé « preuves » sur mon téléphone.", en:"I have a folder named \"evidence\" on my phone." },
+      { type:"M", fr:"Je commente « bois de l'eau » sous chaque post.", en:"I comment \"drink water\" under every post." },
+      { type:"A", fr:"Je peux réciter toute la timeline sans respirer.", en:"I can recite the whole timeline without breathing." },
+      { type:"S", fr:"Mon feed est un patchwork de 5 fandoms différents.", en:"My feed is a patchwork of 5 different fandoms." },
+      { type:"C", fr:"Je passe, je like, je repars sans drama.", en:"I drop by, I like, I leave without drama." }
+    ]
+  },
+  {
+    fr: "Il porte un look qui fait halluciner Internet.",
+    en: "He wears a look that breaks the internet.",
+    options: [
+      { type:"D", fr:"« Il a fait ça pour moi. »", en:"\"He did this for me.\"" },
+      { type:"X", fr:"J'identifie marque, collection et styliste en 10 minutes.", en:"I identify the brand, collection and stylist in 10 minutes." },
+      { type:"M", fr:"Il doit avoir hyper chaud ou froid là-dedans, ça va aller ?", en:"He must be so hot or cold in that, is he okay?" },
+      { type:"A", fr:"Je compare avec son look d'il y a 2 ans à la même fashion week.", en:"I compare it with his look from the same fashion week 2 years ago." },
+      { type:"S", fr:"Le styliste a aussi habillé quelqu'un d'autre, coïncidence ?", en:"The stylist also dressed someone else, coincidence?" },
+      { type:"C", fr:"Joli. Je ferme l'appli.", en:"Nice. I close the app." }
+    ]
+  },
+  {
+    fr: "Il ne poste rien depuis 5 jours.",
+    en: "He hasn't posted in 5 days.",
+    options: [
+      { type:"D", fr:"J'imagine déjà 12 scénarios dramatiques.", en:"I already have 12 dramatic scenarios in mind." },
+      { type:"X", fr:"J'enquête : dernière apparition, dernier indice, dernier check-in.", en:"I investigate: last appearance, last clue, last check-in." },
+      { type:"M", fr:"Il se repose, c'est très bien, laissons-le respirer.", en:"He's resting, that's good, let's let him breathe." },
+      { type:"A", fr:"Je vérifie si ça correspond à un pattern historique.", en:"I check if this matches a historical pattern." },
+      { type:"S", fr:"Bon, je vais checker les autres comptes en attendant.", en:"Well, I'll go check the other accounts meanwhile." },
+      { type:"C", fr:"Pas vu passer, j'étais occupé·e ailleurs.", en:"Didn't notice, I was busy elsewhere." }
+    ]
+  },
+  {
+    fr: "Le jour où tu le rencontres enfin (fantasme ultime) :",
+    en: "The day you finally meet him (ultimate fantasy):",
+    options: [
+      { type:"D", fr:"Le scénario complet est déjà écrit, dialogue compris.", en:"The whole scenario is already written, dialogue included." },
+      { type:"X", fr:"J'ai préparé 5 questions précises et un carnet de notes.", en:"I've prepared 5 precise questions and a notebook." },
+      { type:"M", fr:"Je lui amène à manger : « tu manges assez en tournée ? »", en:"I bring him food: \"are you eating enough on tour?\"" },
+      { type:"A", fr:"Je sors une anecdote de 2018 qu'il a oubliée lui-même.", en:"I bring up a 2018 anecdote he himself forgot." },
+      { type:"S", fr:"Je lui parle aussi des autres membres par réflexe.", en:"I instinctively ask about the other members too." },
+      { type:"C", fr:"Je dis juste « salut » et je repars zen.", en:"I just say \"hi\" and walk away zen." }
+    ]
+  }
+];
+
+const results = {
+  D: { emoji:"🌙", fr:"Le Jacky Délulu", en:"The Delulu Jacky",
+       descFr:"Un sourcil flou à 3h du matin et tu vois un signe du destin. Le déni est un sport, et tu es médaillé d'or.",
+       descEn:"A blurry eyebrow at 3am and you see a sign from the universe. Denial is a sport and you're going for gold." },
+  X: { emoji:"🔍", fr:"Le Jacky Détective", en:"The Detective Jacky",
+       descFr:"Capture d'écran. Zoom. Comparaison avec les 3 stories précédentes. Rien ne t'échappe, surtout pas le pixel suspect.",
+       descEn:"Screenshot. Zoom. Cross-check with the last three stories. Nothing escapes you, especially not a suspicious pixel." },
+  M: { emoji:"🛡️", fr:"Le Jacky Mama Bear", en:"The Mama Bear Jacky",
+       descFr:"Le contenu, tu t'en fiches un peu — ce qui t'inquiète, c'est s'il a bien dormi et bu assez d'eau.",
+       descEn:"The content is secondary — what matters to you is whether he's sleeping enough and drinking water." },
+  A: { emoji:"📚", fr:"Le Jacky Archiviste", en:"The Archivist Jacky",
+       descFr:"Tu récites la timeline sans respirer et tu dates une photo au jour près. Wikipédia devrait te payer des droits.",
+       descEn:"You can recite the timeline without breathing and date a photo to the exact day. Wikipedia owes you royalties." },
+  S: { emoji:"🎭", fr:"Le Jacky Multi-Stan", en:"The Multi-Stan Jacky",
+       descFr:"Ton cœur est un open bar et tout le monde est invité. Quatre comebacks la même semaine, zéro sommeil.",
+       descEn:"Your heart is an open bar and everyone's invited. Four comebacks in one week, zero sleep." },
+  C: { emoji:"😌", fr:"Le Jacky Chill", en:"The Chill Jacky",
+       descFr:"Tu like, tu scroll, tu passes une bonne soirée. Aucun drama ne t'atteint. Le stan zen ultime.",
+       descEn:"You like, you scroll, you have a nice evening. No drama reaches you. The ultimate zen stan." }
+};
+
+let lang = "fr";
+let current = 0;
+let answers = new Array(questions.length).fill(null);
+const scores = { D:0, X:0, M:0, A:0, S:0, C:0 };
+const order = ["D","X","M","A","S","C"];
+
+const el = (id) => document.getElementById(id);
+
+function applyLang(){
+  const t = i18n[lang];
+  el("intro-title").innerHTML = t.introTitle;
+  el("intro-sub").textContent = t.introSub;
+  el("btn-start").textContent = t.start;
+  el("result-eyebrow").textContent = t.eyebrow;
+  el("btn-copy").textContent = t.copy;
+  el("btn-replay").textContent = t.replay;
+  el("footer-text").textContent = t.footer;
+  el("btn-fr").classList.toggle("active", lang === "fr");
+  el("btn-en").classList.toggle("active", lang === "en");
+  if (!el("screen-quiz").classList.contains("hidden")) renderQuestion();
+  if (!el("screen-result").classList.contains("hidden")) renderResult();
+}
+
+el("btn-fr").onclick = () => { lang = "fr"; applyLang(); };
+el("btn-en").onclick = () => { lang = "en"; applyLang(); };
+
+el("btn-start").onclick = () => {
+  el("screen-intro").classList.add("hidden");
+  el("screen-quiz").classList.remove("hidden");
+  current = 0;
+  renderQuestion();
+};
+
+el("btn-back").onclick = () => {
+  if (current > 0){
+    if (answers[current] !== null){
+      scores[answers[current]]--;
+      answers[current] = null;
+    }
+    current--;
+    renderQuestion();
+  }
+};
+
+function renderDots(){
+  const dots = el("dots");
+  dots.innerHTML = "";
+  questions.forEach((_, i) => {
+    const d = document.createElement("div");
+    d.className = "dot" + (i < current ? " done" : "") + (i === current ? " current" : "");
+    dots.appendChild(d);
+  });
+}
+
+function renderQuestion(){
+  const q = questions[current];
+  el("progress-label").textContent = i18n[lang].progress(current+1, questions.length);
+  el("btn-back").classList.toggle("visible", current > 0);
+  el("qtext").textContent = q[lang];
+  renderDots();
+  const ansDiv = el("answers");
+  ansDiv.innerHTML = "";
+  q.options.forEach((opt) => {
+    const btn = document.createElement("button");
+    btn.className = "answer-btn";
+    if (answers[current] === opt.type) btn.classList.add("selected");
+    btn.textContent = opt[lang];
+    btn.onclick = () => selectAnswer(opt.type);
+    ansDiv.appendChild(btn);
+  });
+}
+
+function selectAnswer(type){
+  if (answers[current] !== null){
+    scores[answers[current]]--;
+  }
+  answers[current] = type;
+  scores[type]++;
+  renderQuestion();
+  setTimeout(() => {
+    if (current < questions.length - 1){
+      current++;
+      renderQuestion();
+    } else {
+      showResult();
+    }
+  }, 350);
+}
+
+function computeResultType(){
+  let best = order[0];
+  let bestScore = -1;
+  order.forEach((t) => {
+    if (scores[t] > bestScore){
+      bestScore = scores[t];
+      best = t;
+    }
+  });
+  return best;
+}
+
+let resultType = "D";
+
+function showResult(){
+  resultType = computeResultType();
+  el("screen-quiz").classList.add("hidden");
+  el("screen-result").classList.remove("hidden");
+  renderResult();
+}
+
+function renderResult(){
+  const r = results[resultType];
+  el("result-emoji").textContent = r.emoji;
+  el("result-title").textContent = r[lang];
+  el("result-desc").textContent = lang === "fr" ? r.descFr : r.descEn;
+}
+
+el("btn-replay").onclick = () => {
+  current = 0;
+  answers = new Array(questions.length).fill(null);
+  order.forEach(t => scores[t] = 0);
+  el("screen-result").classList.add("hidden");
+  el("screen-intro").classList.remove("hidden");
+};
+
+el("btn-copy").onclick = async () => {
+  const r = results[resultType];
+  const text = i18n[lang].share(r[lang], r.emoji);
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch(e) {
+    // fallback: select a temporary textarea
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    document.body.removeChild(ta);
+  }
+  const btn = el("btn-copy");
+  const original = btn.textContent;
+  btn.textContent = i18n[lang].copied;
+  setTimeout(() => { btn.textContent = original; }, 1500);
+};
+
+applyLang();
+</script>
+</body>
+</html>
