@@ -18,6 +18,15 @@ collections:
     delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
+      - label: "Catégorie"
+        name: "category"
+        widget: "select"
+        default: "news"
+        options:
+          - { label: "Actualités", value: "news" }
+          - { label: "Analyses", value: "analysis" }
+          - { label: "Guides", value: "guides" }
+          - { label: "Archives", value: "archives" }
       - { label: "Titre (FR)", name: "title", widget: "string" }
       - { label: "Titre (EN)", name: "title_en", widget: "string", required: false }
       - { label: "Date", name: "date", widget: "datetime" }
@@ -102,9 +111,250 @@ collections:
     summary: "{{country}}"
     fields:
       - { label: "Ordre d'affichage (1 = en premier)", name: "order", widget: "number", default: 1 }
-      - { label: "Pays (avec drapeau, ex: 🇫🇷 France)", name: "country", widget: "string" }
-      - { label: "Nombre de membres (ex: 12)", name: "members", widget: "string", required: false }
-      - { label: "Statut (ex: Boarding, On time)", name: "status", widget: "string", default: "On time" }
+      - label: "Pays sur la carte"
+        name: "country_code"
+        widget: "select"
+        options:
+          - { label: "Afghanistan", value: "AF" }
+          - { label: "Afrique du Sud", value: "ZA" }
+          - { label: "Albanie", value: "AL" }
+          - { label: "Algérie", value: "DZ" }
+          - { label: "Allemagne", value: "DE" }
+          - { label: "Andorre", value: "AD" }
+          - { label: "Angola", value: "AO" }
+          - { label: "Anguilla", value: "AI" }
+          - { label: "Antarctique", value: "AQ" }
+          - { label: "Antigua-et-Barbuda", value: "AG" }
+          - { label: "Arabie saoudite", value: "SA" }
+          - { label: "Argentine", value: "AR" }
+          - { label: "Arménie", value: "AM" }
+          - { label: "Aruba", value: "AW" }
+          - { label: "Australie", value: "AU" }
+          - { label: "Autriche", value: "AT" }
+          - { label: "Azerbaïdjan", value: "AZ" }
+          - { label: "Åland", value: "AX" }
+          - { label: "Bahamas", value: "BS" }
+          - { label: "Bahreïn", value: "BH" }
+          - { label: "Bangladesh", value: "BD" }
+          - { label: "Barbade", value: "BB" }
+          - { label: "Belgique", value: "BE" }
+          - { label: "Belize", value: "BZ" }
+          - { label: "Bermudes", value: "BM" }
+          - { label: "Bénin", value: "BJ" }
+          - { label: "Bhoutan", value: "BT" }
+          - { label: "Biélorussie", value: "BY" }
+          - { label: "Birmanie", value: "MM" }
+          - { label: "Bolivie", value: "BO" }
+          - { label: "Bosnie-Herzégovine", value: "BA" }
+          - { label: "Botswana", value: "BW" }
+          - { label: "Brésil", value: "BR" }
+          - { label: "Brunei", value: "BN" }
+          - { label: "Bulgarie", value: "BG" }
+          - { label: "Burkina Faso", value: "BF" }
+          - { label: "Burundi", value: "BI" }
+          - { label: "Cambodge", value: "KH" }
+          - { label: "Cameroun", value: "CM" }
+          - { label: "Canada", value: "CA" }
+          - { label: "Cap-Vert", value: "CV" }
+          - { label: "Chili", value: "CL" }
+          - { label: "Chypre", value: "CY" }
+          - { label: "Cité du Vatican", value: "VA" }
+          - { label: "Colombie", value: "CO" }
+          - { label: "Comores", value: "KM" }
+          - { label: "Corée du Nord", value: "KP" }
+          - { label: "Corée du Sud", value: "KR" }
+          - { label: "Costa Rica", value: "CR" }
+          - { label: "Côte d'Ivoire", value: "CI" }
+          - { label: "Croatie", value: "HR" }
+          - { label: "Cuba", value: "CU" }
+          - { label: "Curaçao", value: "CW" }
+          - { label: "Danemark", value: "DK" }
+          - { label: "Djibouti", value: "DJ" }
+          - { label: "Dominique", value: "DM" }
+          - { label: "Espagne", value: "ES" }
+          - { label: "Estonie", value: "EE" }
+          - { label: "Eswatini", value: "SZ" }
+          - { label: "Égypte", value: "EG" }
+          - { label: "Émirats arabes unis", value: "AE" }
+          - { label: "Équateur", value: "EC" }
+          - { label: "Érythrée", value: "ER" }
+          - { label: "États fédérés de Micronésie", value: "FM" }
+          - { label: "États-Unis", value: "US" }
+          - { label: "Éthiopie", value: "ET" }
+          - { label: "Fidji", value: "FJ" }
+          - { label: "Finlande", value: "FI" }
+          - { label: "France", value: "FR" }
+          - { label: "Gabon", value: "GA" }
+          - { label: "Gambie", value: "GM" }
+          - { label: "Géorgie", value: "GE" }
+          - { label: "Géorgie du Sud-et-les Îles Sandwich du Sud", value: "GS" }
+          - { label: "Ghana", value: "GH" }
+          - { label: "Grenade", value: "GD" }
+          - { label: "Grèce", value: "GR" }
+          - { label: "Groenland", value: "GL" }
+          - { label: "Guam", value: "GU" }
+          - { label: "Guatemala", value: "GT" }
+          - { label: "Guernesey", value: "GG" }
+          - { label: "Guinée", value: "GN" }
+          - { label: "Guinée équatoriale", value: "GQ" }
+          - { label: "Guinée-Bissau", value: "GW" }
+          - { label: "Guyana", value: "GY" }
+          - { label: "Haïti", value: "HT" }
+          - { label: "Honduras", value: "HN" }
+          - { label: "Hong Kong", value: "HK" }
+          - { label: "Hongrie", value: "HU" }
+          - { label: "Iles Pitcairn", value: "PN" }
+          - { label: "Inde", value: "IN" }
+          - { label: "Indonésie", value: "ID" }
+          - { label: "Irak", value: "IQ" }
+          - { label: "Iran", value: "IR" }
+          - { label: "Irlande", value: "IE" }
+          - { label: "Islande", value: "IS" }
+          - { label: "Israël", value: "IL" }
+          - { label: "Italie", value: "IT" }
+          - { label: "île de Man", value: "IM" }
+          - { label: "Île Norfolk", value: "NF" }
+          - { label: "îles Caïmans", value: "KY" }
+          - { label: "Îles Cook", value: "CK" }
+          - { label: "îles Féroé", value: "FO" }
+          - { label: "îles Heard-et-MacDonald", value: "HM" }
+          - { label: "îles Malouines", value: "FK" }
+          - { label: "îles Mariannes du Nord", value: "MP" }
+          - { label: "Îles Marshall", value: "MH" }
+          - { label: "Îles Salomon", value: "SB" }
+          - { label: "îles Turques-et-Caïques", value: "TC" }
+          - { label: "îles Vierges britanniques", value: "VG" }
+          - { label: "îles Vierges des États-Unis", value: "VI" }
+          - { label: "Jamaïque", value: "JM" }
+          - { label: "Japon", value: "JP" }
+          - { label: "Jersey", value: "JE" }
+          - { label: "Jordanie", value: "JO" }
+          - { label: "Kazakhstan", value: "KZ" }
+          - { label: "Kenya", value: "KE" }
+          - { label: "Kirghizistan", value: "KG" }
+          - { label: "Kiribati", value: "KI" }
+          - { label: "Kosovo", value: "XK" }
+          - { label: "Koweït", value: "KW" }
+          - { label: "Laos", value: "LA" }
+          - { label: "Lesotho", value: "LS" }
+          - { label: "Lettonie", value: "LV" }
+          - { label: "Liban", value: "LB" }
+          - { label: "Liberia", value: "LR" }
+          - { label: "Libye", value: "LY" }
+          - { label: "Liechtenstein", value: "LI" }
+          - { label: "Lituanie", value: "LT" }
+          - { label: "Luxembourg", value: "LU" }
+          - { label: "Macao", value: "MO" }
+          - { label: "Macédoine du Nord", value: "MK" }
+          - { label: "Madagascar", value: "MG" }
+          - { label: "Malaisie", value: "MY" }
+          - { label: "Malawi", value: "MW" }
+          - { label: "Maldives", value: "MV" }
+          - { label: "Mali", value: "ML" }
+          - { label: "Malte", value: "MT" }
+          - { label: "Maroc", value: "MA" }
+          - { label: "Maurice", value: "MU" }
+          - { label: "Mauritanie", value: "MR" }
+          - { label: "Mexique", value: "MX" }
+          - { label: "Moldavie", value: "MD" }
+          - { label: "Monaco", value: "MC" }
+          - { label: "Mongolie", value: "MN" }
+          - { label: "Monténégro", value: "ME" }
+          - { label: "Montserrat", value: "MS" }
+          - { label: "Mozambique", value: "MZ" }
+          - { label: "Namibie", value: "NA" }
+          - { label: "Nauru", value: "NR" }
+          - { label: "Népal", value: "NP" }
+          - { label: "Nicaragua", value: "NI" }
+          - { label: "Niger", value: "NE" }
+          - { label: "Nigeria", value: "NG" }
+          - { label: "Niue", value: "NU" }
+          - { label: "Norvège", value: "NO" }
+          - { label: "Nouvelle-Calédonie", value: "NC" }
+          - { label: "Nouvelle-Zélande", value: "NZ" }
+          - { label: "Oman", value: "OM" }
+          - { label: "Ouganda", value: "UG" }
+          - { label: "Ouzbékistan", value: "UZ" }
+          - { label: "Pakistan", value: "PK" }
+          - { label: "Palaos", value: "PW" }
+          - { label: "Palestine", value: "PS" }
+          - { label: "Panama", value: "PA" }
+          - { label: "Papouasie-Nouvelle-Guinée", value: "PG" }
+          - { label: "Paraguay", value: "PY" }
+          - { label: "Pays-Bas", value: "NL" }
+          - { label: "Pérou", value: "PE" }
+          - { label: "Philippines", value: "PH" }
+          - { label: "Pologne", value: "PL" }
+          - { label: "Polynésie française", value: "PF" }
+          - { label: "Porto Rico", value: "PR" }
+          - { label: "Portugal", value: "PT" }
+          - { label: "Qatar", value: "QA" }
+          - { label: "République centrafricaine", value: "CF" }
+          - { label: "République démocratique du Congo", value: "CD" }
+          - { label: "République dominicaine", value: "DO" }
+          - { label: "République du Congo", value: "CG" }
+          - { label: "République populaire de Chine", value: "CN" }
+          - { label: "Roumanie", value: "RO" }
+          - { label: "Royaume-Uni", value: "GB" }
+          - { label: "Russie", value: "RU" }
+          - { label: "Rwanda", value: "RW" }
+          - { label: "Sahara occidental", value: "EH" }
+          - { label: "Saint-Barthélemy", value: "BL" }
+          - { label: "Saint-Christophe-et-Niévès", value: "KN" }
+          - { label: "Saint-Marin", value: "SM" }
+          - { label: "Saint-Martin", value: "MF" }
+          - { label: "Saint-Martin", value: "SX" }
+          - { label: "Saint-Pierre-et-Miquelon", value: "PM" }
+          - { label: "Saint-Vincent-et-les-Grenadines", value: "VC" }
+          - { label: "Sainte-Hélène", value: "SH" }
+          - { label: "Sainte-Lucie", value: "LC" }
+          - { label: "Salvador", value: "SV" }
+          - { label: "Samoa", value: "WS" }
+          - { label: "Samoa américaines", value: "AS" }
+          - { label: "Sao Tomé-et-Principe", value: "ST" }
+          - { label: "Serbie", value: "RS" }
+          - { label: "Seychelles", value: "SC" }
+          - { label: "Sénégal", value: "SN" }
+          - { label: "Sierra Leone", value: "SL" }
+          - { label: "Singapour", value: "SG" }
+          - { label: "Slovaquie", value: "SK" }
+          - { label: "Slovénie", value: "SI" }
+          - { label: "Somalie", value: "SO" }
+          - { label: "Soudan", value: "SD" }
+          - { label: "Soudan du Sud", value: "SS" }
+          - { label: "Sri Lanka", value: "LK" }
+          - { label: "Suède", value: "SE" }
+          - { label: "Suisse", value: "CH" }
+          - { label: "Suriname", value: "SR" }
+          - { label: "Syrie", value: "SY" }
+          - { label: "Tadjikistan", value: "TJ" }
+          - { label: "Taïwan", value: "TW" }
+          - { label: "Tanzanie", value: "TZ" }
+          - { label: "Tchad", value: "TD" }
+          - { label: "Tchéquie", value: "CZ" }
+          - { label: "Terres australes et antarctiques françaises", value: "TF" }
+          - { label: "Territoire britannique de l’océan Indien", value: "IO" }
+          - { label: "Thaïlande", value: "TH" }
+          - { label: "Timor oriental", value: "TL" }
+          - { label: "Togo", value: "TG" }
+          - { label: "Tonga", value: "TO" }
+          - { label: "Trinité-et-Tobago", value: "TT" }
+          - { label: "Tunisie", value: "TN" }
+          - { label: "Turkménistan", value: "TM" }
+          - { label: "Turquie", value: "TR" }
+          - { label: "Tuvalu", value: "TV" }
+          - { label: "Ukraine", value: "UA" }
+          - { label: "Uruguay", value: "UY" }
+          - { label: "Vanuatu", value: "VU" }
+          - { label: "Venezuela", value: "VE" }
+          - { label: "Viêt Nam", value: "VN" }
+          - { label: "Wallis-et-Futuna", value: "WF" }
+          - { label: "Yémen", value: "YE" }
+          - { label: "Zambie", value: "ZM" }
+          - { label: "Zimbabwe", value: "ZW" }
+      - { label: "Nom affiché (FR, avec drapeau si souhaité)", name: "country", widget: "string" }
+      - { label: "Nom affiché (EN)", name: "country_en", widget: "string", required: false }
+      - { label: "Nombre de Jackys", name: "members", widget: "number", value_type: "int", min: 0, default: 1, hint: "0 masque le pays sur la carte. La carte et les compteurs seront mis à jour après publication et déploiement." }
 
   - name: "settings"
     label: "⚙️ Réglages du site"
