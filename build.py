@@ -892,6 +892,15 @@ def build_index(articles):
     for item in load_folder("content"):
         if item.get("_file") == "about.yml":
             about = item
+    # Couverture modifiable dans Réglages du site > Accueil & À propos.
+    hero_image = str(about.get("hero_image") or "/images/brand/jackson-paris-cover.jpg").strip()
+    hero_image = hero_image or "/images/brand/jackson-paris-cover.jpg"
+    hero_alt = str(about.get("hero_image_alt") or "Jackson Wang").strip() or "Jackson Wang"
+    hero_html = ('<img class="hero-image" src="%s" alt="%s" '
+                 'width="1536" height="832" fetchpriority="high">'
+                 % (esca(hero_image), esca(hero_alt)))
+    content = re.sub(r'<img\b[^>]*\bclass="hero-image"[^>]*>', lambda _: hero_html, content, count=1)
+
     pairs = [
         ("FOUNDED", about.get("founded", "14.08.2025")),
         ("PLATFORMS", about.get("platforms", "Instagram \u00b7 TikTok \u00b7 Facebook \u00b7 Threads \u00b7 X \u00b7 YouTube")),
@@ -1061,3 +1070,4 @@ if __name__ == "__main__":
         traceback.print_exc()
         print("[build] ERROR: %s (deploy continues with committed files)" % e)
         sys.exit(0)
+
