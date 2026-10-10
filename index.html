@@ -23,6 +23,7 @@
 <meta name="twitter:site" content="@eurojackys">
 <meta name="twitter:image" content="https://eurojackys.com/images/brand/og-image.jpg">
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://eurojackys.com/#org", "name": "EuroJackys", "url": "https://eurojackys.com/", "logo": {"@type": "ImageObject", "url": "https://eurojackys.com/images/brand/icon-512.png", "width": 512, "height": 512}, "description": "Independent European fanbase for Jackson Wang. Verified news, French-English translations, fan projects and community events for Jackys across Europe.", "foundingDate": "2025-08-14", "areaServed": "Europe", "sameAs": ["https://instagram.com/eurojackys", "https://tiktok.com/@eurojackys", "https://www.facebook.com/share/14k1TZ9hEmq/", "https://threads.net/@eurojackys", "https://x.com/eurojackys", "https://www.youtube.com/@eurojackys"]}, {"@type": "WebSite", "@id": "https://eurojackys.com/#website", "url": "https://eurojackys.com/", "name": "EuroJackys", "publisher": {"@id": "https://eurojackys.com/#org"}, "inLanguage": ["fr", "en"]}]}</script>
+<link rel="preload" href="/assets/fonts/manrope.ttf" as="font" type="font/ttf" crossorigin>
 <style>
   :root{
     --bg:#0b0b0d;
@@ -215,20 +216,23 @@
     nav{display:none;}
   }
 </style>
+<link rel="stylesheet" href="/assets/portal.css">
+<script src="/assets/portal.js" defer></script>
 </head>
 <body>
+<a class="skip-link" href="#content">Aller au contenu / Skip to content</a>
 
 <header>
-  <a href="#top" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
-  <nav>
-    <a href="/fr/a-propos/" data-navpage="about"><span data-lang="fr">À propos</span><span data-lang="en">About</span></a>
-    <a href="#calendar"><span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></a>
-    <a href="#projects"><span data-lang="fr">Projets</span><span data-lang="en">Projects</span></a>
-    <a href="#recaps"><span data-lang="fr">Récaps</span><span data-lang="en">Recaps</span></a>
-    <a href="#gallery"><span data-lang="fr">Galerie</span><span data-lang="en">Gallery</span></a>
-    <a href="#map"><span data-lang="fr">Carte</span><span data-lang="en">Map</span></a>
-    <a href="#join"><span data-lang="fr">Rejoindre</span><span data-lang="en">Join</span></a>
-  </nav>
+  <a href="/" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
+  <nav id="site-nav" aria-label="Navigation principale">
+<a href="/" data-home><span data-lang="fr">Accueil</span><span data-lang="en">Home</span></a>
+<a href="/fr/articles/" data-navpage="articles"><span data-lang="fr">Articles &amp; Guides</span><span data-lang="en">Articles &amp; Guides</span></a>
+<a href="/fr/calendrier/" data-navpage="calendar"><span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></a>
+<a href="/fr/projets/" data-navpage="projects"><span data-lang="fr">Projets</span><span data-lang="en">Projects</span></a>
+<a href="/fr/fun/" data-navpage="fun">Fun Zone</a>
+<a href="/fr/a-propos/" data-navpage="about"><span data-lang="fr">À propos</span><span data-lang="en">About</span></a>
+</nav>
+  <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">Menu</button>
   <div class="lang-toggle">
     <button id="btn-fr" class="active" onclick="setLang('fr')">FR</button>
     <button id="btn-en" onclick="setLang('en')">EN</button>
@@ -236,7 +240,8 @@
 </header>
 
 <div class="hero" id="top">
-  <img class="hero-logo" src="/images/brand/logo-hero.png" alt="EuroJackys">
+  <img class="hero-image" src="/images/brand/jackson-paris-cover.jpg" alt="Jackson Wang à Paris, avec la tour Eiffel en arrière-plan" width="1536" height="832" fetchpriority="high">
+<div class="hero-copy">
   <div class="eyebrow">
     <span data-lang="fr">Fanbase européenne · Depuis l'ère Magic Man 2</span>
     <span data-lang="en">European fanbase · Since the Magic Man 2 era</span>
@@ -245,106 +250,43 @@
   <p data-lang="fr" id="hero-fr"><!-- BUILD:HERO_FR -->La fanbase européenne dédiée à Jackson Wang. On connecte les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.<!-- /BUILD:HERO_FR --></p>
   <p data-lang="en" id="hero-en"><!-- BUILD:HERO_EN -->The European fanbase dedicated to Jackson Wang. We connect Jackys across Europe through fan projects, translations, news and community events.<!-- /BUILD:HERO_EN --></p>
   <div class="cta-row">
-    <a href="#join" class="btn btn-fill"><span data-lang="fr">Rejoindre la communauté</span><span data-lang="en">Join the community</span></a>
-    <a href="#projects" class="btn btn-outline"><span data-lang="fr">Voir nos projets</span><span data-lang="en">See our projects</span></a>
+    <a href="/fr/articles/" data-navpage="articles" class="btn btn-fill"><span data-lang="fr">Explorer les articles</span><span data-lang="en">Explore the articles</span></a>
+    <a href="/fr/communaute/" data-navpage="community" class="btn btn-outline"><span data-lang="fr">Rejoindre les Jackys</span><span data-lang="en">Join the Jackys</span></a>
   </div>
   <div class="badge-anniv">
-    <span data-lang="fr" id="banner-fr"><!-- BUILD:BANNER_FR -->🎉 Anniversaire Magic Man 2 — 18 juillet<!-- /BUILD:BANNER_FR --></span>
-    <span data-lang="en" id="banner-en"><!-- BUILD:BANNER_EN -->🎉 Magic Man 2 anniversary — July 18<!-- /BUILD:BANNER_EN --></span>
+    <span data-lang="fr" id="banner-fr"><!-- BUILD:BANNER_FR -->THANK YOU nouveau titre et clip - sortie le 21 septembre 2026 à 06:00 CEST<!-- /BUILD:BANNER_FR --></span>
+    <span data-lang="en" id="banner-en"><!-- BUILD:BANNER_EN -->THANK YOU new single and MV - realease on September 21, 2026 at 06:00 AM CEST<!-- /BUILD:BANNER_EN --></span>
   </div>
+</div>
 </div>
 
 <div class="cities-ticker">Paris — Berlin — Madrid — Milano — Zürich — Amsterdam — Lisboa — Warszawa — Wien — Bruxelles — Stockholm — Praha — Dublin — Athina — Genève — København — </div>
 
-<section id="about">
-  <div class="section-label">01 · <span data-lang="fr">À propos</span><span data-lang="en">About</span></div>
-  <h2 class="section-title"><span data-lang="fr">Qui sommes-nous</span><span data-lang="en">Who we are</span></h2>
-  <div class="about-grid">
-    <div>
-      <p data-lang="fr" id="about-fr"><!-- BUILD:ABOUT_FR -->EuroJackys est une <strong>fanbase européenne indépendante</strong> dédiée à Jackson Wang. Notre mission : connecter les Jackys de toute l'Europe à travers des projets de fans, des traductions, des news et des événements communautaires.<!-- /BUILD:ABOUT_FR --></p>
-      <p data-lang="en" id="about-en"><!-- BUILD:ABOUT_EN -->EuroJackys is an <strong>independent European fanbase</strong> dedicated to Jackson Wang. Our mission is to connect Jackys across Europe through fan projects, translations, news and community events.<!-- /BUILD:ABOUT_EN --></p>
-      <p style="margin-top:18px;"><a data-navpage="about" href="/fr/a-propos/" style="color:var(--gold-soft);"><span data-lang="fr">Notre histoire complète →</span><span data-lang="en">Our full story →</span></a></p>
-    </div>
-    <div class="fact-list">
-      <div class="fact">
-        <div class="fact-label"><span data-lang="fr">Fondée</span><span data-lang="en">Founded</span></div>
-        <div class="fact-value" id="fact-founded"><!-- BUILD:FOUNDED -->14.08.2025<!-- /BUILD:FOUNDED --></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label"><span data-lang="fr">Langues</span><span data-lang="en">Languages</span></div>
-        <div class="fact-value"><span data-lang="fr">Français + English, toujours en parallèle</span><span data-lang="en">French + English, always side by side</span></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label"><span data-lang="fr">Plateformes</span><span data-lang="en">Platforms</span></div>
-        <div class="fact-value" id="fact-platforms"><!-- BUILD:PLATFORMS -->Instagram · TikTok · Facebook · Threads · X · YouTube<!-- /BUILD:PLATFORMS --></div>
-      </div>
-      <div class="fact">
-        <div class="fact-label"><span data-lang="fr">Statut</span><span data-lang="en">Status</span></div>
-        <div class="fact-value"><span data-lang="fr" id="status-fr"><!-- BUILD:STATUS_FR -->Indépendante, par des fans, pour des fans<!-- /BUILD:STATUS_FR --></span><span data-lang="en" id="status-en"><!-- BUILD:STATUS_EN -->Independent, by fans, for fans<!-- /BUILD:STATUS_EN --></span></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<section id="calendar">
-  <div class="section-label">02 · <span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></div>
-  <h2 class="section-title"><span data-lang="fr">Les dates à retenir</span><span data-lang="en">Dates to remember</span></h2>
-  <p style="color:var(--muted);margin-top:-24px;margin-bottom:40px;max-width:640px;">
-    <span data-lang="fr">Sorties, anniversaires et moments clés de l'univers Jackson Wang & Team Wang. Mis à jour au fil des annonces officielles.</span>
-    <span data-lang="en">Releases, anniversaries and key moments from the Jackson Wang & Team Wang universe. Updated as official announcements drop.</span>
-  </p>
-  <div id="calendar-list"><!-- BUILD:CALENDAR --><div class="cal-item"><div class="cal-date">18.07.2026</div><div><div class="cal-title"><span data-lang="fr">Anniversaire de Magic Man 2</span><span data-lang="en">Magic Man 2 anniversary</span></div><div class="cal-desc"><span data-lang="fr">1 an de MM2 — suivez notre série countdown sur Instagram &amp; TikTok</span><span data-lang="en">1 year of MM2 — follow our countdown series on Instagram &amp; TikTok</span></div></div><div class="cal-tag"><span data-lang="fr">Cette semaine</span><span data-lang="en">This week</span></div></div><div class="cal-item"><div class="cal-date">28.03.2027</div><div><div class="cal-title"><span data-lang="fr">Anniversaire de Jackson</span><span data-lang="en">Jackson's birthday</span></div><div class="cal-desc"><span data-lang="fr">Projet de fans annuel — les contributions ouvrent en début d'année</span><span data-lang="en">Annual fan project — contributions open early in the year</span></div></div><div class="cal-tag"><span data-lang="fr">Annuel</span><span data-lang="en">Annual</span></div></div><div class="cal-item"><div class="cal-date">À confirmer</div><div><div class="cal-title"><span data-lang="fr">Prochaines annonces Team Wang</span><span data-lang="en">Next Team Wang announcements</span></div><div class="cal-desc"><span data-lang="fr">Dès qu'une date officielle tombe, elle apparaît ici</span><span data-lang="en">The moment an official date drops, it lands here</span></div></div><div class="cal-tag"><span data-lang="fr">En veille</span><span data-lang="en">Watching</span></div></div><!-- /BUILD:CALENDAR --></div>
-</section>
 
-<section id="projects">
-  <div class="section-label">03 · <span data-lang="fr">Projets de fans</span><span data-lang="en">Fan projects</span></div>
-  <h2 class="section-title"><span data-lang="fr">Nos formats récurrents</span><span data-lang="en">Our recurring formats</span></h2>
-  <div class="projects-grid" id="projects-grid"><!-- BUILD:PROJECTS --><div class="project-card"><div class="project-icon">🔮</div><h3>Jackyroscope</h3><div class="project-freq"><span data-lang="fr">Hebdomadaire · FR + EN</span><span data-lang="en">Weekly · FR + EN</span></div><p data-lang="fr">L'horoscope le plus délulu d'Europe : vraies positions planétaires, vraies prédictions de fangirl. Les 12 signes, zéro cliché.</p><p data-lang="en">Europe's most delulu horoscope: real planetary positions, real fangirl predictions. All 12 signs, zero clichés.</p></div><div class="project-card"><div class="project-icon">🗞️</div><h3>Jacksonland Recap</h3><div class="project-freq"><span data-lang="fr">Hebdomadaire · EN</span><span data-lang="en">Weekly · EN</span></div><p data-lang="fr">Tout ce que Jackson a fait cette semaine, résumé pour celles qui ont une vie (ou presque).</p><p data-lang="en">Everything Jackson did this week, summed up for those of us who have a life (allegedly).</p></div><div class="project-card"><div class="project-icon">📼</div><h3>Throwback Friday</h3><div class="project-freq"><span data-lang="fr">Chaque vendredi</span><span data-lang="en">Every Friday</span></div><p data-lang="fr">Un plongeon dans les archives : moments iconiques, ères passées, souvenirs qui font mal (dans le bon sens).</p><p data-lang="en">A dive into the archives: iconic moments, past eras, memories that hurt (in the good way).</p></div><div class="project-card"><div class="project-icon">🗂️</div><h3>Dossier N°</h3><div class="project-freq"><span data-lang="fr">Série carrousel</span><span data-lang="en">Carousel series</span></div><p data-lang="fr">Nos enquêtes de fans : un thème, des faits, des reçus. Format carrousel façon dossier confidentiel.</p><p data-lang="en">Our fan investigations: one theme, facts, receipts. Confidential-file carousel format.</p></div><div class="project-card"><div class="project-icon">⏳</div><h3>MM2 Countdown</h3><div class="project-freq"><span data-lang="fr">Série spéciale · Juillet</span><span data-lang="en">Special series · July</span></div><p data-lang="fr">Un edit vidéo par jour jusqu'au 18 juillet pour fêter un an de Magic Man 2.</p><p data-lang="en">One video edit per day until July 18 to celebrate one year of Magic Man 2.</p></div><div class="project-card"><div class="project-icon">✍️</div><h3>Traductions</h3><div class="project-freq"><span data-lang="fr">En continu</span><span data-lang="en">Ongoing</span></div><p data-lang="fr">Interviews, posts et contenus de fans traduits pour la communauté francophone et européenne.</p><p data-lang="en">Interviews, posts and fan-made content translated for the French-speaking and European community.</p></div><!-- /BUILD:PROJECTS --></div>
-</section>
 
-<section id="recaps">
-  <div class="section-label">04 · <span data-lang="fr">Articles & récaps</span><span data-lang="en">Articles & recaps</span></div>
+
+
+
+
+
+
+
+
+
+
+
+<main id="content" style="max-width:none;padding:0">
+<section id="explore">
+<div class="section-head"><div><div class="section-label"><span data-lang="fr">Votre point de départ</span><span data-lang="en">Your starting point</span></div><h2 class="section-title"><span data-lang="fr">Bienvenue dans Jacksonland.</span><span data-lang="en">Welcome to Jacksonland.</span></h2></div></div>
+<div class="quick-grid"><a class="quick-card" href="/fr/articles/" data-navpage="articles"><span class="quick-number">01</span><span class="arrow" aria-hidden="true">↗</span><h3><span data-lang="fr">Articles & Guides</span><span data-lang="en">Articles & Guides</span></h3><p><span data-lang="fr">Actualités, analyses et lectures à retrouver.</span><span data-lang="en">News, deep dives and stories to revisit.</span></p></a><a class="quick-card" href="/fr/calendrier/" data-navpage="calendar"><span class="quick-number">02</span><span class="arrow" aria-hidden="true">↗</span><h3><span data-lang="fr">Calendrier</span><span data-lang="en">Calendar</span></h3><p><span data-lang="fr">Concerts, sorties et dates à retenir.</span><span data-lang="en">Concerts, releases and dates to remember.</span></p></a><a class="quick-card" href="/fr/projets/" data-navpage="projects"><span class="quick-number">03</span><span class="arrow" aria-hidden="true">↗</span><h3><span data-lang="fr">Projets de fans</span><span data-lang="en">Fan projects</span></h3><p><span data-lang="fr">Nos formats et les projets de la fanbase.</span><span data-lang="en">Our recurring formats and fanbase projects.</span></p></a><a class="quick-card" href="/fr/fun/" data-navpage="fun"><span class="quick-number">04</span><span class="arrow" aria-hidden="true">↗</span><h3><span data-lang="fr">Fun Zone</span><span data-lang="en">Fun Zone</span></h3><p><span data-lang="fr">Quiz, Jackyroscope et un peu de délulu.</span><span data-lang="en">Quizzes, Jackyroscope and a little delulu.</span></p></a><a class="quick-card" href="/fr/galerie/" data-navpage="gallery"><span class="quick-number">05</span><span class="arrow" aria-hidden="true">↗</span><h3><span data-lang="fr">Galerie</span><span data-lang="en">Gallery</span></h3><p><span data-lang="fr">Les images et créations de la communauté.</span><span data-lang="en">Community images and creations.</span></p></a><a class="quick-card" href="/fr/communaute/" data-navpage="community"><span class="quick-number">06</span><span class="arrow" aria-hidden="true">↗</span><h3><span data-lang="fr">Les Jackys dans le monde</span><span data-lang="en">Jackys around the world</span></h3><p><span data-lang="fr">Trouver la communauté et nous rejoindre.</span><span data-lang="en">Meet the community and join us.</span></p></a></div></section><section id="recaps">
+  <div class="section-label"><span data-lang="fr">Le journal EuroJackys</span><span data-lang="en">The EuroJackys journal</span></div>
   <h2 class="section-title"><span data-lang="fr">Derniers articles</span><span data-lang="en">Latest articles</span></h2>
-  <div class="article-list" id="articles-list"><!-- BUILD:ARTICLES --><a class="article-row" data-slug="jackson-wang-cartier-et-un-classique-cantonais-qui-a-fait-parler" href="/fr/articles/jackson-wang-cartier-et-un-classique-cantonais-qui-a-fait-parler/"><div><div class="article-title"><span data-lang="fr">Jackson Wang, Cartier et un classique cantonais qui a fait parler</span><span data-lang="en">Jackson Wang, Cartier and the Cantopop classic that got people talking</span></div><div style="color:var(--muted);font-size:13px;margin-top:4px;"><span data-lang="fr">Fin novembre 2020, pendant le Pasha de Cartier Party Live Stream, Jackson Wang reprenait 分手總要在雨天. Une simple cover élégante pour une soirée de marque ? Pas tout à fait.</span><span data-lang="en">On November 26, 2020, Jackson performed 《分手總要在雨天》 during the Pasha de Cartier Party Live Stream. An elegant cover for a luxury event? There was a little more to it than that.</span></div></div><div class="article-date"><span data-lang="fr">31 juillet 2026</span><span data-lang="en">July 31, 2026</span></div></a><!-- /BUILD:ARTICLES --></div>
+  <div class="article-list" id="articles-list"><!-- BUILD:ARTICLES --><a class="article-row" data-slug="thank-you-que-nous-disent-vraiment-les-chiffres" href="/fr/articles/thank-you-que-nous-disent-vraiment-les-chiffres/"><img class="article-thumb" src="/images/uploads/screenshot_20260919_005251_youtube.jpg" alt="" loading="lazy"><div><div class="article-title"><span data-lang="fr">Thank You : que nous disent vraiment les chiffres ?</span><span data-lang="en">Thank You: What Do the Numbers Really Tell Us?</span></div><div class="article-summary"><span data-lang="fr">Deux semaines après la sortie du nouveau single de Jackson Wang, il est temps de regarder les chiffres. Mais aussi ce qu'ils ne nous montrent pas.</span><span data-lang="en">Two weeks after the release of Jackson Wang's new single, it's time to look at the numbers. And at what they don't tell us.</span></div></div><div class="article-date"><span data-lang="fr">5 octobre 2026</span><span data-lang="en">October 5, 2026</span></div></a><a class="article-row" data-slug="thank-you-la-lettre-de-gratitude-de-jackson-wang---ses-fans" href="/fr/articles/thank-you-la-lettre-de-gratitude-de-jackson-wang---ses-fans/"><img class="article-thumb" src="/images/uploads/screenshot_20260921_125454_youtube.jpg" alt="" loading="lazy"><div><div class="article-title"><span data-lang="fr">"Thank You" : la lettre de gratitude de Jackson Wang à ses fans</span><span data-lang="en">Jackson Wang says "Thank You" to the fans who stood by his side</span></div><div class="article-summary"><span data-lang="fr">Avec "Thank You", Jackson ne sort pas juste un titre de plus. Il ouvre son album photo et nous invite à le feuilleter avec lui.</span><span data-lang="en">With "Thank You," Jackson isn't just dropping another track. He's opening up his photo album and inviting us to flip through it with him.</span></div></div><div class="article-date"><span data-lang="fr">21 septembre 2026</span><span data-lang="en">September 21, 2026</span></div></a><a class="article-row" data-slug="jackson-wang-et-l-europe-bien-avant-la-musique-il-y-avait-l-escrime" href="/fr/articles/jackson-wang-et-l-europe-bien-avant-la-musique-il-y-avait-l-escrime/"><img class="article-thumb" src="/images/uploads/1ef6b41dc2b5d2b8c9785aa9556b760d.jpg" alt="" loading="lazy"><div><div class="article-title"><span data-lang="fr">Jackson Wang et l’Europe : bien avant la musique, il y avait l’escrime</span><span data-lang="en">Jackson Wang and Europe: the sabre before the mic</span></div></div><div class="article-date"><span data-lang="fr">30 août 2026</span><span data-lang="en">August 30, 2026</span></div></a><!-- /BUILD:ARTICLES --></div>
   <div style="text-align:center;margin-top:30px;">
     <a class="btn btn-outline" data-navpage="articles" href="/fr/articles/"><span data-lang="fr">Tous les articles →</span><span data-lang="en">All articles →</span></a>
   </div>
-</section>
-
-<section id="gallery">
-  <div class="section-label">05 · <span data-lang="fr">Galerie</span><span data-lang="en">Gallery</span></div>
-  <h2 class="section-title"><span data-lang="fr">Nos projets en images</span><span data-lang="en">Our projects in pictures</span></h2>
-  <div class="gallery-grid" id="gallery-grid"><!-- BUILD:GALLERY --><div class="gallery-tile" data-gtitle="Pasha de Cartier Party Live Stream" data-gsubfr="" data-gsuben="" data-gimg="/images/uploads/jackson-cartier-featured.jpg" data-glink="" style="background-image:url('/images/uploads/jackson-cartier-featured.jpg');cursor:pointer;"><small>Pasha de Cartier Party Live Stream</small><span><span data-lang="fr"></span><span data-lang="en"></span></span></div><div class="gallery-tile" data-gtitle="July 2025 LA" data-gsubfr="" data-gsuben="" data-gimg="/images/uploads/screenshot_20250602_131356_instagram.jpg" data-glink="" style="background-image:url('/images/uploads/screenshot_20250602_131356_instagram.jpg');cursor:pointer;"><small>July 2025 LA</small><span><span data-lang="fr"></span><span data-lang="en"></span></span></div><!-- /BUILD:GALLERY --></div>
-</section>
-
-<section id="map">
-  <div class="section-label">06 · <span data-lang="fr">La carte</span><span data-lang="en">The map</span></div>
-  <h2 class="section-title"><span data-lang="fr">Jackys d'Europe</span><span data-lang="en">Jackys of Europe</span></h2>
-  <table>
-    <thead>
-      <tr>
-        <th><span data-lang="fr">Pays</span><span data-lang="en">Country</span></th>
-        <th><span data-lang="fr">Membres</span><span data-lang="en">Members</span></th>
-        <th><span data-lang="fr">Statut</span><span data-lang="en">Status</span></th>
-      </tr>
-    </thead>
-    <tbody id="map-tbody"><!-- BUILD:MAP --><tr><td>🇫🇷 France</td><td>19</td><td><span class="status-dot"></span>Boarding</td></tr><tr><td>🇨🇭 Suisse / Switzerland</td><td>2</td><td><span class="status-dot"></span>Boarding</td></tr><tr><td>🇩🇪 Deutschland</td><td>7</td><td><span class="status-dot"></span>On time</td></tr><tr><td>🇪🇸 España</td><td>3</td><td><span class="status-dot"></span>On time</td></tr><tr><td>🇮🇹 Italia</td><td>6</td><td><span class="status-dot"></span>On time</td></tr><tr><td>🇬🇧 United Kingdom</td><td>6</td><td><span class="status-dot"></span>On time</td></tr><!-- /BUILD:MAP --></tbody>
-  </table>
-</section>
-
-<section id="join">
-  <div class="section-label">07 · <span data-lang="fr">Rejoindre</span><span data-lang="en">Join</span></div>
-  <h2 class="section-title"><span data-lang="fr">Deviens un·e EuroJacky</span><span data-lang="en">Become a EuroJacky</span></h2>
-  <p style="color:var(--muted);margin-top:-24px;margin-bottom:40px;max-width:640px;">
-    <span data-lang="fr">Que tu sois Jacky depuis l'ère GOT7 ou arrivé·e avec Magic Man 2, il y a une place pour toi.</span>
-    <span data-lang="en">Whether you've been a Jacky since the GOT7 era or arrived with Magic Man 2, there's a place for you.</span>
-  </p>
-  <div class="full">
-        <a class="btn btn-fill" href="/fr/inscription/" data-lang="fr">Je m'inscris</a>
-        <a class="btn btn-fill" href="/en/signup/" data-lang="en">Sign me up</a>
-      </div>
-</section>
-
+</section><section class="community-banner"><div><div class="home-community-counter"><!-- BUILD:COMMUNITY_COUNTER --><strong>43</strong> Jackys · <strong>6</strong> <span data-lang="fr">pays représentés</span><span data-lang="en">countries represented</span><!-- /BUILD:COMMUNITY_COUNTER --></div><div class="section-label">FR + EN · COMMUNAUTÉ</div><h2><span data-lang="fr">Une passion, sans frontières.</span><span data-lang="en">One passion, without borders.</span></h2><p><span data-lang="fr">Des fans, des idées, des projets et beaucoup de Jackson. Découvre les Jackys d’Europe et rejoins la communauté.</span><span data-lang="en">Fans, ideas, projects and plenty of Jackson. Meet the Jackys around the world and join the community.</span></p></div><a class="btn btn-fill" href="/fr/communaute/" data-navpage="community"><span data-lang="fr">Nous rejoindre →</span><span data-lang="en">Join us →</span></a></section></main>
 <footer>
   <img class="footer-logo" src="/images/brand/logo-header.png" alt="">
   <div class="brand">EURO<span style="color:var(--cream)">JACKYS</span></div>
@@ -363,27 +305,6 @@
     <span data-lang="en"><a href="/en/about/">About</a> · <a href="/en/articles/">Articles &amp; Recaps</a></span>
   </div>
 </footer>
-
-<div class="modal-overlay" id="article-modal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal('article-modal')">✕</button>
-    <div class="modal-date" id="modal-date"></div>
-    <h3 class="modal-title" id="modal-title"></h3>
-    <img class="modal-cover" id="modal-cover" style="display:none;">
-    <div class="modal-body" id="modal-body"></div>
-    <a class="modal-link" id="modal-link" style="display:none;" target="_blank">→ <span data-lang="fr">Voir sur les réseaux</span><span data-lang="en">View on socials</span></a>
-  </div>
-</div>
-
-<div class="modal-overlay" id="image-modal">
-  <div class="modal-box" style="text-align:center;">
-    <button class="modal-close" onclick="closeModal('image-modal')">✕</button>
-    <div class="modal-date" id="img-modal-sub"></div>
-    <h3 class="modal-title" id="img-modal-title"></h3>
-    <img id="img-modal-img" style="max-width:100%;border:1px solid var(--line);">
-    <a class="modal-link" id="img-modal-link" style="display:none;" target="_blank">→ <span data-lang="fr">Voir le projet</span><span data-lang="en">View project</span></a>
-  </div>
-</div>
 
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <script>
@@ -405,6 +326,8 @@
 </script>
 <script>
 function setLang(lang){
+  lang = lang === 'en' ? 'en' : 'fr';
+  document.documentElement.lang = lang;
   document.body.classList.toggle('lang-en', lang === 'en');
   document.getElementById('btn-fr').classList.toggle('active', lang === 'fr');
   document.getElementById('btn-en').classList.toggle('active', lang === 'en');
@@ -417,41 +340,22 @@ function setLang(lang){
   document.querySelectorAll('[data-navpage="articles"]').forEach(function(a){
     a.setAttribute('href', lang === 'en' ? '/en/articles/' : '/fr/articles/');
   });
+  const routes = {calendar:['/fr/calendrier/','/en/calendar/'],projects:['/fr/projets/','/en/projects/'],fun:['/fr/fun/','/en/fun/'],gallery:['/fr/galerie/','/en/gallery/'],community:['/fr/communaute/','/en/community/']};
+  Object.entries(routes).forEach(([key, urls]) => document.querySelectorAll('[data-navpage="'+key+'"]').forEach(a => a.href = urls[lang === 'en' ? 1 : 0]));
+  document.getElementById('btn-fr').setAttribute('aria-pressed', String(lang === 'fr'));
+  document.getElementById('btn-en').setAttribute('aria-pressed', String(lang === 'en'));
   try { localStorage.setItem('ej-lang', lang); } catch(e){}
 }
 (function(){
   var saved = null;
   try { saved = localStorage.getItem('ej-lang'); } catch(e){}
-  if(saved === 'en') setLang('en');
+  const requested = new URLSearchParams(location.search).get('lang');
+  setLang(requested === 'en' || (requested !== 'fr' && saved === 'en') ? 'en' : 'fr');
+  const legacy = {calendar:'calendar',projects:'projects',gallery:'gallery',map:'community',join:'community',about:'about',recaps:'articles'};
+  const key = legacy[location.hash.slice(1)];
+  if(key) { const a = document.querySelector('[data-navpage="'+key+'"]'); if(a) location.replace(a.href); }
 })();
 
-function closeModal(id){
-  document.getElementById(id).classList.remove('open');
-  document.body.style.overflow = '';
-}
-['article-modal','image-modal'].forEach(function(id){
-  document.getElementById(id).addEventListener('click', function(e){
-    if(e.target === this) closeModal(id);
-  });
-});
-
-// Le contenu du site est desormais genere au deploiement (build.py).
-// Il ne reste ici que la liaison des tuiles galerie vers la modale image.
-Array.prototype.forEach.call(document.querySelectorAll('.gallery-tile[data-gtitle]'), function(tile){
-  tile.addEventListener('click', function(){
-    var isEn = document.body.classList.contains('lang-en');
-    document.getElementById('img-modal-title').textContent = tile.getAttribute('data-gtitle') || '';
-    document.getElementById('img-modal-sub').textContent = (isEn ? tile.getAttribute('data-gsuben') : tile.getAttribute('data-gsubfr')) || tile.getAttribute('data-gsubfr') || '';
-    var img = document.getElementById('img-modal-img');
-    var src = tile.getAttribute('data-gimg');
-    if(src){ img.src = src; img.style.display = 'inline-block'; } else { img.style.display = 'none'; }
-    var lnk = document.getElementById('img-modal-link');
-    var l = tile.getAttribute('data-glink');
-    if(l){ lnk.href = l; lnk.style.display = 'inline-block'; } else { lnk.style.display = 'none'; }
-    document.getElementById('image-modal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  });
-});
 </script>
 
 </body>
