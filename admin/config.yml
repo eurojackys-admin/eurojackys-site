@@ -366,6 +366,8 @@ collections:
         file: "content/about.yml"
         fields:
           - { label: "Fondée le (JJ.MM.AAAA)", name: "founded", widget: "string" }
+          - { label: "Photo de couverture", name: "hero_image", widget: "image", required: false, default: "/images/brand/jackson-paris-cover.jpg", hint: "Choisis de préférence une photo horizontale. Elle sera recadrée pour remplir la couverture." }
+          - { label: "Description de la photo", name: "hero_image_alt", widget: "string", required: false, default: "Jackson Wang", hint: "Une courte description pour les personnes qui ne peuvent pas voir l’image." }
           - { label: "Texte d'intro haut de page (FR)", name: "hero_fr", widget: "text" }
           - { label: "Texte d'intro haut de page (EN)", name: "hero_en", widget: "text" }
           - { label: "Texte À propos (FR)", name: "text_fr", widget: "text" }
@@ -428,3 +430,4 @@ collections:
           - { label: "⑦ Rejoindre — Texte d'intro (EN)", name: "join_intro_en", widget: "text", required: false }
           - { label: "⑦ Rejoindre — Position", name: "join_order", widget: "number", default: 7 }
           - { label: "⑦ Rejoindre — Afficher ?", name: "join_visible", widget: "select", options: ["true", "false"], default: "true" }
+
