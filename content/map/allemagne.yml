@@ -1,5 +1,6 @@
 order: 3
-country: 🇩🇪 Deutschland
+country: 🇩🇪 Allemagne
 cities: Berlin · München · Köln
 members: "7"
-status: On time
+country_code: DE
+country_en: Germany

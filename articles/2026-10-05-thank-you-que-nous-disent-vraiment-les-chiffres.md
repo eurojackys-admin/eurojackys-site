@@ -1,4 +1,5 @@
 ---
+category: analysis
 title: "Thank You : que nous disent vraiment les chiffres ?"
 title_en: "Thank You: What Do the Numbers Really Tell Us?"
 date: 2026-10-05T21:42:00.000+02:00

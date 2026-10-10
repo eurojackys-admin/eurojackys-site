@@ -23,6 +23,7 @@ import re
 import html
 import json
 import sys
+from community_map import render_community_map
 from datetime import date
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -297,9 +298,22 @@ footer .footer-nav a:hover{color:var(--gold-soft);}
 @media(max-width:700px){nav{display:none;}}
 """
 
+PORTAL_ROUTES = {
+    "calendar": {"fr": "/fr/calendrier/", "en": "/en/calendar/"},
+    "projects": {"fr": "/fr/projets/", "en": "/en/projects/"},
+    "fun": {"fr": "/fr/fun/", "en": "/en/fun/"},
+    "gallery": {"fr": "/fr/galerie/", "en": "/en/gallery/"},
+    "community": {"fr": "/fr/communaute/", "en": "/en/community/"},
+}
+CATEGORIES = {
+    "news": {"fr": "Actualités", "en": "News"},
+    "analysis": {"fr": "Analyses", "en": "Analysis"},
+    "guides": {"fr": "Guides", "en": "Guides"},
+    "archives": {"fr": "Archives", "en": "Archives"},
+}
 NAV = {
-    "fr": [("/", "Accueil"), ("/fr/articles/", "Articles"), ("/fr/a-propos/", "\u00c0 propos")],
-    "en": [("/", "Home"), ("/en/articles/", "Articles"), ("/en/about/", "About")],
+    "fr": [("/", "Accueil"), ("/fr/articles/", "Articles & Guides"), ("/fr/calendrier/", "Calendrier"), ("/fr/projets/", "Projets"), ("/fr/fun/", "Fun Zone"), ("/fr/a-propos/", "\u00c0 propos")],
+    "en": [("/", "Home"), ("/en/articles/", "Articles & Guides"), ("/en/calendar/", "Calendar"), ("/en/projects/", "Projects"), ("/en/fun/", "Fun Zone"), ("/en/about/", "About")],
 }
 
 FOOTER_TAGLINE = {
@@ -315,16 +329,15 @@ def social_links_html():
 
 def page_shell(lang, head_extra, active_path, body_html, alt_url):
     nav_html = "".join(
-        '<a href="%s"%s>%s</a>' % (esca(p), ' class="active"' if p == active_path else "", esc(label))
+        '<a href="%s"%s>%s</a>' % (esca("/?lang=en" if p == "/" and lang == "en" else p), ' class="active" aria-current="page"' if p == active_path or (p.endswith('/articles/') and active_path.startswith(p)) else "", esc(label))
         for p, label in NAV[lang])
-    other = "en" if lang == "fr" else "fr"
     switch = ('<div class="lang-switch">'
               '<a href="%s"%s>FR</a><a href="%s"%s>EN</a></div>'
               % (esca(alt_url if lang == "en" else active_path),
                  ' class="active"' if lang == "fr" else "",
                  esca(alt_url if lang == "fr" else active_path),
                  ' class="active"' if lang == "en" else ""))
-    foot_nav = " \u00b7 ".join('<a href="%s">%s</a>' % (esca(p), esc(label))
+    foot_nav = " \u00b7 ".join('<a href="%s">%s</a>' % (esca("/?lang=en" if p == "/" and lang == "en" else p), esc(label))
                                for p, label in NAV[lang])
     return """<!DOCTYPE html>
 <html lang="{lang}">
@@ -336,19 +349,23 @@ def page_shell(lang, head_extra, active_path, body_html, alt_url):
 <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
 <style>{css}</style>
+<link rel="stylesheet" href="/assets/portal.css">
+<script src="/assets/portal.js" defer></script>
 </head>
-<body>
+<body class="lang-{lang}">
+<a class="skip-link" href="#content">{skip}</a>
 <header>
-  <a href="/" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
-  <nav>{nav}</nav>
+  <a href="{home_href}" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
+  <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">Menu</button>
+  <nav id="site-nav" aria-label="{nav_label}">{nav}</nav>
   {switch}
 </header>
-<main>
+<main id="content">
 {body}
 </main>
 <footer>
   <img class="footer-logo" src="/images/brand/logo-header.png" alt="">
-  <a href="/" class="brand">EURO<span style="color:var(--cream)">JACKYS</span></a>
+  <a href="{home_href}" class="brand">EURO<span style="color:var(--cream)">JACKYS</span></a>
   <p>{tagline}</p>
   <div class="social">{socials}</div>
   <div class="footer-nav">{footnav}</div>
@@ -357,7 +374,10 @@ def page_shell(lang, head_extra, active_path, body_html, alt_url):
 </html>
 """.format(lang=lang, head_extra=head_extra, css=PAGE_CSS, nav=nav_html,
            switch=switch, body=body_html, tagline=esc(FOOTER_TAGLINE[lang]),
-           socials=social_links_html(), footnav=foot_nav)
+           socials=social_links_html(), footnav=foot_nav,
+           skip="Aller au contenu" if lang == "fr" else "Skip to content",
+           nav_label="Navigation principale" if lang == "fr" else "Main navigation",
+           home_href="/?lang=en" if lang == "en" else "/")
 
 
 def head_block(lang, title, description, url, alt_fr, alt_en, og_type="website",
@@ -429,6 +449,7 @@ def load_articles():
         iso = data.get("date", "")
         art = {
             "slug": slug,
+            "category": data.get("category") if data.get("category") in CATEGORIES else "news",
             "iso": iso,
             "title_fr": data.get("title", "(sans titre)"),
             "title_en": data.get("title_en") or data.get("title", "(untitled)"),
@@ -532,6 +553,17 @@ def gen_article_pages(articles):
                                   else ("/fr/articles/%s/" % art["slug"])))
 
 
+def archive_card(art, lang):
+    title, summary = art["title_" + lang], art["summary_" + lang]
+    image = ('<img class="article-thumb" src="%s" alt="" loading="lazy">' % esca(art["cover"])) if art["cover"] else ""
+    date_label = date_fr(art["iso"]) if lang == "fr" else date_en(art["iso"])
+    return ('<a class="item" href="/%s/articles/%s/" data-category="%s">%s'
+            '<div class="category">%s</div><div class="t">%s</div>'
+            '<div class="s">%s</div><div class="d">%s</div></a>' %
+            (lang, esca(art["slug"]), esca(art["category"]), image,
+             esc(CATEGORIES[art["category"]][lang]), esc(title), esc(summary), esc(date_label)))
+
+
 def gen_listing_pages(articles):
     meta = {
         "fr": {
@@ -539,7 +571,7 @@ def gen_listing_pages(articles):
             "desc": ("Tous les articles et r\u00e9caps d'EuroJackys : actualit\u00e9s "
                      "v\u00e9rifi\u00e9es de Jackson Wang, traductions et projets de fans "
                      "europ\u00e9ens, en fran\u00e7ais et en anglais."),
-            "h1": "Articles & R\u00e9caps",
+            "h1": "Articles & Guides",
             "lead": ("Actualit\u00e9s v\u00e9rifi\u00e9es, analyses et r\u00e9caps de "
                      "l'univers Jackson Wang, c\u00f4t\u00e9 Europe."),
             "path": "/fr/articles/",
@@ -548,7 +580,7 @@ def gen_listing_pages(articles):
             "title": "Articles & Recaps | EuroJackys \u2014 Jackson Wang News in Europe",
             "desc": ("All EuroJackys articles and recaps: verified Jackson Wang news, "
                      "translations and European fan projects, in French and English."),
-            "h1": "Articles & Recaps",
+            "h1": "Articles & Guides",
             "lead": "Verified news, deep dives and recaps from the Jackson Wang universe, European side.",
             "path": "/en/articles/",
         },
@@ -556,18 +588,7 @@ def gen_listing_pages(articles):
     for lang in ("fr", "en"):
         m = meta[lang]
         url = SITE + m["path"]
-        rows = []
-        for art in articles:
-            title = art["title_fr"] if lang == "fr" else art["title_en"]
-            summary = art["summary_fr"] if lang == "fr" else art["summary_en"]
-            d = date_fr(art["iso"]) if lang == "fr" else date_en(art["iso"])
-            href = "/%s/articles/%s/" % (lang, art["slug"])
-            rows.append(
-                '<a class="item" href="{h}"><div class="t">{t}</div>'
-                '{s}<div class="d">{d}</div></a>'.format(
-                    h=esca(href), t=esc(title),
-                    s=('<div class="s">%s</div>' % esc(summary)) if summary else "",
-                    d=esc(d)))
+        rows = [archive_card(art, lang) for art in articles]
         if not rows:
             rows.append('<p class="lead">%s</p>'
                         % ("Les premiers articles arrivent bient\u00f4t."
@@ -581,14 +602,21 @@ def gen_listing_pages(articles):
         head = head_block(lang, m["title"], m["desc"], url,
                           SITE + "/fr/articles/", SITE + "/en/articles/",
                           jsonld=jsonld)
-        body = """<div class="breadcrumb"><a href="/">{home}</a></div>
-<div class="eyebrow">EuroJackys</div>
-<h1>{h1}</h1>
-<p class="lead">{lead}</p>
-<div class="article-listing">
-{rows}
-</div>""".format(home="Accueil" if lang == "fr" else "Home",
-                 h1=esc(m["h1"]), lead=esc(m["lead"]), rows="\n".join(rows))
+        options = '<option value="">%s</option>' % ("Toutes les catégories" if lang == "fr" else "All categories")
+        options += "".join('<option value="%s">%s</option>' % (key, esc(labels[lang])) for key, labels in CATEGORIES.items())
+        body = ('<div class="breadcrumb"><a href="/">%s</a></div><div class="eyebrow">EuroJackys</div>'
+                '<h1>%s</h1><p class="lead">%s</p><div class="filter-bar">'
+                '<div class="filter-field"><label for="article-search">%s</label>'
+                '<input id="article-search" type="search" placeholder="%s" autocomplete="off"></div>'
+                '<div class="filter-field"><label for="article-category">%s</label>'
+                '<select id="article-category">%s</select></div></div>'
+                '<p class="result-count" id="result-count" role="status" aria-live="polite"></p>'
+                '<div class="article-listing">%s</div><p id="no-results" class="no-results" hidden>%s</p>' %
+                ("Accueil" if lang == "fr" else "Home", esc(m["h1"]), esc(m["lead"]),
+                 "Rechercher un article" if lang == "fr" else "Search articles",
+                 "Un titre, un sujet…" if lang == "fr" else "A title, a topic…",
+                 "Catégorie" if lang == "fr" else "Category", options, "\n".join(rows),
+                 "Aucun article trouvé. Essaie un autre mot ou une autre catégorie." if lang == "fr" else "No articles found. Try another word or category."))
         write_page(m["path"] + "index.html",
                    page_shell(lang, head, m["path"], body,
                               alt_url="/en/articles/" if lang == "fr" else "/fr/articles/"))
@@ -604,6 +632,10 @@ def gen_sitemap(articles):
         (SITE + "/fr/inscription/", TODAY, "0.6"),
         (SITE + "/en/signup/", TODAY, "0.6"),
     ]
+    for routes in PORTAL_ROUTES.values():
+        for path in routes.values():
+            entries.append((SITE + path, TODAY, "0.7"))
+    entries.append((SITE + "/quizz/", TODAY, "0.6"))
     for art in articles:
         lastmod = (art["iso"] or TODAY)[:10]
         entries.append((art["url_fr"], lastmod, "0.7"))
@@ -850,6 +882,10 @@ def build_index(articles):
     idx_path = os.path.join(ROOT, "index.html")
     with open(idx_path, "r", encoding="utf-8") as f:
         content = f.read()
+    keys = ["about", "calendar", "projects", "gallery", "map", "join"]
+    for key in keys:
+        with open(os.path.join(ROOT, "templates", key + ".html"), encoding="utf-8") as f:
+            content += "<!-- PORTAL_SPLIT:" + key + " -->" + f.read()
 
     # --- textes A propos / accueil (content/about.yml) ---
     about = {}
@@ -925,38 +961,82 @@ def build_index(articles):
                      '<p class="empty-state" data-lang="en">Photos coming soon.</p>')
     content = inject(content, "GALLERY", "".join(tiles))
 
-    # --- carte ---
+    # --- carte et compteurs : une seule source, la collection existante ---
     rows = sorted(load_folder("content/map"), key=by_order)
-    map_html = "".join(
-        "<tr><td>{c}</td><td>{m}</td><td><span class=\"status-dot\"></span>{s}</td></tr>".format(
-            c=esc(r.get("country", "")), m=esc(r.get("members", "\u2014") or "\u2014"),
-            s=esc(r.get("status", "")))
-        for r in rows)
-    content = inject(content, "MAP", map_html)
+    map_html, jackys_total, country_total = render_community_map(rows)
+    content = inject(content, "COMMUNITY_MAP", map_html)
+    counter = '<strong>%s</strong> Jackys · <strong>%s</strong> %s' % (jackys_total, country_total, bi('pays représentés', 'countries represented'))
+    content = inject(content, "COMMUNITY_COUNTER", counter)
 
     # --- articles (liste statique de vrais liens) ---
     art_rows = []
-    for art in articles:
+    for art in articles[:3]:
         d = ('<span data-lang="fr">%s</span><span data-lang="en">%s</span>'
              % (esc(date_fr(art["iso"])), esc(date_en(art["iso"]))))
         summary = ""
         if art["summary_fr"] or art["summary_en"]:
-            summary = ('<div style="color:var(--muted);font-size:13px;margin-top:4px;">%s</div>'
+            summary = ('<div class="article-summary">%s</div>'
                        % bi(art["summary_fr"], art["summary_en"]))
         art_rows.append(
             '<a class="article-row" data-slug="{slug}" href="/fr/articles/{slug}/">'
-            '<div><div class="article-title">{t}</div>{s}</div>'
+            '{image}<div><div class="article-title">{t}</div>{s}</div>'
             '<div class="article-date">{d}</div></a>'.format(
                 slug=esca(art["slug"]), t=bi(art["title_fr"], art["title_en"]),
-                s=summary, d=d))
+                s=summary, d=d, image=('<img class="article-thumb" src="%s" alt="" loading="lazy">' % esca(art["cover"])) if art["cover"] else ""))
     if not art_rows:
         art_rows.append('<p class="empty-state" data-lang="fr">Les premiers articles arrivent bient\u00f4t.</p>'
                         '<p class="empty-state" data-lang="en">First articles coming soon.</p>')
     content = inject(content, "ARTICLES", "".join(art_rows))
 
+    parts = re.split(r"<!-- PORTAL_SPLIT:([a-z]+) -->", content)
+    sections = dict(zip(parts[1::2], parts[2::2]))
+    gen_portal_pages(sections)
     with open(idx_path, "w", encoding="utf-8") as f:
-        f.write(content)
+        f.write(parts[0])
     print("[build] index.html updated")
+
+
+def gen_portal_pages(sections):
+    names = {
+        "calendar": ("Calendrier", "Calendar"), "projects": ("Projets de fans", "Fan projects"),
+        "fun": ("Fun Zone", "Fun Zone"), "gallery": ("Galerie", "Gallery"),
+        "community": ("Les Jackys dans le monde", "Jackys around the world"),
+    }
+    for key, routes in PORTAL_ROUTES.items():
+        for lang in ("fr", "en"):
+            title = names[key][0 if lang == "fr" else 1]
+            if key == "community":
+                body = sections["map"] + sections["join"]
+            elif key == "fun":
+                label = "Quel Jacky es-tu ?" if lang == "fr" else "What kind of Jacky are you?"
+                detail = "Sept questions pour découvrir ton profil de fan. Sois honnête, on ne juge pas (si)." if lang == "fr" else "Seven questions to discover your fan profile. Be honest, no judgment (yes there is)."
+                action = "Faire le quiz →" if lang == "fr" else "Take the quiz →"
+                body = ('<div class="fun-feature"><div class="eyebrow">THE JACKY QUIZ</div><h2>%s</h2><p>%s</p>'
+                        '<a class="btn" href="/quizz/?lang=%s">%s</a></div>' % (label, detail, lang, action))
+                # Link playful recurring formats using their existing CMS links, never guessed URLs.
+                for project in sorted(load_folder("content/projects"), key=by_order):
+                    if any(word in project.get("title", "").lower() for word in ("jackyroscope", "star of")):
+                        link = fix_url(project.get("link", ""))
+                        desc = project.get("desc_fr" if lang == "fr" else "desc_en") or project.get("desc_fr", "")
+                        body += '<div class="fun-feature"><h2>%s</h2><p>%s</p>%s</div>' % (
+                            esc(project.get("title", "")), esc(desc),
+                            ('<a class="ext-link" href="%s" target="_blank" rel="noopener">%s</a>' % (esca(link), "Voir sur les réseaux →" if lang == "fr" else "View on socials →")) if link else "")
+            else:
+                body = sections[key]
+            # Strip old section headers: each page has its own descriptive H1.
+            body = re.sub(r'<div class="section-label">.*?</div>', '', body, flags=re.S)
+            body = re.sub(r'<h2 class="section-title">.*?</h2>', '', body, count=1, flags=re.S)
+            if key == "gallery":
+                # Make full-resolution images accessible with native keyboard-friendly links.
+                body = re.sub(r'<div class="gallery-tile"([^>]*data-gimg="([^"]+)"[^>]*)>(.*?)</div>',
+                              lambda m: '<a class="gallery-tile" href="%s" target="_blank" rel="noopener"%s>%s</a>' % (m.group(2), m.group(1), m.group(3)), body, flags=re.S)
+            head = head_block(lang, title + " | EuroJackys", title + " — EuroJackys, Jackson Wang.",
+                              SITE + routes[lang], SITE + routes["fr"], SITE + routes["en"])
+            if key == "community":
+                head += '<script src="/assets/community-map.js" defer></script>'
+            body = '<div class="breadcrumb"><a href="/%s">%s</a></div><div class="eyebrow">EuroJackys</div><h1>%s</h1>%s' % (
+                "?lang=en" if lang == "en" else "", "Accueil" if lang == "fr" else "Home", esc(title), body)
+            write_page(routes[lang] + "index.html", page_shell(lang, head, routes[lang], body, routes["en" if lang == "fr" else "fr"]))
 
 
 def main():

@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@eurojackys">
 <meta name="twitter:image" content="https://eurojackys.com/images/brand/og-image.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://eurojackys.com/fr/articles/", "name": "Articles & Récaps", "url": "https://eurojackys.com/fr/articles/", "inLanguage": "fr", "isPartOf": {"@id": "https://eurojackys.com/#website"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://eurojackys.com/"}, {"@type": "ListItem", "position": 2, "name": "Articles & Récaps", "item": "https://eurojackys.com/fr/articles/"}]}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "CollectionPage", "@id": "https://eurojackys.com/fr/articles/", "name": "Articles & Guides", "url": "https://eurojackys.com/fr/articles/", "inLanguage": "fr", "isPartOf": {"@id": "https://eurojackys.com/#website"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://eurojackys.com/"}, {"@type": "ListItem", "position": 2, "name": "Articles & Guides", "item": "https://eurojackys.com/fr/articles/"}]}]}</script>
 <link rel="icon" href="/images/brand/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/images/brand/favicon-32.png">
 <link rel="apple-touch-icon" href="/images/brand/apple-touch-icon.png">
@@ -78,28 +78,32 @@ footer .footer-nav a{text-decoration:none;color:var(--muted);}
 footer .footer-nav a:hover{color:var(--gold-soft);}
 @media(max-width:700px){nav{display:none;}}
 </style>
+<link rel="stylesheet" href="/assets/portal.css">
+<script src="/assets/portal.js" defer></script>
 </head>
-<body>
+<body class="lang-fr">
+<a class="skip-link" href="#content">Aller au contenu</a>
 <header>
   <a href="/" class="brand"><img class="brand-logo" src="/images/brand/logo-header.png" alt="">EURO<span>JACKYS</span></a>
-  <nav><a href="/">Accueil</a><a href="/fr/articles/" class="active">Articles</a><a href="/fr/a-propos/">À propos</a></nav>
+  <button class="menu-toggle" aria-controls="site-nav" aria-expanded="false">Menu</button>
+  <nav id="site-nav" aria-label="Navigation principale"><a href="/">Accueil</a><a href="/fr/articles/" class="active" aria-current="page">Articles &amp; Guides</a><a href="/fr/calendrier/">Calendrier</a><a href="/fr/projets/">Projets</a><a href="/fr/fun/">Fun Zone</a><a href="/fr/a-propos/">À propos</a></nav>
   <div class="lang-switch"><a href="/fr/articles/" class="active">FR</a><a href="/en/articles/">EN</a></div>
 </header>
-<main>
-<div class="breadcrumb"><a href="/">Accueil</a></div>
-<div class="eyebrow">EuroJackys</div>
-<h1>Articles &amp; Récaps</h1>
-<p class="lead">Actualités vérifiées, analyses et récaps de l'univers Jackson Wang, côté Europe.</p>
-<div class="article-listing">
-<a class="item" href="/fr/articles/jackson-wang-cartier-et-un-classique-cantonais-qui-a-fait-parler/"><div class="t">Jackson Wang, Cartier et un classique cantonais qui a fait parler</div><div class="s">Fin novembre 2020, pendant le Pasha de Cartier Party Live Stream, Jackson Wang reprenait 分手總要在雨天. Une simple cover élégante pour une soirée de marque ? Pas tout à fait.</div><div class="d">31 juillet 2026</div></a>
-</div>
+<main id="content">
+<div class="breadcrumb"><a href="/">Accueil</a></div><div class="eyebrow">EuroJackys</div><h1>Articles &amp; Guides</h1><p class="lead">Actualités vérifiées, analyses et récaps de l'univers Jackson Wang, côté Europe.</p><div class="filter-bar"><div class="filter-field"><label for="article-search">Rechercher un article</label><input id="article-search" type="search" placeholder="Un titre, un sujet…" autocomplete="off"></div><div class="filter-field"><label for="article-category">Catégorie</label><select id="article-category"><option value="">Toutes les catégories</option><option value="news">Actualités</option><option value="analysis">Analyses</option><option value="guides">Guides</option><option value="archives">Archives</option></select></div></div><p class="result-count" id="result-count" role="status" aria-live="polite"></p><div class="article-listing"><a class="item" href="/fr/articles/thank-you-que-nous-disent-vraiment-les-chiffres/" data-category="analysis"><img class="article-thumb" src="/images/uploads/screenshot_20260919_005251_youtube.jpg" alt="" loading="lazy"><div class="category">Analyses</div><div class="t">Thank You : que nous disent vraiment les chiffres ?</div><div class="s">Deux semaines après la sortie du nouveau single de Jackson Wang, il est temps de regarder les chiffres. Mais aussi ce qu'ils ne nous montrent pas.</div><div class="d">5 octobre 2026</div></a>
+<a class="item" href="/fr/articles/thank-you-la-lettre-de-gratitude-de-jackson-wang---ses-fans/" data-category="news"><img class="article-thumb" src="/images/uploads/screenshot_20260921_125454_youtube.jpg" alt="" loading="lazy"><div class="category">Actualités</div><div class="t">"Thank You" : la lettre de gratitude de Jackson Wang à ses fans</div><div class="s">Avec "Thank You", Jackson ne sort pas juste un titre de plus. Il ouvre son album photo et nous invite à le feuilleter avec lui.</div><div class="d">21 septembre 2026</div></a>
+<a class="item" href="/fr/articles/jackson-wang-et-l-europe-bien-avant-la-musique-il-y-avait-l-escrime/" data-category="archives"><img class="article-thumb" src="/images/uploads/1ef6b41dc2b5d2b8c9785aa9556b760d.jpg" alt="" loading="lazy"><div class="category">Archives</div><div class="t">Jackson Wang et l’Europe : bien avant la musique, il y avait l’escrime</div><div class="s"></div><div class="d">30 août 2026</div></a>
+<a class="item" href="/fr/articles/papillon-f-te-ses-9-ans-retour-sur-le-premier-single-solo-de-jackson-wang/" data-category="archives"><img class="article-thumb" src="/images/uploads/cb2e53db69d9d18136b4073aae63491c.jpg" alt="" loading="lazy"><div class="category">Archives</div><div class="t">Papillon fête ses 9 ans : retour sur le premier single solo de Jackson Wang</div><div class="s">Sorti le 26 août 2017, Papillon marque les débuts solo officiels de Jackson Wang. Neuf ans plus tard, retour sur le morceau, son message et les premiers jours d’un lancement qui avait immédiatement attiré l’attention.</div><div class="d">26 août 2026</div></a>
+<a class="item" href="/fr/articles/jackson-wang-en-tourn-e-2026-2027-dates-magicman-2-et-leurope/" data-category="guides"><img class="article-thumb" src="/images/uploads/screenshot_20251205_191533_instagram.jpg" alt="" loading="lazy"><div class="category">Guides</div><div class="t">Jackson Wang en tournée 2026-2027 </div><div class="s">Toutes les dates confirmées du MAGICMAN 2 World Tour, et le point honnête sur les dates européennes. Mis à jour en continu par EuroJackys.</div><div class="d">18 août 2026</div></a>
+<a class="item" href="/fr/articles/qui-est-jackson-wang/" data-category="guides"><img class="article-thumb" src="/images/uploads/1000196470.jpg" alt="" loading="lazy"><div class="category">Guides</div><div class="t">Qui est Jackson Wang ?</div><div class="s">"De champion d'escrime à Hong Kong à patron de TEAM WANG : l'histoire de Jackson Wang, racontée par la fanbase européenne."</div><div class="d">18 août 2026</div></a>
+<a class="item" href="/fr/articles/jackson-wang-cartier-et-un-classique-cantonais-qui-a-fait-parler/" data-category="archives"><img class="article-thumb" src="/images/uploads/jackson-cartier-featured.jpg" alt="" loading="lazy"><div class="category">Archives</div><div class="t">Jackson Wang, Cartier et un classique cantonais qui a fait parler</div><div class="s">Fin novembre 2020, pendant le Pasha de Cartier Party Live Stream, Jackson Wang reprenait 分手總要在雨天. Une simple cover élégante pour une soirée de marque ? Pas tout à fait.</div><div class="d">31 juillet 2026</div></a></div><p id="no-results" class="no-results" hidden>Aucun article trouvé. Essaie un autre mot ou une autre catégorie.</p>
 </main>
 <footer>
   <img class="footer-logo" src="/images/brand/logo-header.png" alt="">
   <a href="/" class="brand">EURO<span style="color:var(--cream)">JACKYS</span></a>
   <p>EuroJackys est une fanbase indépendante, gérée par des fans. Nous ne sommes affiliés ni à Jackson Wang, ni à Team Wang, ni à aucun de leurs partenaires.</p>
   <div class="social"><a href="https://instagram.com/eurojackys" target="_blank" rel="noopener">Instagram</a><a href="https://tiktok.com/@eurojackys" target="_blank" rel="noopener">TikTok</a><a href="https://www.facebook.com/share/14k1TZ9hEmq/" target="_blank" rel="noopener">Facebook</a><a href="https://threads.net/@eurojackys" target="_blank" rel="noopener">Threads</a><a href="https://x.com/eurojackys" target="_blank" rel="noopener">X</a><a href="https://www.youtube.com/@eurojackys" target="_blank" rel="noopener">YouTube</a></div>
-  <div class="footer-nav"><a href="/">Accueil</a> · <a href="/fr/articles/">Articles</a> · <a href="/fr/a-propos/">À propos</a></div>
+  <div class="footer-nav"><a href="/">Accueil</a> · <a href="/fr/articles/">Articles &amp; Guides</a> · <a href="/fr/calendrier/">Calendrier</a> · <a href="/fr/projets/">Projets</a> · <a href="/fr/fun/">Fun Zone</a> · <a href="/fr/a-propos/">À propos</a></div>
 </footer>
 </body>
 </html>

@@ -2,4 +2,5 @@ order: 1
 country: 🇫🇷 France
 cities: Paris · Lyon · Marseille
 members: "19"
-status: Boarding
+country_code: FR
+country_en: France
