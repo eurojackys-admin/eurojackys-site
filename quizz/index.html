@@ -318,7 +318,10 @@
 
   .hidden{ display:none !important; }
 </style>
-</head>
+<style>
+@font-face{font-family:Manrope;src:url('/assets/fonts/manrope.ttf') format('truetype');font-weight:200 800;font-display:swap}
+body,button{font-family:Manrope,Arial,sans-serif}
+</style></head>
 <body>
 
 <div class="ember" style="width:90px;height:90px;top:8%;left:-10px;"></div>
@@ -328,7 +331,7 @@
 <div class="app">
 
   <header class="bar">
-    <div class="wordmark">🐉 EUROJACKYS</div>
+    <a class="wordmark" id="quiz-home" href="/fr/fun/" style="color:inherit;text-decoration:none">← EUROJACKYS</a>
     <div class="langtoggle">
       <button id="btn-fr" class="active">FR</button>
       <button id="btn-en">EN</button>
@@ -664,6 +667,20 @@ el("btn-copy").onclick = async () => {
 };
 
 applyLang();
+</script>
+<script>
+(function(){
+const lang = new URLSearchParams(location.search).get('lang');
+if(lang === 'en') document.getElementById('btn-en').click();
+const updateBack = () => {
+const en = document.getElementById('btn-en').classList.contains('active');
+document.documentElement.lang = en ? 'en' : 'fr';
+document.getElementById('quiz-home').href = en ? '/en/fun/' : '/fr/fun/';
+};
+document.getElementById('btn-fr').addEventListener('click', updateBack);
+document.getElementById('btn-en').addEventListener('click', updateBack);
+updateBack();
+})();
 </script>
 </body>
 </html>
