@@ -1,4 +1,5 @@
 ---
+category: archives
 title: "Papillon fête ses 9 ans : retour sur le premier single solo de Jackson Wang"
 title_en: "Papillon Turns 9: Looking Back at Jackson Wang’s First Solo Single  DATE"
 date: 2026-08-26T09:38:00.000+02:00

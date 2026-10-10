@@ -1,4 +1,5 @@
 ---
+category: news
 title: '"Thank You" : la lettre de gratitude de Jackson Wang à ses fans'
 title_en: Jackson Wang says "Thank You" to the fans who stood by his side
 date: 2026-09-21T18:36:00.000+02:00

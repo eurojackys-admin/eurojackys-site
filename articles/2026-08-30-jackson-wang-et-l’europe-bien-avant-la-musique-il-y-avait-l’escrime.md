@@ -1,4 +1,5 @@
 ---
+category: archives
 title: "Jackson Wang et l’Europe : bien avant la musique, il y avait l’escrime"
 title_en: "Jackson Wang and Europe: the sabre before the mic"
 date: 2026-08-30T19:08:00.000+02:00

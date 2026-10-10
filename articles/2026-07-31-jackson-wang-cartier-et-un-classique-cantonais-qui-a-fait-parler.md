@@ -1,4 +1,5 @@
 ---
+category: archives
 title: Jackson Wang, Cartier et un classique cantonais qui a fait parler
 title_en: Jackson Wang, Cartier and the Cantopop classic that got people talking
 date: 2026-07-31T17:53:00.000+02:00

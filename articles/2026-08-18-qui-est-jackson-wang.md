@@ -1,4 +1,5 @@
 ---
+category: guides
 title: Qui est Jackson Wang ?
 title_en: Who is Jackson Wang ?
 date: 2026-08-18T18:31:00.000+02:00

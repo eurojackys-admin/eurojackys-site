@@ -1,4 +1,5 @@
 ---
+category: guides
 title: "Jackson Wang en tournée 2026-2027 "
 title_en: "Jackson Wang Tour 2026-2027 "
 date: 2026-08-18T19:10:00.000+02:00
