@@ -1,5 +1,6 @@
 order: 2
-country: 🇨🇭 Suisse / Switzerland
+country: 🇨🇭 Suisse
 cities: Genève · Zürich · Jura
 members: "2"
-status: Boarding
+country_code: CH
+country_en: Switzerland
