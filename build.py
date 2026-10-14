@@ -339,11 +339,18 @@ def kofi_support_html(lang=None, about=None):
     if not re.fullmatch(r"https://ko-fi\.com/[A-Za-z0-9_/-]+", url):
         print("[build] WARNING: invalid Ko-fi page address; button hidden")
         return ""
+    text_fr = str(about.get("kofi_text_fr", "Ton café paie l'hébergement du site et prépare nos futurs projets communs, le jour où Jackson viendra enfin en Europe.")).strip()
+    text_en = str(about.get("kofi_text_en", "Your coffee covers the site's hosting and funds our future group projects, the day Jackson finally comes to Europe.")).strip()
+    description = (bi(text_fr, text_en) if lang is None and (text_fr or text_en)
+                   else esc(text_fr if lang == "fr" else text_en))
+    description_html = ('<p class="kofi-description" style="line-height:1.6">%s</p>'
+                        % description) if description else ""
     label = (bi("Soutenir EuroJackys", "Support EuroJackys") if lang is None
              else ("Soutenir EuroJackys" if lang == "fr" else "Support EuroJackys"))
     return ('<div class="kofi-support" style="margin-top:22px">'
             '<a class="btn kofi-link" href="%s" target="_blank" rel="noopener noreferrer">'
-            '<span aria-hidden="true">☕</span> %s</a></div>' % (esca(url), label))
+            '<span aria-hidden="true">☕</span> %s</a>%s</div>'
+            % (esca(url), label, description_html))
 
 
 def page_shell(lang, head_extra, active_path, body_html, alt_url):
@@ -1096,5 +1103,6 @@ if __name__ == "__main__":
         traceback.print_exc()
         print("[build] ERROR: %s (deploy continues with committed files)" % e)
         sys.exit(0)
+
 
 

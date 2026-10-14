@@ -369,6 +369,8 @@ collections:
           - { label: "Photo de couverture", name: "hero_image", widget: "image", required: false, default: "/images/brand/jackson-paris-cover.jpg", hint: "Choisis de préférence une photo horizontale. Elle sera recadrée pour remplir la couverture." }
           - { label: "Description de la photo", name: "hero_image_alt", widget: "string", required: false, default: "Jackson Wang", hint: "Une courte description pour les personnes qui ne peuvent pas voir l’image." }
           - { label: "Lien Ko-fi", name: "kofi_url", widget: "string", required: false, default: "https://ko-fi.com/eurojackys", hint: "Adresse de ta page Ko-fi (https://ko-fi.com/…). Laisse vide pour masquer le bouton de soutien." }
+          - { label: "Texte de soutien Ko-fi (FR)", name: "kofi_text_fr", widget: "text", required: false, default: "Ton café paie l'hébergement du site et prépare nos futurs projets communs, le jour où Jackson viendra enfin en Europe." }
+          - { label: "Texte de soutien Ko-fi (EN)", name: "kofi_text_en", widget: "text", required: false, default: "Your coffee covers the site's hosting and funds our future group projects, the day Jackson finally comes to Europe." }
           - { label: "Texte d'intro haut de page (FR)", name: "hero_fr", widget: "text" }
           - { label: "Texte d'intro haut de page (EN)", name: "hero_en", widget: "text" }
           - { label: "Texte À propos (FR)", name: "text_fr", widget: "text" }
@@ -431,5 +433,6 @@ collections:
           - { label: "⑦ Rejoindre — Texte d'intro (EN)", name: "join_intro_en", widget: "text", required: false }
           - { label: "⑦ Rejoindre — Position", name: "join_order", widget: "number", default: 7 }
           - { label: "⑦ Rejoindre — Afficher ?", name: "join_visible", widget: "select", options: ["true", "false"], default: "true" }
+
 
 
