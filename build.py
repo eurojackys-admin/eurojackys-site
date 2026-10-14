@@ -327,6 +327,25 @@ def social_links_html():
                    % (esca(u), esc(n)) for n, u in SOCIALS)
 
 
+def kofi_support_html(lang=None, about=None):
+    """Link chosen in the admin; an empty address hides the button."""
+    if about is None:
+        about = next((item for item in load_folder("content")
+                      if item.get("_file") == "about.yml"), {})
+    url = str(about.get("kofi_url", "https://ko-fi.com/eurojackys")).strip()
+    if not url:
+        return ""
+    # Accept the public Ko-fi page format and keep the attribute safe.
+    if not re.fullmatch(r"https://ko-fi\.com/[A-Za-z0-9_/-]+", url):
+        print("[build] WARNING: invalid Ko-fi page address; button hidden")
+        return ""
+    label = (bi("Soutenir EuroJackys", "Support EuroJackys") if lang is None
+             else ("Soutenir EuroJackys" if lang == "fr" else "Support EuroJackys"))
+    return ('<div class="kofi-support" style="margin-top:22px">'
+            '<a class="btn kofi-link" href="%s" target="_blank" rel="noopener noreferrer">'
+            '<span aria-hidden="true">☕</span> %s</a></div>' % (esca(url), label))
+
+
 def page_shell(lang, head_extra, active_path, body_html, alt_url):
     nav_html = "".join(
         '<a href="%s"%s>%s</a>' % (esca("/?lang=en" if p == "/" and lang == "en" else p), ' class="active" aria-current="page"' if p == active_path or (p.endswith('/articles/') and active_path.startswith(p)) else "", esc(label))
@@ -369,12 +388,14 @@ def page_shell(lang, head_extra, active_path, body_html, alt_url):
   <p>{tagline}</p>
   <div class="social">{socials}</div>
   <div class="footer-nav">{footnav}</div>
+  {kofi}
 </footer>
 </body>
 </html>
 """.format(lang=lang, head_extra=head_extra, css=PAGE_CSS, nav=nav_html,
            switch=switch, body=body_html, tagline=esc(FOOTER_TAGLINE[lang]),
            socials=social_links_html(), footnav=foot_nav,
+           kofi=kofi_support_html(lang),
            skip="Aller au contenu" if lang == "fr" else "Skip to content",
            nav_label="Navigation principale" if lang == "fr" else "Main navigation",
            home_href="/?lang=en" if lang == "en" else "/")
@@ -917,6 +938,11 @@ def build_index(articles):
         if value:
             content = inject(content, marker, md_inline(value))
 
+    if "<!-- BUILD:KOFI -->" not in content:
+        content = content.replace("</footer>",
+                                  "<!-- BUILD:KOFI --><!-- /BUILD:KOFI -->\n</footer>", 1)
+    content = inject(content, "KOFI", kofi_support_html(about=about))
+
     # --- calendrier ---
     cal = sorted(load_folder("content/calendar"), key=by_order)
     cal_html = "".join(
@@ -1070,4 +1096,5 @@ if __name__ == "__main__":
         traceback.print_exc()
         print("[build] ERROR: %s (deploy continues with committed files)" % e)
         sys.exit(0)
+
 
