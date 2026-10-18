@@ -52,3 +52,16 @@ footer .social{flex-wrap:wrap;gap:16px}footer p{max-width:760px;margin:12px auto
 .map-marker .flag-plate{fill:#f3ebd9;stroke:#bca578;stroke-width:1.5;vector-effect:non-scaling-stroke;filter:drop-shadow(0 2px 3px #0008)}.map-marker image{pointer-events:none}.map-marker:hover .flag-plate,.map-marker.selected .flag-plate,.map-marker:focus-visible .flag-plate{fill:#fff7e9;stroke:#fff;stroke-width:3}.country-flag img{width:32px;height:24px;object-fit:contain;border-radius:2px}
 
 .map-panel{position:relative}.map-popup{position:absolute;transform:translate(-50%,-100%);z-index:3;min-width:160px;max-width:190px;padding:16px 30px 15px 16px;border:1px solid var(--gold);border-radius:6px;background:#f4eddf;color:#171717;box-shadow:0 6px 24px #0005;pointer-events:auto}.map-popup strong{display:block;font-size:12px}.map-popup span{display:block;color:#65502c;font-size:19px;font-weight:600;margin-top:4px}.map-popup button{position:absolute;top:2px;right:4px;background:none;border:0;padding:5px;color:#171717;font-size:20px;cursor:pointer}.map-toolbar{flex-wrap:wrap}.map-toolbar>div{flex-wrap:wrap}.map-marker .flag-plate{filter:drop-shadow(0 1px 2px #0006)}
+
+/* Gallery pages share these styles with the home-page templates. */
+#gallery .gallery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:start}
+#gallery .gallery-tile{display:flex;flex-direction:column;justify-content:flex-end;align-items:stretch;position:relative;isolation:isolate;box-sizing:border-box;min-width:0;min-height:240px;aspect-ratio:4/5;padding:20px;overflow:hidden;border:1px solid var(--line);border-radius:6px;background-color:var(--bg-soft);background-size:cover;background-position:center;background-repeat:no-repeat;color:var(--cream);text-decoration:none}
+#gallery .gallery-tile::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(to top,rgba(0,0,0,.94),rgba(0,0,0,.66) 25%,transparent 65%)}
+#gallery .gallery-tile>small,#gallery .gallery-tile>span{position:relative;z-index:1;display:block;overflow-wrap:anywhere}
+#gallery .gallery-tile>small{margin:0;color:var(--gold-soft);font-family:Manrope,Arial,sans-serif;font-size:13px;font-weight:600;line-height:1.45;text-transform:none;letter-spacing:normal}
+#gallery .gallery-tile>span{margin-top:6px;color:var(--cream);font-family:Manrope,Arial,sans-serif;font-size:12px;line-height:1.5}
+#gallery .gallery-tile:hover{border-color:var(--gold-soft)}
+#gallery .gallery-tile:focus-visible{outline:2px solid var(--gold-soft);outline-offset:4px}
+@media(max-width:900px){#gallery .gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:480px){#gallery .gallery-grid{grid-template-columns:minmax(0,1fr);gap:16px}#gallery .gallery-tile{padding:20px}}
+
