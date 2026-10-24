@@ -141,7 +141,7 @@ body_en: >-
 
 
   *Sources: Spotify/MyStreamCount, YouTube, Worldwide iTunes/Kworb, Apple Music City Charts, NetEase Cloud Music, Tencent Music, UK Official Charts.*
-external_link: https://youtu.be/KzM1arYmO4w?si=xqglcwOhSuvfdV0f
+external_link: https://youtu.be/KzM1arYmO4w?si=xqglcwOhSuvfdV0f                                                                                                                   https://eurojackys.com/en/articles/thank-you-la-lettre-de-gratitude-de-jackson-wang---ses-fans/
 ---
 Le 20 septembre, Jackson Wang sortait *Thank You*, sa première sortie depuis sa signature chez Roc Nation.
 
