@@ -49,7 +49,7 @@ body_en: >-
 
   * Brazil: #4
 
-  * Taiwan #40
+  * Taiwan: #40
 
 
   An important note: these are iTunes charts, meaning paid downloads, not Spotify charts. Different platforms don't necessarily tell the same story.
@@ -157,17 +157,17 @@ Au 3 octobre 2026, *Thank You* compte plus de **874 000 streams** sur Spotify.
 
 Le clip officiel, co-réalisé par Jackson Wang et Ojun Kwon, a dépassé les **4,2 millions de vues** sur YouTube.
 
-Sur le classement iTunes mondial, le titre est entré à la **76e place** le 21 septembre, avant d'atteindre son meilleur rang, la **\#68**, le lendemain.
+Sur le classement iTunes mondial, le titre est entré à la **76e place** le 21 septembre, avant d'atteindre son meilleur rang, la **68e place**, le lendemain.
 
 Ce sont surtout les classements nationaux qui sont intéressants. Parmi les meilleures positions que nous avons pu vérifier :
 
-* Thailand: #1
-* Hong Kong: #1
-* Malaysia: #1
-* Singapore: #2
-* Émirats arabes unis:#2
-* Brazil: #4
-* Taiwan: #40
+* Thaïlande : #1
+* Hong Kong : #1
+* Malaisie : #1
+* Singapour : #2
+* Émirats arabes unis : #2
+* Brésil : #4
+* Taïwan : #40
 
 Précision importante : il s'agit de classements iTunes, donc de téléchargements payants, et non de classements Spotify. Les plateformes ne racontent pas forcément la même histoire.
 
@@ -175,7 +175,7 @@ Précision importante : il s'agit de classements iTunes, donc de téléchargemen
 
 La Chine demande une lecture différente, car les principales plateformes musicales ne sont pas les mêmes qu'en Europe ou en Amérique du Nord.
 
-*Thank You* est apparu dans les classements de NetEase Cloud Music et de Tencent Music. Sur NetEase, il a atteint la **2e place** du New Song Chart à son lancement, avec plus de 10 000 « hearts » dès le premier jour. Sur Apple Music, il a atteint la **\#13 du City Chart de Shanghai** le 26 septembre.
+*Thank You* est apparu dans les classements de NetEase Cloud Music et de Tencent Music. Sur NetEase, il a atteint la **2e place** du New Song Chart à son lancement, avec plus de 10 000 « hearts » dès le premier jour. Sur Apple Music, il a atteint la **13e place du City Chart de Shanghai** le 26 septembre.
 
 Ces données sont plus difficiles à comparer aux classements occidentaux, mais elles confirment que le titre a bénéficié d'une belle visibilité sur le marché chinois.
 
@@ -205,9 +205,9 @@ Pour voir si c'était propre au nouveau single, nous avons regardé les albums p
 
 Aux États-Unis, il a atteint la **13e place du Billboard 200**. Au Royaume-Uni, en revanche, il n'est pas entré dans le principal UK Albums Chart. Il a cependant atteint :
 
-* **\#23**: Official Album Downloads Chart
-* **\#44**: Official Independent Albums Chart
-* **\#7**: Official Independent Album Breakers Chart
+* **\#23** : Official Album Downloads Chart
+* **\#44** : Official Independent Albums Chart
+* **\#7** : Official Independent Album Breakers Chart
 
 Et sur le classement britannique des téléchargements d'albums, *Magic Man 2* a fait mieux que *Magic Man* : #23 en 2025, contre #40 en 2022.
 
@@ -228,3 +228,4 @@ Pour une fanbase européenne comme la nôtre, c'est probablement la question la 
 *Données consultées le 3 octobre 2026. Les compteurs Spotify et YouTube continuent d'évoluer après publication.*
 
 *Sources : Spotify/MyStreamCount, YouTube, Worldwide iTunes/Kworb, Apple Music City Charts, NetEase Cloud Music, Tencent Music, UK Official Charts.*
+

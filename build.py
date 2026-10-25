@@ -199,6 +199,7 @@ def date_en(iso):
 
 def md_inline(text):
     text = html.escape(text, quote=False)
+    text = re.sub(r"\\#", "#", text)
     text = re.sub(r"\[([^\]]+)\]\((https?://[^\s)]+)\)",
                   r'<a href="\2" target="_blank" rel="noopener">\1</a>', text)
     text = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", text)
@@ -208,16 +209,18 @@ def md_inline(text):
 
 def md_to_html(md, external_link=None):
     out = []
-    for block in re.split(r"\n\s*\n", (md or "").strip()):
+    # Isolate ATX headings even when the editor omits blank lines around them.
+    source = re.sub(r"(?m)^( {0,3}#{1,6}[ \t]+[^\n]*)$",
+                    r"\n\n\1\n\n", (md or "").replace("\r\n", "\n"))
+    for block in re.split(r"\n\s*\n", source.strip()):
         s = block.strip()
         if not s:
             continue
-        if s.startswith("### "):
-            out.append("<h3>%s</h3>" % md_inline(s[4:].strip()))
-        elif s.startswith("## "):
-            out.append("<h2>%s</h2>" % md_inline(s[3:].strip()))
-        elif s.startswith("# "):
-            out.append("<h2>%s</h2>" % md_inline(s[2:].strip()))
+        heading = re.fullmatch(r"(#{1,6})[ \t]+(.+)", s)
+        if heading:
+            level = max(2, len(heading.group(1)))
+            title = re.sub(r"[ \t]+#+[ \t]*$", "", heading.group(2)).strip()
+            out.append("<h%d>%s</h%d>" % (level, md_inline(title), level))
         elif s.startswith(">"):
             rows = []
             for ln in s.split("\n"):
@@ -1103,6 +1106,7 @@ if __name__ == "__main__":
         traceback.print_exc()
         print("[build] ERROR: %s (deploy continues with committed files)" % e)
         sys.exit(0)
+
 
 
 
